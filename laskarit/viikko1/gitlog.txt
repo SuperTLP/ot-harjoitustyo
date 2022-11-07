@@ -1,0 +1,115 @@
+commit 4b5de2135ea108f3dcd96f5e53c09c1130bd2d20
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Mon Nov 7 16:44:56 2022 +0200
+
+    poisto ja muokkaus
+
+ tiedostoja/file2.txt                 | 0
+ tiedostoja/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a2f1cc25f6155b07869764b328f53217a90f61ec
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Mon Nov 7 16:38:24 2022 +0200
+
+    lisättiin tiedostot
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 0d45baf7f929f42b4cd75598e561c787f3c484c3
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Mon Nov 7 15:56:19 2022 +0200
+
+    ysitehtävä
+
+ eka.txt    | 7 ++++---
+ kolmas.txt | 3 ++-
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+commit 2b8b4e8c763a8b1aaf5503ad97b3095097c4f8be
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Mon Nov 7 15:51:02 2022 +0200
+
+    poistettiin tiedosto
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 243112b40ce493e48e1323b395adbc14937995e5
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Mon Nov 7 15:49:00 2022 +0200
+
+    poistettiin tiedosto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 037627762f7904164d3ce25d33e3d7e0ad7aafd2
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Sun Nov 6 23:36:33 2022 +0200
+
+    lisättiin vielä vähän tekstiä tiedoston
+
+ tiedosto.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 8bd7da3de04afe3154ca9259eabf7aa91fccaaae
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Sun Nov 6 23:18:21 2022 +0200
+
+    poistettiin tekstiä
+
+ tiedosto.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit d297cf28389d18fbebc6b7e68d725ed087d608e7
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Sun Nov 6 23:17:29 2022 +0200
+
+    lisättiin paljon tekstiä
+
+ tiedosto.txt | 61 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+
+commit fc43829cfa507c47b068aa579ace959245760085
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Sun Nov 6 22:57:06 2022 +0200
+
+    tehtävä 6 committi
+
+ kolmas.txt               | 1 +
+ stuff/jokin_tiedosto.txt | 0
+ toinen.txt               | 1 +
+ 3 files changed, 2 insertions(+)
+
+commit e0fe584fbde8c06b8cd36a2a2aa0875b01e8b125
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Sun Nov 6 22:41:40 2022 +0200
+
+    lisättiin kolmas
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 16912e1fe4f1eaee4df49804ed7d90974c23d98c
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Sun Nov 6 22:39:10 2022 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit e9db4ed1c4a6b78afa45428a7177ba8761c45941
+Author: Riku Mattila <riku.p.mattila@gmail.com>
+Date:   Sun Nov 6 22:35:26 2022 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
