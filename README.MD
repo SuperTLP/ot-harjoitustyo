@@ -10,6 +10,9 @@ Täällä on **komentorivitulostuksia** ja ***git logeja***
 
 [vaatimusmäärittely.md](https://github.com/SuperTLP/ot-harjoitustyo/blob/master/laskarit/viikko1/vaatimusmäärittely.md)
 
+[tuntikirjanpito.md](https://github.com/SuperTLP/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
+
 
 Tää muutos
 
