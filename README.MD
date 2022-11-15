@@ -8,6 +8,9 @@ Täällä on **komentorivitulostuksia** ja ***git logeja***
 
 [komentorivi.txt](https://github.com/SuperTLP/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
+[vaatimusmäärittely.md](https://github.com/SuperTLP/ot-harjoitustyo/blob/master/laskarit/viikko1/vaatimusmäärittely.md)
+
+
 Tää muutos
 
 tää paikallinen päällekäinen muutos
