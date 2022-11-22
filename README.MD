@@ -10,6 +10,3 @@
 
 
 
-Tää muutos
-
-tää paikallinen päällekäinen muutos
