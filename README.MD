@@ -23,4 +23,24 @@ Asenna riippuvuudet komennolla
 Poetry install
 ~~~
 
+## Komennot
+
+### Pelaaminen
+Pelin pystyy käynnistämään komennolla
+~~~
+Poetry run invoke start
+~~~
+
+### Testaaminen
+Testit pystyy ajamaan komennolla
+~~~
+poetry run invoke test
+~~~
+
+## Testikattavuus
+Testikattavuusraportin pystyy luomaan komennolla
+~~~
+poetry run invoke coverate-report
+~~~
+Komennon suorittamisen jälkeen testiraportti ilmestyy htmlcov-kansioon.
 
