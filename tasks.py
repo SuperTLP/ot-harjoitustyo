@@ -10,3 +10,6 @@ def test(c):
 def coverage_report(c):
     c.run("coverage run --branch -m pytest src")
     c.run("coverage html")
+@task
+def lint(c):
+    c.run("pylint src")
