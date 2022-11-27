@@ -1,4 +1,4 @@
-from game.score import Score
+from repositories.score import Score
 import unittest
 from unittest import mock
 

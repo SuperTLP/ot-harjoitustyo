@@ -1,10 +1,9 @@
-from game.default_treat import DefaultTreat
+from entities.default_treat import DefaultTreat
 import unittest
 from unittest import mock
 
 class TestDefaultTreat(unittest.TestCase):
     def setUp(self):
-        print("Set up goes here")
         self.snake=mock.MagicMock()
         self.snake.set_pending_blocks=mock.MagicMock()
         self.snake.set_position=mock.MagicMock()

@@ -1,6 +1,6 @@
 from random import choice
-from .matrix_element import MatrixElement
-from .default_treat import DefaultTreat
+from entities.matrix_element import MatrixElement
+from entities.default_treat import DefaultTreat
 empty = MatrixElement()
 treat_1=MatrixElement(DefaultTreat(3), "treat", 1)
 snake_body=MatrixElement(_type="snake")
@@ -100,12 +100,12 @@ class Game:
         if self.game_matrix[head[0]][head[1]].type=="treat":
             return True
         return False
+
     def update_game_matrix(self,snake):
         for block in snake:
             self.game_matrix[block[0]][block[1]]=snake_body
 
     def advance(self):
-        print(self.get_empty_coordinates())
         snake_image = self.snake.advance(self.direction)
         head = snake_image[len(snake_image)-1]
         if not self.game_over and (self.out_out_bounds(head) or not self.square_is_free(head)):

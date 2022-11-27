@@ -1,5 +1,5 @@
-from game.game import Game
-from game.snake import Snake
+from services.game import Game
+from entities.snake import Snake
 import unittest
 from unittest.mock import MagicMock
 game_over=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
@@ -18,6 +18,5 @@ class TestGame:
             snake=Snake([[1, 11], [1, 12], [1, 13]])
             game = Game(snake, self.db)
             val = game.advance()
-            print(val)
             self.assertEqual(val, game_over)
 

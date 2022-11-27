@@ -23,7 +23,6 @@ class View:
         self.game_run=False
 
     def start_game(self, name):
-        print("nyt o peli pääl")
         self.game_run=True
         self.game.start(name)
         colormap={
@@ -59,7 +58,6 @@ class View:
                     text=""
                     if image[i][j].type=="treat":
                         text=str(image[i][j].action.effect)
-                        print(text)
                     effect = main_font.render(text, False, (255, 255, 255))
                     pygame.draw.rect(self.screen, (color), pygame.Rect(j*50,50+50*i, 50, 50))
                     self.screen.blit(effect, (j*50+15,50+50*i))
@@ -81,7 +79,6 @@ class View:
                     if event.key == pygame.K_BACKSPACE:
                         name=name[:-1]
                     if event.key==pygame.K_RIGHT:
-                        print("started now")
                         self.start_game(name)
             self.screen.fill((0, 0, 0))
             title = main_font.render('Snake', False, (0, 255, 0))
