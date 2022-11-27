@@ -7,7 +7,7 @@
 Snake on helppo sekä kevyt peli, jossa käärmettä ohjaamalla pyritään syömään mahdollisimman paljon ruokaa kasvattaen samalla käärmeen pituutta. Peli on saanut vaikutteita perinteisestä matopelistä, joka tuli suosituksi 1990-luvulla matkapuhelinpelinä.
 
 ### Pelaaminen
-Pelissä käärmettä ohjataan nuolinäppäimillä, ja pyritään syömään mahdollisimman paljon punaisia karkkeja. Peli päättyy, kun pelaaja osuu omaan häntäänsä tai seinään.
+Pelissä käärmettä ohjataan nuolinäppäimillä, ja pyritään syömään mahdollisimman paljon karkkeja. Peli päättyy, kun pelaaja osuu omaan häntäänsä tai seinään.
 
 ## Dokumentaatio
 
