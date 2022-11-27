@@ -15,6 +15,8 @@ Pelissä käärmettä ohjataan nuolinäppäimillä, ja pyritään syömään mah
 
 [tuntikirjanpito.md](https://github.com/SuperTLP/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[arkkitehtuuri.md](https://github.com/SuperTLP/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 [changelog.md](https://github.com/SuperTLP/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
 
 
