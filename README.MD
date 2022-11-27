@@ -55,3 +55,11 @@ poetry run invoke coverate-report
 ~~~
 Komennon suorittamisen jälkeen testiraportti ilmestyy htmlcov-kansioon.
 
+##Pylint
+
+.pylintrc tiediston määrittelemän koodin laatutarkastuksen voi suorittaa komennolla
+~~~
+poetry run invoke start
+~~~
+
+
