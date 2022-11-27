@@ -5,4 +5,4 @@
 .pytest_cache
 htmlcov
 __pycache__
-.pylintrc
+src/database.db

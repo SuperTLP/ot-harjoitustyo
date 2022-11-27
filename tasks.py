@@ -13,3 +13,6 @@ def coverage_report(c):
 @task
 def lint(c):
     c.run("pylint src")
+@task
+def build(c):
+    c.run("python3 initialize_database.py")
