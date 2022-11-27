@@ -59,7 +59,7 @@ Komennon suorittamisen jälkeen testiraportti ilmestyy htmlcov-kansioon.
 
 .pylintrc tiediston määrittelemän koodin laatutarkastuksen voi suorittaa komennolla
 ~~~
-poetry run invoke start
+poetry run invoke lint
 ~~~
 
 
