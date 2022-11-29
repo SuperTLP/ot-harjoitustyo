@@ -11,6 +11,8 @@ Luodaan matopeli, jossa pelaajien pisteet tallennetaan paikallisesti tietokantaa
 - pelaaja voi ohjata matoa nuolinäppäimillä (tehty)
 - pelaaja saa pisteitä kun syö kartalle ilmestyviä karkkeja (tehty)
 - peli päättyy, kun pelaaja osuu omaan matoonsa tai seinään (tehty)
+- pelaajan madon pituus kasvaa kun pelaaja syö vihreitä karkkeja (tehty)
+- pelaajan mato lyhenee kun pelaaja syö punaisia karkkeja (tehty)
 
 ## Käyttöympäristö
 
