@@ -1,5 +1,5 @@
 import sqlite3
-from gui.gui import View
+from ui.gui import View
 from services.game import Game
 from entities.snake import Snake
 from repositories.score import Score

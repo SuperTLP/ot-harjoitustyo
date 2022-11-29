@@ -31,6 +31,8 @@ class View:
         }
         while self.game_run:
             for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.game_run=False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         self.game.change_direction(3)
@@ -83,12 +85,12 @@ class View:
             self.screen.fill((0, 0, 0))
             title = main_font.render('Snake', False, (0, 255, 0))
             help=main_font.render("Type in your name, and press right arrow to play", False,(255, 255, 255))
-            help2=main_font.render("Or press arrow left to see high scores", False,(255, 255, 255))
+
             name_text=main_font.render(name, False, (255, 0, 0))
             self.screen.blit(title, (250,50))
             self.screen.blit(help, (0, 100))
             self.screen.blit(name_text, (300, 150))
-            self.screen.blit(help2, (0, 350))
+
             pygame.display.flip()
 
 
