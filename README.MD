@@ -51,7 +51,7 @@ poetry run invoke test
 ## Testikattavuus
 Testikattavuusraportin pystyy luomaan komennolla
 ~~~
-poetry run invoke coverate-report
+poetry run invoke coverage-report
 ~~~
 Komennon suorittamisen jälkeen testiraportti ilmestyy htmlcov-kansioon.
 
