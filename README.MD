@@ -27,11 +27,11 @@ Pelissä käärmettä ohjataan nuolinäppäimillä, ja pyritään syömään mah
 
 Asenna riippuvuudet komennolla
 ~~~
-Poetry install
+poetry install
 ~~~
 Suorita alustustoimenpiteet komennolla
 ~~~
-Poetry run invoke build
+poetry run invoke build
 ~~~
 
 ## Komennot
@@ -39,7 +39,7 @@ Poetry run invoke build
 ### Pelaaminen
 Pelin pystyy käynnistämään komennolla
 ~~~
-Poetry run invoke start
+poetry run invoke start
 ~~~
 
 ### Testaaminen
@@ -51,7 +51,7 @@ poetry run invoke test
 ## Testikattavuus
 Testikattavuusraportin pystyy luomaan komennolla
 ~~~
-poetry run invoke coverate-report
+poetry run invoke coverage-report
 ~~~
 Komennon suorittamisen jälkeen testiraportti ilmestyy htmlcov-kansioon.
 
