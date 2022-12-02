@@ -7,6 +7,6 @@ db = sqlite3.connect("src/database.db")
 score=Score(db)
 snake = Snake()
 game = Game(snake, score)
-view = View(game)
+view = View(game, score)
 
 view.run()

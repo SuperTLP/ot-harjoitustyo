@@ -16,7 +16,8 @@ GAME_OVER=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
         [0, 2, 2, 0, 0, 2, 0, 2, 2, 2, 0, 2, 2, 0]]
 
 class View:
-    def __init__(self, game):
+    def __init__(self, game, score):
+        self.score=score
         self.game=game
         self.screen=pygame.display.set_mode([700, 500])
         self.display_run=True
@@ -67,8 +68,39 @@ class View:
             self.screen.blit(points, (10,10))
             pygame.display.flip()
             pygame.time.wait(300)
+    def start_high_score(self):
+        self.high_score_run=True
+        page=0
+        while self.high_score_run:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.high_score_run=False
+                if event.type==pygame.KEYDOWN:
+                    if event.key==pygame.K_RIGHT:
+                        page+=1
+                    if event.key==pygame.K_LEFT:
+                        page-=1
+
+            self.screen.fill((0, 0, 0))
+            title = main_font.render('High scores', False, (255, 0, 0))
+            self.screen.blit(title, (250, 20))
+            data = self.score.all()[page*5:page*5+5]
+            print("____")
+            print(page*5)
+            print(page*5+5)
+            print(page)
+            for i in range(0, len(data)):
+                score = "{}: {} Pts.".format(data[i][1], data[i][2])
+                text = main_font.render(score, False, (255, 0, 0))
+                self.screen.blit(text, (250,150+50*i))
+            pygame.time.wait(300)
+            pygame.display.flip()
+
+
 
     def run(self):
+        options = ["Name", "Play", "High scores"]
+        active_option=0
         self.display_run=True
         name=""
         while self.display_run:
@@ -76,20 +108,31 @@ class View:
                 if event.type == pygame.QUIT:
                     self.display_run=False
                 if event.type == pygame.KEYDOWN:
-                    if event.unicode in " abcdefghijklmnopqrstuvwxyzoåäöABCDEFGHIJKLMNOPQRSTUVWXYZOÅÄÖ":
+                    if event.unicode in " abcdefghijklmnopqrstuvwxyzoåäöABCDEFGHIJKLMNOPQRSTUVWXYZOÅÄÖ" and options[active_option]=="Name":
                         name+=event.unicode
                     if event.key == pygame.K_BACKSPACE:
                         name=name[:-1]
                     if event.key==pygame.K_RIGHT:
-                        self.start_game(name)
-            self.screen.fill((0, 0, 0))
-            title = main_font.render('Snake', False, (0, 255, 0))
-            help=main_font.render("Type in your name, and press right arrow to play", False,(255, 255, 255))
+                        if options[active_option]=="Play":
+                            self.start_game(name)
+                        if options[active_option]=="High scores":
+                            self.start_high_score()
+                    if event.key==pygame.K_DOWN:
+                        active_option=min(len(options)-1, active_option+1)
+                    if event.key==pygame.K_UP:
+                        active_option=max(0, active_option-1)
 
-            name_text=main_font.render(name, False, (255, 0, 0))
-            self.screen.blit(title, (250,50))
-            self.screen.blit(help, (0, 100))
-            self.screen.blit(name_text, (300, 150))
+            self.screen.fill((0, 0, 0))
+            title = main_font.render('Snake Ultimate', False, (255, 0, 0))
+            self.screen.blit(title, (250, 20))
+            for i in range(0, len(options)):
+                color=(150, 150, 150)
+                if active_option==i:
+                    color=(255, 255, 255)
+                new_text=main_font.render(options[i], False, color)
+                if options[i]=="Name":
+                    new_text=main_font.render(options[i]+": "+name, False, color)
+                self.screen.blit(new_text, (250,200+80*i))
 
             pygame.display.flip()
 
