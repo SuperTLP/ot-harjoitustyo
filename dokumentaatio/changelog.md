@@ -17,4 +17,7 @@
 - Luotiin muutama testi DefaultTreat luokalle, jotka tarkistavat että madon funktioita kutsutaan oikein kun karkki syödään.
 - 
 
+## viikko 5
+- Uudistettu käyttöliittymä: käyttäjäystävällisempi valikko
+- lisättiin high-score ikkuna käyttöliittymälle
 
