@@ -11,7 +11,7 @@ class DefaultTreat:
                 del new_position[:abs(self.effect)]
                 snake.set_position(new_position)
             elif  len(snake.position)+self.effect<=0:
-                leftover=len(new_position)+self.effect
+                leftover=min(len(new_position)+self.effect, 0)
                 new_position=[new_position[len(new_position)-1][:]]
                 blocks=blocks+leftover
                 blocks = max(blocks,0)

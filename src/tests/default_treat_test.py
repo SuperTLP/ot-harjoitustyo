@@ -31,3 +31,10 @@ class TestDefaultTreat(unittest.TestCase):
         self.snake.set_pending_blocks.assert_called_with(0)
         self.snake.set_position.assert_called_with([[1, 3]])
     
+    def test_treat_only_reduces_snake_length(self):
+        self.snake.position=[[1, 2], [1, 3], [1, 4], [1, 5]]
+        self.snake.pending_blocks=5
+        treat = DefaultTreat(-2)
+        treat.consume(self.snake)
+        self.assertEqual(self.snake.pending_blocks, 5)
+        self.snake.set_position.assert_called_with([[1, 4], [1, 5]])
