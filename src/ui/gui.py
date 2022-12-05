@@ -59,8 +59,10 @@ class View:
                         else:
                             color=colormap[image[i][j].action.effect/abs(image[i][j].action.effect)]
                     text=""
-                    if image[i][j].type=="treat":
+                    if image[i][j].type in ["treat", "matrix_treat"]:
                         text=str(image[i][j].action.effect)
+                    if image[i][j].tier==5:
+                        color=(0, 255, 255)
                     effect = main_font.render(text, False, (255, 255, 255))
                     pygame.draw.rect(self.screen, (color), pygame.Rect(j*50,50+50*i, 50, 50))
                     self.screen.blit(effect, (j*50+15,50+50*i))

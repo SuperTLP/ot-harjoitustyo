@@ -9,5 +9,3 @@ class Score:
         cur=self.database.cursor()
         data = cur.execute("select * from scores order by score desc;").fetchall()
         return data
-
-    

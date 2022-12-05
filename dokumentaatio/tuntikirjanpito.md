@@ -9,6 +9,7 @@
 |29.11|0:15|Poistettiin käyttöliittymästä high-score ohjeistus toistaiseksi.|
 |2.12|2:00|Päivitettiin käyttöliittymä ja lisättiin high-score ikkuna|
 |4.12|0:30|Lisättiin testikattavuutta|
+|5.12|2:00|Lisättiin erikoiskarkki ja refaktoroitiin game-luokkaa|
 | yht| 17:00   ||
 
 
