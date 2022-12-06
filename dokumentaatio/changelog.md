@@ -20,6 +20,6 @@
 ## viikko 5
 - Uudistettu käyttöliittymä: käyttäjäystävällisempi valikko
 - lisättiin high-score ikkuna käyttöliittymälle
-- Lisättiin erikoiskarkki jonka syömisestä saa 20 pistettä, ja joka poistaa kaikki karkit kartalta
+- Lisättiin PurgeTreat-luokka, joka on vastuussa karkit poistavan erikoiskarkin toiminnallisuudesta. Lisättiin metodeja game-luokkaan, jotka helpottavat erikoiskarkkien toiminnallisuuden toteuttamista.
 
 
