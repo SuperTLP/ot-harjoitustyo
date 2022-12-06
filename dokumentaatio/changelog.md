@@ -20,6 +20,6 @@
 ## viikko 5
 - Uudistettu käyttöliittymä: käyttäjäystävällisempi valikko
 - lisättiin high-score ikkuna käyttöliittymälle
-- Lisättiin PurgeTreat-luokka, joka on vastuussa karkit poistavan erikoiskarkin toiminnallisuudesta. Lisättiin metodeja game-luokkaan, jotka helpottavat erikoiskarkkien toiminnallisuuden toteuttamista.
+- Lisättiin PurgeTreat-luokka, joka on vastuussa karkit poistavan erikoiskarkin toiminnallisuudesta.
 
 
