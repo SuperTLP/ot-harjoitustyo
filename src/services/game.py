@@ -126,7 +126,6 @@ class Game:
         if treat.type=="treat":
             treat.action.consume(self.snake)
         if treat.type=="matrix_treat":
-            print("täs")
             treat.action.consume(self)
 
     def is_treat(self, head):

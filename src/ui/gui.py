@@ -87,10 +87,7 @@ class View:
             title = main_font.render('High scores', False, (255, 0, 0))
             self.screen.blit(title, (250, 20))
             data = self.score.all()[page*5:page*5+5]
-            print("____")
-            print(page*5)
-            print(page*5+5)
-            print(page)
+
             for i in range(0, len(data)):
                 score = "{}: {} Pts.".format(data[i][1], data[i][2])
                 text = main_font.render(score, False, (255, 0, 0))
