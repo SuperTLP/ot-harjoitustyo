@@ -22,4 +22,5 @@
 - lisättiin high-score ikkuna käyttöliittymälle
 - Lisättiin PurgeTreat-luokka, joka on vastuussa karkit poistavan erikoiskarkin toiminnallisuudesta.
 
-
+## viikko 6
+- päivitettiin high-score näkymä

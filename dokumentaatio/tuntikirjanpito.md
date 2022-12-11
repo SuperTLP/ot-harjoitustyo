@@ -10,7 +10,8 @@
 |2.12|2:00|Päivitettiin käyttöliittymä ja lisättiin high-score ikkuna|
 |4.12|0:30|Lisättiin testikattavuutta|
 |5.12|2:00|Luotiin PurgeTreat luokka ja refaktoroitiin game-luokkaa|
-| yht| 19:30   ||
+|7.12|3:00|Päivitettiin high-score näkymää: lisättiin linkki alkuvalikkoon, lisättiin sivunumerot. Luotiin merkittävä määrä docstringejä eri luokkiin, ja luotiin integraatiotestejä, sekä lisää testejä Game-luokalle.
+| yht| 22:30   ||
 
 
 

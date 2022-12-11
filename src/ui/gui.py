@@ -1,9 +1,10 @@
 import pygame
+from math import ceil
 pygame.init()
 pygame.font.init()
 
 main_font = pygame.font.SysFont('Comic Sans MS', 30)
-
+secondary_font=pygame.font.SysFont('Comic Sans MS', 20)
 events = pygame.event.get()
 
 GAME_OVER=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
@@ -26,9 +27,14 @@ class View:
     def start_game(self, name):
         self.game_run=True
         self.game.start(name)
-        colormap={
+        color_map={
             -1:(255, 0, 0),
             1: (0, 255, 0)
+        }
+        tier_color_map={
+            1: (255, 0, 0),
+            2: (0, 150, 150),
+            3: (200, 200, 0),
         }
         while self.game_run:
             for event in pygame.event.get():
@@ -53,14 +59,12 @@ class View:
                     color=(0, 0, 0)
                     if image[i][j].type=="snake":
                         color=(255, 255, 255)
-                    if image[i][j].type=="treat":
-                        if image[i][j].action.effect==0:
-                            color=(255, 0, 0)
-                        else:
-                            color=colormap[image[i][j].action.effect/abs(image[i][j].action.effect)]
                     text=""
-                    if image[i][j].type in ["treat", "matrix_treat"]:
-                        text=str(image[i][j].action.effect)
+                    if image[i][j].tier!=0:
+                        color=tier_color_map[image[i][j].tier]
+                        text=str(image[i][j].effect)
+                    if image[i][j].tier==1:
+                        color=color_map[image[i][j].effect/abs(image[i][j].effect)]
                     if image[i][j].tier==5:
                         color=(0, 255, 255)
                     effect = main_font.render(text, False, (255, 255, 255))
@@ -70,6 +74,7 @@ class View:
             self.screen.blit(points, (10,10))
             pygame.display.flip()
             pygame.time.wait(300)
+
     def start_high_score(self):
         self.high_score_run=True
         page=0
@@ -79,13 +84,22 @@ class View:
                     self.high_score_run=False
                 if event.type==pygame.KEYDOWN:
                     if event.key==pygame.K_RIGHT:
-                        page+=1
+                        page=min(page+1,ceil(len(self.score.all())/5)-1)
                     if event.key==pygame.K_LEFT:
-                        page-=1
-
+                        page=max(page-1, 0)
+                if event.type==pygame.MOUSEBUTTONDOWN:
+                    if menu_button.collidepoint(event.pos):
+                        self.high_score_run=False
             self.screen.fill((0, 0, 0))
+            menu_button=pygame.draw.rect(self.screen, (255, 255,0), pygame.Rect(0, 0, 150, 50))
+            menu_button_text = secondary_font.render('Back to menu', False, (255, 0, 0))
+            self.screen.blit(menu_button_text, (20, 10))
             title = main_font.render('High scores', False, (255, 0, 0))
             self.screen.blit(title, (250, 20))
+
+            page_text = main_font.render("Page {}/{}".format(
+                page+1, ceil(len(self.score.all())/5)), False, (255, 0, 0))
+            self.screen.blit(page_text, (550, 20))
             data = self.score.all()[page*5:page*5+5]
 
             for i in range(0, len(data)):

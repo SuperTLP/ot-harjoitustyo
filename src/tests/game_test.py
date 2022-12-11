@@ -1,22 +1,29 @@
 from services.game import Game
-from entities.snake import Snake
+from services.snake import Snake
 import unittest
 from unittest.mock import MagicMock
-game_over=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-        [0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-        [0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1],
-        [0, 0, 0, 0, 1, 0, 0, 2, 2, 2, 0, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
-        [0, 2, 2, 0, 0, 2, 0, 2, 2, 2, 0, 2, 2, 0],
-        [0, 2, 0, 2, 0, 2, 0, 2, 0, 0, 0, 2, 0, 2],
-        [0, 2, 2, 0, 0, 2, 0, 2, 2, 2, 0, 2, 2, 0]]
 
 class TestGame(unittest.TestCase):
     def setUp(self):
         self.db=MagicMock()
+        self.db.new=MagicMock()
     def test_right_out_of_bound(self):
-        snake=Snake([[1, 11], [1, 12], [1, 13]])
+        snake=MagicMock()
+        snake.advance=MagicMock()
+        snake.advance.return_value=[[1, 12], [1, 13], [1, 14]]
         game = Game(snake, self.db)
-        val = game.advance()
-        self.assertEqual(val, game_over)
+        game.start("Riku")
+        game.advance()
+        self.db.new.assert_called_with("Riku", 0)
+        self.assertEqual(game.game_over, True)
+    def test_normal_advance(self):
+        snake=MagicMock()
+        snake.advance=MagicMock()
+        snake.advance.return_value=[[1, 5], [1, 6], [1, 7]]
+        game = Game(snake, self.db)
+        game.start("Riku")
+        game.advance()
+        expected_snake_coordinates=[[1, 5], [1, 6], [1, 7]]
+        for element in expected_snake_coordinates:
+            self.assertEqual(game.game_matrix[element[0]][element[1]].type, "snake")
 

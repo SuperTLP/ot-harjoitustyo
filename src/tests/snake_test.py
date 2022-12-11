@@ -1,5 +1,5 @@
 
-from entities.snake import Snake
+from services.snake import Snake
 import unittest
 
 
