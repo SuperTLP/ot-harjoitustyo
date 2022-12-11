@@ -1,10 +1,12 @@
-## Ohjelman rakenne
+# Ohjelman rakenne
 
-### Arkkitehtuuri
+## Arkkitehtuuri
 
-## Peli noudattaa seuraavanlaista rakennetta:
+### Peli noudattaa seuraavanlaista rakennetta:
 
 ![Pakkauskaavio](./kuvat/pakkauskaavio.png)
+
+Gui sisältää käyttöliittymään liittyvän koodin. Services sisältää pelilogiikkaan liittyvän koodin. Tämä tarkoittaa käytännössä pysyviä luokka-olioita, joista luodaan vain yksi olio koko ohjelman suorituksen aikana. Entities sisältää lyhytikäisiä kulutettavia komponentteja. Lähinnä karkkeihin liittyvää koodia. Repositories sisältää pysyväistallennukseen liittyvän koodin.
 
 
 ### Pelin eteneminen
