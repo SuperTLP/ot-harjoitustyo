@@ -24,3 +24,8 @@
 
 ## viikko 6
 - päivitettiin high-score näkymä
+- Luotiin FloodTreat luokka, joka on vastuussa matoa lyhentäviä karkkeja luovan erikoiskarkin toiminnallisuudesta.
+- Luotiin ReverseTreat luokka, joka on vastuussa madon suunnan kääntävän erikoiskarkin toiminnallisuudesta
+- Luotiin CustomMatrixElement luokka, joka on vastuussa Madon palikoiden ja tyhjien palikoiden tiedon säilyttämisestä.
+- Luotiin TreatFactory luokka, joka on vastuussa karkkien luomisesta.
+- Poistettiin MatrixElement luokka
