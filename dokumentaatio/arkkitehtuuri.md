@@ -1,10 +1,8 @@
 ## Ohjelman rakenne
 
-### Luokkakaavio
+### Arkkitehtuuri
 
-![Luokkakaavio](./kuvat/luokkakaavio.png)
-
-### Pakkausrakenne
+## Peli noudattaa seuraavanlaista rakennetta:
 
 ![Pakkauskaavio](./kuvat/pakkauskaavio.png)
 
