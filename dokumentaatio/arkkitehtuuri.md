@@ -24,7 +24,13 @@ Pelilogiikka on keskitetty Game-luokalle. Tämä tarkoittaa sitä, että Game-lu
 Snake-luokka on vastuussa kaikesta matoon liittyvien tietojen tallentamisesta. Tähän sisältyy esimerkiksi madon sijainti.
 TreatFactory on vastuussa pelissä ilmestyvien karkkien luomisesta ja tiettyjen karkkien ilmestymisen todennäköisyydestä.
 
+Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
+
 ![Luokkakaavio](./kuvat/luokkakaavio.png)
+
+Peli pyytää pelin joka iteraatiolla TreatFactory luokkaa luomaan uuden karkkiolion, jonka satunnaisuuden päättää TreatFactory. Pelin jokaisella iteraatiolla game kutsuu snake-olion advance-metodia, joka palauttaa pelille tämän uuden sijainnin. Peli tarkastaa, onko madon pää karkin päällä vai ei. Jos on, niin Peli syö karkin.
+Pelin syöminen tapahtuu kutsumalla MatrixElement-luokan .action.consume- metodia. Tämä ottaa argumentikseen pelin käyttämän madon, pelin, tai molemmat, riippuem MatrixElement olion type-attribuutista. Kaikki pelin matriisilla esiintyvät oliot ovat MatrixElement-olioita.
+
 
 ### Pelin eteneminen
 
