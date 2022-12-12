@@ -62,9 +62,9 @@ class View:
                     text=""
                     if image[i][j].tier!=0:
                         color=tier_color_map[image[i][j].tier]
-                        text=str(image[i][j].effect)
+                        text=str(image[i][j].symbol)
                     if image[i][j].tier==1:
-                        color=color_map[image[i][j].effect/abs(image[i][j].effect)]
+                        color=color_map[image[i][j].action.effect/abs(image[i][j].action.effect)]
                     if image[i][j].tier==5:
                         color=(0, 255, 255)
                     effect = main_font.render(text, False, (255, 255, 255))

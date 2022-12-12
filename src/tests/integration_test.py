@@ -2,7 +2,7 @@ from services.game import Game
 from services.snake import Snake
 from repositories.score import Score
 from entities.default_treat import DefaultTreat
-from entities.custom_matrix_element import CustomMatrixElement
+from entities.matrix_element import MatrixElement
 from entities.reverse_treat import ReverseTreat
 from services.snake import Snake
 import unittest
@@ -29,8 +29,8 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(len(self.score.all()),1)
 
     def test_points_increase(self):
-        candy=DefaultTreat(1)
-        empty=CustomMatrixElement("empty")
+        candy=MatrixElement(DefaultTreat(1),"treat",1,1,1)
+        empty=MatrixElement(None,"empty",0,0,0)
         self.game.start("Tester")
         for i in range(0, 5):
             snake_head=self.snake.position[len(self.snake.position)-1]
@@ -46,11 +46,11 @@ class TestIntegration(unittest.TestCase):
 
     def test_points_blended(self):
         self.game.start("Tester")
-        empty=CustomMatrixElement("empty")
+        empty=MatrixElement(None,"empty",0,0,0)
         point_sequence=[-1, -2, 1, 1, 1, 1, 1, 1]
         for i in range(0, len(point_sequence)):
             snake_head=self.snake.position[len(self.snake.position)-1]
-            self.game.game_matrix[snake_head[0]][snake_head[1]+1]=DefaultTreat(point_sequence[i])
+            self.game.game_matrix[snake_head[0]][snake_head[1]+1]=MatrixElement(DefaultTreat(point_sequence[i]),"treat",1,1,point_sequence[i])
             self.game.advance()
         self.game.game_matrix[snake_head[0]][snake_head[1]+1]=empty
         self.game.advance()
@@ -62,7 +62,7 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(str(self.score.all()), "[(1, 'Tester', 8)]")
 
     def test_reverse_treat_consumption(self):
-        treat = ReverseTreat()
+        treat = MatrixElement(ReverseTreat(),"dual_treat",2,20,"<-")
         self.game.start("Riku")
         self.snake.set_position([[1, 2], [2, 2], [3,2], [3, 4], [3, 5]])
         self.game.game_matrix[3][6]=treat

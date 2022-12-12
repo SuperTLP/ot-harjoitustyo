@@ -1,11 +1,11 @@
 from random import choice, randint
 from entities.default_treat import DefaultTreat
-from entities.custom_matrix_element import CustomMatrixElement
+from entities.matrix_element import MatrixElement
 from services.treat_factory import TreatFactory
 treat_factory=TreatFactory()
-treat_1=DefaultTreat(3)
-snake_body=CustomMatrixElement("snake")
-empty=CustomMatrixElement("empty")
+treat_1=MatrixElement(DefaultTreat(3), "treat", 1,1,3)
+snake_body=MatrixElement(None,"snake",0,0,0)
+empty=MatrixElement(None,"empty",0,0,0)
 
 START=[
 [empty, empty, empty, empty, empty, empty, empty,
@@ -138,12 +138,12 @@ class Game:
         It assures the consume function of the element is called with a correct argument."""
         self.points+=treat.points
         if treat.type=="treat":
-            treat.consume(self.snake)
+            treat.action.consume(self.snake)
         if treat.type=="matrix_treat":
-            treat.consume(self)
+            treat.action.consume(self)
         if treat.type=="dual_treat":
             print("ny consumee")
-            treat.consume(self, self.snake)
+            treat.action.consume(self, self.snake)
 
     def is_treat(self, head):
         """This method tests whether the snake's head is currently on a consumable element.

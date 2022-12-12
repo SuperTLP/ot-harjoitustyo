@@ -16,10 +16,7 @@ class ReverseTreat:
     #Instance of this class reverses snake's position when consumed.
     #This means the snake will continue in opposite direction.
     def __init__(self):
-        self.effect="..."
-        self.type="dual_treat"
-        self.tier=2
-        self.points=20
+        pass
     def consume(self, game,snake):
         if len(snake.position)==1:
             game.change_direction(direction_map[game.direction])

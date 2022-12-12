@@ -1,15 +1,12 @@
 from entities.default_treat import DefaultTreat
 from entities.default_treat import DefaultTreat
-new_treat=DefaultTreat(-2)
+from entities.matrix_element import MatrixElement
+new_treat=MatrixElement(DefaultTreat(-2),"treat",1,1,-2)
 
 class FloodTreat:
     #Instance of this class spawns a snake-length-reducing candy in every second
     #matrix position.
     def __init__(self):
-        self.effect="$"
-        self.tier=3
-        self.type="matrix_treat"
-        self.points=20
         pass
     def consume(self, game):
         matrix_copy=[row[:] for row in game.game_matrix[:]]

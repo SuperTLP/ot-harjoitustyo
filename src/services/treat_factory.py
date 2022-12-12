@@ -2,14 +2,19 @@ from entities.default_treat import DefaultTreat
 from entities.flood_treat import FloodTreat
 from entities.purge_treat import PurgeTreat
 from entities.reverse_treat import ReverseTreat
+from entities.matrix_element import MatrixElement
 from random import choice, randint
 
 all_treats=[
-DefaultTreat(1), DefaultTreat(1), 
-DefaultTreat(1), DefaultTreat(1), 
-DefaultTreat(-1), DefaultTreat(-2),
-FloodTreat(), PurgeTreat(),
-ReverseTreat()
+MatrixElement(DefaultTreat(1), "treat", 1, 1, "1"), 
+MatrixElement(DefaultTreat(1),"treat", 1, 1, "1"), 
+MatrixElement(DefaultTreat(1),"treat", 1, 1, "1"), 
+MatrixElement(DefaultTreat(1),"treat", 1, 1, "1"), 
+MatrixElement(DefaultTreat(-1),"treat", 1, 1, "1"), 
+MatrixElement(DefaultTreat(-2),"treat", 1, 1, "-2"),
+MatrixElement(FloodTreat(),"matrix_treat",3,40,"$"), 
+MatrixElement(PurgeTreat(),"matrix_treat",2,20,"X"),
+MatrixElement(ReverseTreat(),"dual_treat", 2,20,"<-")
 ]
 
 class TreatFactory:
