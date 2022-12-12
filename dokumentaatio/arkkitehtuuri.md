@@ -31,12 +31,23 @@ Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
 
 - Game->Snake:
 Peli pyytää pelin jokaisella iteraatiolla Snake-oliota päivittämään itsensä kutsumalla tämän .advance-metodia argumentilla self.direction. Tämä metodi palauttaa pelille madon uuden sijainnin pelissä.
+
 - Game->TreatFactory:
 Peli pyytää pelin jokaisella iteraatiolla TreatFactory-oliota luomaan uuden karkin kutsumalla tämän .generate_random_treat metodia. Metodi palauttaa uuden karkkiolion, jonka peli lisää kartalle.
+
 - Game->MatrixElement:
 Peli tarkastaa jokaisella pelin iteraatiolla, onko madon pään kohdalla karkki. Se tekee tämän tarkistamalla kyseisessä lokaatiossa sijaitsevan MatrixElement-olion .type attribuutin. Jos tämä on "treat", "dual_treat" tai "matrix_treat", peli kutsuu olion action.consume metodia. Peli tarkastaa myös, onko kyseinen elementti madon ruumista tarkastamalla, onko olion .type attribuutti "snake". Peli päättyy, jos näin on.
+
 - TreatFactory->MatrixElement:
 TreatFactory arpoo uutta karkkia luodessaan numeron, joka päättää minkä tasoinen karkki luodaan. Tietyn numeron perusteella peli valitsee tason 1, 2 tai 3 ja suodattaa kaikkien karkkien listasta tasoa vastaavat MatrixElement-oliot joiden .tier attribuutti on kyseinen taso.
+
+- MatrixElement ja karkkiluokat:
+
+MatrixElement on luokka, jonka olio sisältää perustietoja kaikista pelissä esiintyvistä asioista. Pelin karkit ovat MatrixElement luokan olioita, joiden .action attribuutti on kyseisen karkkiluokan olio. Myös madon palikat sekä tyhjät ruudut ovat MatrixElement-luokan olioita, joiden .action on None, ja joiden taso on 0. Siis jokainen karkkiolio liittyy aina yhteen MatrixElement-olioon, mutta MatrixElement-olio ei välttämättä sisällä karkkioliota.
+
+Karkkiluokat ovat riippuvaisia joko madosta, pelistä tai molemmista. Kun Karkkiolion .consume-metodia kutsutaan, tekee se muutoksia matoon tai peliin, riippuen minkä tyyppinen karkki on kyseessä. Tämä ilmoitetaan MatrixElement olion .type attribuutissa.
+
+
 
 
 
