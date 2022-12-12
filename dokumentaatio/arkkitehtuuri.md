@@ -24,12 +24,20 @@ Pelilogiikka on keskitetty Game-luokalle. Tämä tarkoittaa sitä, että Game-lu
 Snake-luokka on vastuussa kaikesta matoon liittyvien tietojen tallentamisesta. Tähän sisältyy esimerkiksi madon sijainti.
 TreatFactory on vastuussa pelissä ilmestyvien karkkien luomisesta ja tiettyjen karkkien ilmestymisen todennäköisyydestä.
 
+### Luokkien suhteet
 Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
 
 ![Luokkakaavio](./kuvat/luokkakaavio.png)
 
-Peli pyytää pelin joka iteraatiolla TreatFactory luokkaa luomaan uuden karkkiolion, jonka satunnaisuuden päättää TreatFactory. Pelin jokaisella iteraatiolla game kutsuu snake-olion advance-metodia, joka palauttaa pelille tämän uuden sijainnin. Peli tarkastaa, onko madon pää karkin päällä vai ei. Jos on, niin Peli syö karkin.
-Pelin syöminen tapahtuu kutsumalla MatrixElement-luokan .action.consume- metodia. Tämä ottaa argumentikseen pelin käyttämän madon, pelin, tai molemmat, riippuem MatrixElement olion type-attribuutista. Kaikki pelin matriisilla esiintyvät oliot ovat MatrixElement-olioita.
+- Game->Snake:
+Peli pyytää pelin jokaisella iteraatiolla Snake-oliota päivittämään itsensä kutsumalla tämän .advance-metodia argumentilla self.direction. Tämä metodi palauttaa pelille madon uuden sijainnin pelissä.
+- Game->TreatFactory:
+Peli pyytää pelin jokaisella iteraatiolla TreatFactory-oliota luomaan uuden karkin kutsumalla tämän .generate_random_treat metodia. Metodi palauttaa uuden karkkiolion, jonka peli lisää kartalle.
+- Game->MatrixElement:
+Peli tarkastaa jokaisella pelin iteraatiolla, onko madon pään kohdalla karkki. Se tekee tämän tarkistamalla kyseisessä lokaatiossa sijaitsevan MatrixElement-olion .type attribuutin. Jos tämä on "treat", "dual_treat" tai "matrix_treat", peli kutsuu olion action.consume metodia. Peli tarkastaa myös, onko kyseinen elementti madon ruumista tarkastamalla, onko olion .type attribuutti "snake". Peli päättyy, jos näin on.
+- TreatFactory->MatrixElement:
+TreatFactory arpoo uutta karkkia luodessaan numeron, joka päättää minkä tasoinen karkki luodaan. Tietyn numeron perusteella peli valitsee tason 1, 2 tai 3 ja suodattaa kaikkien karkkien listasta tasoa vastaavat MatrixElement-oliot joiden .tier attribuutti on kyseinen taso.
+
 
 
 ### Pelin eteneminen
