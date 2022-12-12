@@ -24,6 +24,8 @@ Pelilogiikka on keskitetty Game-luokalle. Tämä tarkoittaa sitä, että Game-lu
 Snake-luokka on vastuussa kaikesta matoon liittyvien tietojen tallentamisesta. Tähän sisältyy esimerkiksi madon sijainti.
 TreatFactory on vastuussa pelissä ilmestyvien karkkien luomisesta ja tiettyjen karkkien ilmestymisen todennäköisyydestä.
 
+![Luokkakaavio](./kuvat/luokkakaavio.png)
+
 ### Pelin eteneminen
 
 Kun pelaaja syöttää alkuvalikossa nimekseen "Name" ja aloittaa pelin ja painaa kerran nuolta alaspäin, voi pelin toiminta näyttää seuraavalta:
