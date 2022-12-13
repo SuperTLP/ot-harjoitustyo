@@ -23,6 +23,7 @@ Pelissä käärmettä ohjataan nuolinäppäimillä, ja pyritään syömään mah
 
 ## Pelin julkaisut
 [Ensimmäinen julkaisu](https://github.com/SuperTLP/ot-harjoitustyo/releases/tag/viikko5)
+[Toinen julkaisu](https://github.com/SuperTLP/ot-harjoitustyo/releases/tag/viikko6)
 
 ## Asennus
 
