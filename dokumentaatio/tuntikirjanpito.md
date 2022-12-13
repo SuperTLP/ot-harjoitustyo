@@ -11,9 +11,9 @@
 |4.12|0:30|Lisättiin testikattavuutta|
 |5.12|2:00|Luotiin PurgeTreat luokka ja refaktoroitiin game-luokkaa|
 |7.12|3:00|Päivitettiin high-score näkymää: lisättiin linkki alkuvalikkoon, lisättiin sivunumerot. Luotiin merkittävä määrä docstringejä eri luokkiin, ja luotiin integraatiotestejä, sekä lisää testejä Game-luokalle.
-|11.12|6:00|Luotiin FloodTreat, ReverseTreat, CustomMatrixElement ja TreatFactory - luokat. Poistettiin MatrixElement luokka.|
+|11.12|8:00|Luotiin FloodTreat, ReverseTreat, CustomMatrixElement ja TreatFactory - luokat. Poistettiin MatrixElement luokka.|
 |12.12|6:00|Paranneltiin pelin dokumentaatiota ja lisättiin testejä. Poistettiin CustomMatrixElement luokka, palautettiin MatrixElement luokka, luotiin uusi luokkakaavio |
-| yht| 38:30||
+| yht| 36:30||
 
 
 
