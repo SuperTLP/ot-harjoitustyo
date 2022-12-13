@@ -100,8 +100,7 @@ sequenceDiagram
   
 ```
 
-
-
+Siis edellisten sekvenssikaavioiden aikana pelaaja vaihtoi kulkusuunnan oikealle painamalla oikeaa nuolinäppäintä. Mato liikkui ensin tyhjän ruudun päälle, jonka jälkeen madon pään oikealle puolelle ilmestyi suunnan vaihtava karkki. Seuraavalla askeleella mato liikkui tämän karkin päälle, jolloin karkki syötiin, ja se muutti pelin suunnan, sekä madon position.
 
 
   
