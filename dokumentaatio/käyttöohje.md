@@ -26,5 +26,10 @@ Pelissä liikutaan nuolinäppäimillä. Mato etenee viimeksi painetun nuolinäpp
 
 ## Erikoiskarkit
 Pelissä esiintyy useita erikoiskarkkeja, jotka ovat väriltään kullanvärisiä ja sinisiä. Sininen väri kuvastaa tason 2 karkkia, ja kultainen karkki tason 3 karkkia.
-Sininen karkki joka on merkitty rastilla poistaa kaikki pelin kentällä olevat karkit
-Sininen karkki jossa on merkintä "<-" kääntää madon suunnan päinvastaiseksi.
+
+- **Sininen karkki** joka on merkitty **rasti**lla poistaa kaikki pelin kentällä olevat karkit.
+- **Sininen karkki** jossa on merkintä **<-** kääntää madon suunnan päinvastaiseksi.
+- **Kultainen karkki** Jossa on merkintä **$** Lisää kartalle suuren määrän matoa lyhentäviä karkkeja.
+
+
+
