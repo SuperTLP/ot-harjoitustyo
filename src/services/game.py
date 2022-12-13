@@ -1,4 +1,4 @@
-from random import choice, randint
+from random import choice
 from entities.default_treat import DefaultTreat
 from entities.matrix_element import MatrixElement
 from services.treat_factory import TreatFactory
@@ -74,8 +74,7 @@ class Game:
         self.game_over=False
 
     def set_game_matrix(self, matrix):
-        """This method allows high customization of special treat functionality
-        in the future."""
+        """Sets self.game_matrix to custom matrix. used by special treats."""
         self.game_matrix=matrix
 
     def change_direction(self, direction):

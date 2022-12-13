@@ -1,5 +1,4 @@
 from entities.default_treat import DefaultTreat
-from entities.default_treat import DefaultTreat
 from entities.matrix_element import MatrixElement
 new_treat=MatrixElement(DefaultTreat(-2),"treat",1,1,-2)
 
@@ -18,6 +17,3 @@ class FloodTreat:
                 if element.type!="snake":
                     matrix_copy[row_index][column_index]=new_treat
         game.set_game_matrix(matrix_copy)
-
-
-

@@ -13,7 +13,10 @@ Luodaan matopeli, jossa pelaajien pisteet tallennetaan paikallisesti tietokantaa
 - peli päättyy, kun pelaaja osuu omaan matoonsa tai seinään (tehty)
 - pelaajan madon pituus kasvaa kun pelaaja syö vihreitä karkkeja (tehty)
 - pelaajan mato lyhenee kun pelaaja syö punaisia karkkeja (tehty)
-- pelaaja voi syödä erikoiskarkin, joka poistaa kaikki karkit kartalta (tehty)
+- pelissä on erikoiskarkki, jonka syöminen poistaa kaikki karkit kartalta (tehty)
+- pelissä on erikoiskarkki, jonka syöminen kääntää madon suunnan. (tehty)
+- pelissä on erikoiskarkki, jonka syöminen lisää kartalle matoa lyhentäviä karkkeja (tehty)
+
 
 ## Käyttöympäristö
 
