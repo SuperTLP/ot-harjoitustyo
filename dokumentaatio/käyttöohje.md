@@ -31,5 +31,7 @@ Pelissä esiintyy useita erikoiskarkkeja, jotka ovat väriltään kullanvärisi�
 - **Sininen karkki** jossa on merkintä **<-** kääntää madon suunnan päinvastaiseksi.
 - **Kultainen karkki** Jossa on merkintä **$** Lisää kartalle suuren määrän matoa lyhentäviä karkkeja.
 
+Kultaiset karkit antavat pelaajalle 40 pistettä, ja siniset karkit 20 pistettä.
+
 
 
