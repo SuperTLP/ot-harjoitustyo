@@ -6,3 +6,4 @@
 htmlcov
 __pycache__
 src/database.db
+src/test_database.db
