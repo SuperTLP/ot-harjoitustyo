@@ -8,6 +8,8 @@ class FloodTreat:
     def __init__(self):
         pass
     def consume(self, game):
+        """replace every second element on every second row of the game_matrix
+        with defaultTreat element with effect of -2."""
         matrix_copy=[row[:] for row in game.game_matrix[:]]
         for row_index, row in enumerate(matrix_copy):
             new_row = list(enumerate(row))[::2]
