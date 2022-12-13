@@ -93,8 +93,8 @@ sequenceDiagram
   MatrixElement->>ReverseTreat:consume()
   ReverseTreat->>Game: change_direction(-1)
   ReverseTreat->>Snake:set_position(reversed(position))
-  Game-->>TreatFactory:new_random_treat()
-  TreatFactory->>Game: MarixElement(PurgeTreat, "matrix_treat", 2, 20,"X")
+  Game->>TreatFactory:new_random_treat()
+  TreatFactory-->>Game: MarixElement(PurgeTreat, "matrix_treat", 2, 20,"X")
   Game-->>GUI:game_matrix
   
   
