@@ -53,7 +53,7 @@ Karkkiluokat ovat riippuvaisia joko madosta, pelistä tai molemmista. Kun Karkki
 
 ### Pelin eteneminen
 
-Tarkastellaan sekvenssikaaviota tilanteesta, missä pelaaja syö madon suunnan kääntävän karkin. Tässä esimerkissä peli on jo aloitettu.:
+Tarkastellaan sekvenssikaaviota tilanteesta, Missä peli etenee yhden askeleen ja peliin ilmestyy madon suunnan kääntävä karkki:
 
 ```mermaid
 sequenceDiagram
@@ -73,8 +73,37 @@ sequenceDiagram
   Game->>TreatFactory:generate_random_treat()
   TreatFactory-->>Game:MarixElement(ReverseTreat(), "dual_treat", 2, 20,"$")
   Game-->>GUI:game_matrix
+  ```
+  Tarkastellaan seuraavaksi sekvenssikaaviota tilanteesta, missä Pelaaja syö madon suunnan kääntäävn karkin (jatkoa edelliselle sekvenssikaaviolle):
+ 
+```mermaid
+sequenceDiagram
+  actor User
+  participant GUI
+  participant Game
+  participant TreatFactory
+  participant Snake
+  participant MatrixElement
+  participant ReverseTreat
+  GUI->>Game:advance()
+  Game->>Snake:advance(1)
+  Snake-->>Game:position (2 dimensional list)
+  Game->>Game:is_treat(position[-1])
+  Game->>MatrixElement:MatrixElement.action.consume(self, snake)
+  MatrixElement->>ReverseTreat:consume()
+  ReverseTreat->>Game: change_direction(-1)
+  ReverseTreat->>Snake:set_position(reversed(position))
+  Game-->>TreatFactory:new_random_treat()
+  TreatFactory->>Game: MarixElement(PurgeTreat, "matrix_treat", 2, 20,"X")
+  Game-->>GUI:game_matrix
   
   
+```
+
+
+
+
+
   
   
   
