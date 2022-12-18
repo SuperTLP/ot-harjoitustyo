@@ -31,4 +31,20 @@ Toisin kuin repositories-luokan testeissä, integraatiotestissä luodaan oikea t
 TestIntegration-luokan testeissä pelissä matoa liikutellaan useiden karkkien päälle, ja tarkistetaan, että jokaisen luokan tiedot päivittyvät oikein.
 Tähän kuuluu Snake-olion position, Pending_blocks, sekä Game-olion pisteet ja direction -attribuutit.
 
+## Testikattavuus
+18.12.2022 Testikattavuus on 87%
+![Pakkauskaavio](./kuvat/testikattavuus.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
