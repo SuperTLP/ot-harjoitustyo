@@ -12,16 +12,16 @@ class TestGame(unittest.TestCase):
         snake.advance=MagicMock()
         snake.advance.return_value=[[1, 12], [1, 13], [1, 14]]
         game = Game(snake, self.db)
-        game.start("Riku")
+        game.start("Riku", "easy")
         game.advance()
-        self.db.new.assert_called_with("Riku", 0)
+        self.db.new.assert_called_with("Riku", 0, "easy")
         self.assertEqual(game.game_over, True)
     def test_normal_advance(self):
         snake=MagicMock()
         snake.advance=MagicMock()
         snake.advance.return_value=[[1, 5], [1, 6], [1, 7]]
         game = Game(snake, self.db)
-        game.start("Riku")
+        game.start("Riku", "easy")
         game.advance()
         expected_snake_coordinates=[[1, 5], [1, 6], [1, 7]]
         for element in expected_snake_coordinates:

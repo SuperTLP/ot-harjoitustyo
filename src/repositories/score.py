@@ -3,10 +3,11 @@ class Score:
     def __init__(self, database):
         """self.database is the database where scores are stored."""
         self.database=database
-    def new(self, name, score):
+    def new(self, name, score,difficulty):
         """This method inserts new score into database with given name and score."""
         cur = self.database.cursor()
-        cur.execute("insert into scores (name, score) values (?, ?)", [name, score])
+        cur.execute("insert into scores (name, score, difficulty) values (?, ?, ?)",
+        [name, score,difficulty])
         self.database.commit()
     def all(self):
         """This method fetches all scores from the database."""

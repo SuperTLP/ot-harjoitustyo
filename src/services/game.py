@@ -42,6 +42,7 @@ class Game:
     def __init__(self, snake, score, game_matrix=START):
         """self.points is the current amount of points
         the player has collected."""
+        self.difficulty="medium"
         self.points=0
         """self.score is an instance of the Score class."""
         self.score=score
@@ -64,14 +65,17 @@ class Game:
             for j in range(0, len(game_matrix[0])):
                 self.coordinates.append([i, j])
 
-    def start(self, name):
+    def start(self, name,difficulty):
         """this method resets the game"""
         self.points=0
+        self.difficulty=difficulty
         self.game_matrix=[x[:] for x in self.start_position]
         self.player_name=name
         self.snake.reset()
         self.direction=1
         self.game_over=False
+        #Return game_matrix for initial image before game starts.
+        return self.game_matrix
 
     def set_game_matrix(self, matrix):
         """Sets self.game_matrix to custom matrix. used by special treats."""
@@ -162,7 +166,7 @@ class Game:
         head = snake_image[len(snake_image)-1]
         if not self.game_over and (self.out_out_bounds(head) or not self.square_is_free(head)):
             self.game_over=True
-            self.score.new(self.player_name, self.points)
+            self.score.new(self.player_name, self.points,self.difficulty)
         if self.game_over:
             return GAME_OVER
         if self.is_treat(head):

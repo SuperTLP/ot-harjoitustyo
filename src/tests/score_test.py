@@ -14,9 +14,9 @@ class TestScore(unittest.TestCase):
 
     def test_new_score(self):
         score = Score(self.db)
-        score.new("tester", 20)
+        score.new("tester", 20, "easy")
         self.db.cursor.assert_called()
-        self.cursor.execute.assert_called_with("insert into scores (name, score) values (?, ?)", ["tester", 20])
+        self.cursor.execute.assert_called_with("insert into scores (name, score, difficulty) values (?, ?, ?)", ["tester", 20, "easy"])
         self.db.commit.assert_called()
 
 

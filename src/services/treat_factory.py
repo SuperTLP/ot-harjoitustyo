@@ -28,9 +28,11 @@ class TreatFactory:
         return new_treat
     def new_random_treat(self):
         #This method creates completely random treat and returns it.
-        tier=choice([1, 2, 3])
-        lottery = randint(0, 50)
-        if lottery!=50:
-            tier=1
+        tier=1
+        lottery = randint(0, 150)
+        if lottery in [148, 149]:
+            tier=2
+        if lottery==150:
+            tier=3
         new_treat=self.new_treat(tier)
         return new_treat
