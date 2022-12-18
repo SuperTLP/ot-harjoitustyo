@@ -35,13 +35,13 @@ Tähän kuuluu Snake-olion position, Pending_blocks, sekä Game-olion pisteet ja
 18.12.2022 Testikattavuus on 87%
 ![Pakkauskaavio](./kuvat/testikattavuus.png)
 
+## Järjestelmätestaus
 
+Pelin järjestelmätestaus suoritetaa manuaalisesti pelaamalla peliä ja kokeilemalla sen erilaisia toimintoja ja näiden yhdistelmiä.
 
+## Sovelluksen laatuongelmat
 
-
-
-
-
+Sovellus kaatuu pelin päättyessä, mikäli tietokantaa ei ole alustettu komennolla poetry run invoke build.
 
 
 
