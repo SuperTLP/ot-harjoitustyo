@@ -13,7 +13,8 @@
 |7.12|3:00|Päivitettiin high-score näkymää: lisättiin linkki alkuvalikkoon, lisättiin sivunumerot. Luotiin merkittävä määrä docstringejä eri luokkiin, ja luotiin integraatiotestejä, sekä lisää testejä Game-luokalle.
 |11.12|6:00|Luotiin FloodTreat, ReverseTreat, CustomMatrixElement ja TreatFactory - luokat. Poistettiin MatrixElement luokka.|
 |12.12|6:00|Paranneltiin pelin dokumentaatiota ja lisättiin testejä. Poistettiin CustomMatrixElement luokka, palautettiin MatrixElement luokka, luotiin uusi luokkakaavio |
-| yht| 34:30||
+|17.12|6:00|Lisättiin peliin uusia näkymiä, lisättiin 3 vaikeustasoa ja helpotettiin käytettävyyttä vaihtamalla menun napit klikattavaksi.|
+| yht| 40:30||
 
 
 
