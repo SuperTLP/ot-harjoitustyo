@@ -7,6 +7,8 @@ DARK_GREEN=(0, 220, 0)
 LIGHT_GREEN=(0, 255, 0)
 BLACK=(0, 0, 0)
 
+#This file is GUI, and thus is not tested
+
 DEFAULT_BUTTON_STYLE = {
     "hover_color": LIGHT_YELLOW,
     "hover_font_color":BLACK,
