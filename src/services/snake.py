@@ -26,6 +26,7 @@ class Snake:
         when the class instance was created."""
         self.position=self.start_position[:]
         self.pending_blocks=0
+        return self.position
 
     def new_head(self, direction):
         """This calculates what the next coordinates of snake's head

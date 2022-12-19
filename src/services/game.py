@@ -3,29 +3,10 @@ from entities.default_treat import DefaultTreat
 from entities.matrix_element import MatrixElement
 from services.treat_factory import TreatFactory
 treat_factory=TreatFactory()
-treat_1=MatrixElement(DefaultTreat(3), "treat", 1,1,3)
 snake_body=MatrixElement(None,"snake",0,0,0)
 empty=MatrixElement(None,"empty",0,0,0)
 
-START=[
-[empty, empty, empty, empty, empty, empty, empty,
-empty, empty, empty, empty, empty, empty, empty],
-[empty, empty, empty, empty, empty, empty, empty, empty,
-empty, empty, empty, empty, empty, empty],
-[empty, empty, empty, empty, empty, empty, empty, empty,
-empty, empty, empty, empty, empty, empty],
-[empty, empty, empty, empty, empty, empty, empty, empty,
-empty, empty, empty, empty, empty, empty],
-[empty, empty, empty, empty, empty, empty, empty, empty,
-empty, empty, empty, empty, empty, empty],
-[empty, empty, empty, empty, empty, empty, empty, empty,
-empty, empty, empty, empty, empty, empty],
-[empty, empty, empty, empty, empty, empty, empty, empty,
-empty, empty, empty, empty, empty, empty],
-[empty, empty, empty, empty, empty, empty, treat_1, empty,
-empty, empty, empty, empty, empty, empty],
-[empty, empty, empty, empty, empty, empty, empty, empty, empty, empty,
-empty, empty, empty, empty]]
+START=[[empty]*14 for i in range(0, 9)]
 
 GAME_OVER=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
         [0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
@@ -39,7 +20,7 @@ GAME_OVER=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
 class Game:
     """Game is class responsible for integrating entities, and producing the image
     supplied for gui."""
-    def __init__(self, snake, score, game_matrix=START):
+    def __init__(self, snake, score):
         """self.points is the current amount of points
         the player has collected."""
         self.difficulty="medium"
@@ -47,11 +28,8 @@ class Game:
         """self.score is an instance of the Score class."""
         self.score=score
         self.player_name=""
-        """self.start_position is the initial position
-        of the game. This never changes."""
-        self.start_position=[x[:] for x in game_matrix]
         """self.game_matrix is the current position of the game."""
-        self.game_matrix=[x[:] for x in game_matrix]
+        self.game_matrix=[x[:] for x in START]
         """self.snake is an instance of the snake-class."""
         self.snake=snake
         """self.direction is the direction given to the snake
@@ -61,17 +39,19 @@ class Game:
         for i in snake.position:
             self.game_matrix[i[0]][i[1]]=snake_body
         self.coordinates = []
-        for i in range(0, len(game_matrix)):
-            for j in range(0, len(game_matrix[0])):
+        for i in range(0, len(self.game_matrix)):
+            for j in range(0, len(self.game_matrix[0])):
                 self.coordinates.append([i, j])
 
     def start(self, name,difficulty):
-        """this method resets the game"""
+        """this method resets the game attributes."""
         self.points=0
         self.difficulty=difficulty
-        self.game_matrix=[x[:] for x in self.start_position]
+        self.game_matrix=[x[:] for x in START]
         self.player_name=name
-        self.snake.reset()
+        snake_position=self.snake.reset()
+        for snake_block in snake_position:
+            self.game_matrix[snake_block[0]][snake_block[1]]=snake_body
         self.direction=1
         self.game_over=False
         #Return game_matrix for initial image before game starts.
