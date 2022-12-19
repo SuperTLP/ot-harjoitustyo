@@ -18,6 +18,8 @@ class ReverseTreat:
     def __init__(self):
         pass
     def consume(self, game,snake):
+        """This method creates a default treat with effect -2 on every row on every second
+        column alternating whether first treat is on first or second column"""
         if len(snake.position)==1:
             game.change_direction(direction_map[game.direction])
             return

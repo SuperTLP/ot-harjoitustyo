@@ -20,20 +20,26 @@ GAME_OVER=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
 class Game:
     """Game is class responsible for integrating entities, and producing the image
     supplied for gui."""
-    def __init__(self, snake, score):
-        """self.points is the current amount of points
+    """self.points is the current amount of points
         the player has collected."""
+    """self.score is an instance of the Score class."""
+    """self.game_matrix is the current position of the game."""
+    """self.snake is an instance of the snake-class."""
+    """self.direction is the direction given to the snake
+       instance on advance.
+       self.player_name is name of the player
+       self.difficulty is the difficulty level chosen. Higher difficulty
+       indicates lower refresh interval in gui.
+    """
+
+    
+    def __init__(self, snake, score):
         self.difficulty="medium"
         self.points=0
-        """self.score is an instance of the Score class."""
         self.score=score
         self.player_name=""
-        """self.game_matrix is the current position of the game."""
         self.game_matrix=[x[:] for x in START]
-        """self.snake is an instance of the snake-class."""
         self.snake=snake
-        """self.direction is the direction given to the snake
-        instance on advance."""
         self.direction=1
         self.game_over=True
         for i in snake.position:
@@ -70,12 +76,12 @@ class Game:
         head[0]<0 or head[1]>=len(self.game_matrix[0]))
 
     def square_is_free(self, coordinates):
-        """This tests whether the square that snake's head is currently on its body.
-        Returns true if snake blocks do not overlap and false otherwise."""
+        """Checks if the first element (head) of the snake's position
+        overlaps with some other snake_body element."""
         return self.game_matrix[coordinates[0]][coordinates[1]].type!="snake"
 
     def purge_candy(self):
-        """This method removes all candies from the map. Used by the PurgeTreat class's
+        """This method removes all treats from the map. Used by the PurgeTreat
         consume method."""
         for i in self.game_matrix:
             for j, elem in enumerate(i):
@@ -90,9 +96,13 @@ class Game:
                     i[j]=empty
 
     def free_filter(self, coordinate):
+        """returns locations [y, x] on game_matrix where 
+        there are no snake_body or treat blocks."""
         return self.game_matrix[coordinate[0]][coordinate[1]].type=="empty"
 
     def no_snake_filter(self, coordinate):
+        """Returns locations [y, x] on self.game_matrix where 
+        there are no snake_body blocks."""
         return self.game_matrix[coordinate[0]][coordinate[1]].type!="snake"
 
     def get_non_snake_coordinates(self):
@@ -107,6 +117,8 @@ class Game:
         return free_coordinates
 
     def new_treat(self):
+        """this method receives new treat object from TreatFactory, adds
+        it to game_matrix and updates free_coordinates accordingly."""
         new_treat=TreatFactory().new_random_treat()
         free_coordinates=self.get_non_snake_coordinates()
         if new_treat.tier==1:
@@ -117,8 +129,9 @@ class Game:
         self.game_matrix[coordinates[0]][coordinates[1]]=new_treat
 
     def eat_treat(self, treat):
-        """This method is called when snake's head is on any consumable element.
-        It assures the consume function of the element is called with a correct argument."""
+        """This method is called after is_treat method returns true, indicating
+        snake has moved on top of a treat. the treat's consume function is called 
+        with argument snake, game or both depending on type of the treat."""
         self.points+=treat.points
         if treat.type=="treat":
             treat.action.consume(self.snake)
@@ -128,8 +141,8 @@ class Game:
             treat.action.consume(self, self.snake)
 
     def is_treat(self, head):
-        """This method tests whether the snake's head is currently on a consumable element.
-        Returns true if yes, false otherwise."""
+        """This method tests whether the snake has moved on a consumable
+        element. Returns True or False accordingly."""
         if self.game_matrix[head[0]][head[1]].tier!=0:
             return True
         return False
@@ -140,8 +153,11 @@ class Game:
             self.game_matrix[block[0]][block[1]]=snake_body
 
     def advance(self):
-        """This is the game's tick method. It manages everything that is needed to produce
-        the next image supplied to GUI, and then returns it."""
+        """This method is the only method of game logic that is called by the GUI.
+        This method initiates creation of a treat element, treat consumption
+        and asks snake to update it's position given the direction. This method 
+        then updates the game_matrix and returns it to the GUI for rendering.
+        """
         snake_image = self.snake.advance(self.direction)
         head = snake_image[len(snake_image)-1]
         if not self.game_over and (self.out_out_bounds(head) or not self.square_is_free(head)):
