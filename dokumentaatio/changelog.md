@@ -28,6 +28,7 @@
 - Luotiin ReverseTreat luokka, joka on vastuussa madon suunnan kääntävän erikoiskarkin toiminnallisuudesta
 - Luotiin TreatFactory luokka, joka on vastuussa karkkien luomisesta.
 ## viikko 7
-- Luotiin vaikeustasot: 3 eri vaihtoehtoa madon nopeudelle
-- Luotiin uusia näkymiä valikkoon - Nimi syötetään Play-napin painamisen jälkeen, jonka jälkeen valitaan vaikeustaso
-- 
+- Luotiin vaikeustasot: 3 eri vaihtoehtoa madon nopeudelle.
+- Luotiin uusia näkymiä valikkoon - Nimi syötetään Play-napin painamisen jälkeen, jonka jälkeen valitaan vaikeustaso.
+- Lisättiin hiirellä klikattavat napit High-score näkymään.
+- Lisättiin high-score näkymän tuloksiin vasemmalle vaikeustaso jolla tulos saatiin.
