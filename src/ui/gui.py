@@ -6,48 +6,21 @@ from pygame_button import Button
 from ui.styles import (
 MEDIUM_BUTTON_STYLE, HARD_BUTTON_STYLE, 
 EASY_BUTTON_STYLE,DEFAULT_BUTTON_STYLE,
+NEXT_BUTTON_STYLE,PREVIOUS_BUTTON_STYLE,
+MENU_BUTTON_STYLE,
 DARK_RED,DARK_GREEN,DARK_YELLOW
 )
+from ui.ui_config import (
+    color_map,tier_color_map,difficulty_map,GAME_OVER
+)
 #generate rgb color given positivity / negativity of defaulttreat effect.
-color_map={
-    -1:(255, 0, 0),
-    1: (0, 255, 0)
-}
-#convert tier to rgb value
-tier_color_map={
-    1: (255, 0, 0),
-    2: (0, 150, 150),
-    3: (200, 200, 0),
-}
-#convert difficulty to timeout interval in gameloop.
-difficulty_map={
-    "hard":100,
-    "medium":200,
-    "easy":300
-}
 
-WHITE=(255, 255, 255)
 main_font = pygame.font.SysFont('Comic Sans MS', 30)
 secondary_font=pygame.font.SysFont('Comic Sans MS', 20)
-events = pygame.event.get()
-
-HARD_BUTTON_STYLE["font"]=main_font
-MEDIUM_BUTTON_STYLE["font"]=main_font
-EASY_BUTTON_STYLE["font"]=main_font
-DEFAULT_BUTTON_STYLE["font"]=main_font
-MENU_BUTTON_STYLE=dict(DEFAULT_BUTTON_STYLE)
-MENU_BUTTON_STYLE["text"]="Menu"
-
-GAME_OVER=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-        [0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-        [0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1],
-        [0, 0, 0, 0, 1, 0, 0, 2, 2, 2, 0, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
-        [0, 2, 2, 0, 0, 2, 0, 2, 2, 2, 0, 2, 2, 0],
-        [0, 2, 0, 2, 0, 2, 0, 2, 0, 0, 0, 2, 0, 2],
-        [0, 2, 2, 0, 0, 2, 0, 2, 2, 2, 0, 2, 2, 0]]
 
 class View:
+    """This class is responsible for graphical views of the game. Each method
+    corresponds to a certain window."""
     def __init__(self, game, score):
         self.score=score
         self.game=game
@@ -56,6 +29,9 @@ class View:
         self.game_run=False
 
     def start_game(self, name, difficulty):
+        """This is the main game loop. Game's change_direction method is called on
+        arrowkeys to change the direction the snake advances. depending on selected
+        difficulty, the game updates once every 100, 200 or 300 milliseconds."""
         self.difficulty_selector_run=False
         self.game_run=True
         starting_image=self.game.start(name, difficulty)
@@ -75,12 +51,12 @@ class View:
                         self.game.change_direction(0)
                     if event.key == pygame.K_DOWN:
                         self.game.change_direction(2)
+
             self.screen.fill((0, 0, 0))
             pygame.draw.rect(self.screen, (0, 255, 255), pygame.Rect(0, 0, 750, 50))
             image=starting_image
             if started:
-                image = self.game.advance()
-            
+                image = self.game.advance()   
             if image==GAME_OVER:
                 self.game_run=False
                 self.start_ending_screen(self.game.points)
@@ -107,6 +83,9 @@ class View:
             pygame.time.wait(interval)
 
     def start_difficulty_selector(self, name):
+        """This is loop of the view where user can select desired difficulty level.
+        when a difficulty level is selected, the control transitions to the
+        game loop."""
         self.difficulty_selector_run=True
         self.name_view_run=False
         player_name=name
@@ -156,15 +135,14 @@ class View:
             pygame.display.update()
 
     def start_name_view(self):
+        """This is loop of the view where user can enter their name. The name is passed
+        to the difficulty selection after next button is pressed."""
         self.name_view_run=True
         player_name=""
         def select_name():
             self.start_difficulty_selector(player_name)
         def quit():
             self.name_view_run=False
-        NEXT_BUTTON_STYLE=dict(DEFAULT_BUTTON_STYLE)
-        NEXT_BUTTON_STYLE["text"]="Next"
-        NEXT_BUTTON_STYLE["font"]=main_font
         next_button = Button(rect=(250, 400, 200, 50),color=DARK_YELLOW,function=select_name,**NEXT_BUTTON_STYLE)
         menu_button = Button(rect=(0, 0, 150, 50),color=DARK_YELLOW,function=quit,**MENU_BUTTON_STYLE)
         while self.name_view_run:
@@ -179,6 +157,7 @@ class View:
                         player_name=player_name[:-1]
                 next_button.check_event(event)
                 menu_button.check_event(event)
+
             self.screen.fill((0, 0, 0))
             if len(player_name)>=1:
                 next_button.update(self.screen)
@@ -189,6 +168,7 @@ class View:
 
                 
     def start_ending_screen(self, points):
+        """"""
         self.ending_screen_run=True
         def quit():
             self.ending_screen_run=False
@@ -210,42 +190,54 @@ class View:
             pygame.time.wait(20)
 
     def start_high_score(self):
+        """This is the high score window loop. User can use buttons to
+        navigate between windows and see scores players have gotten."""
         self.high_score_run=True
-        page=0
+        self.page=0
+        num_of_pages=ceil(len(self.score.all())/5)
+        def next_page():
+            self.page=min(self.page+1,num_of_pages-1)
+        def previous_page():
+            self.page=max(self.page-1, 0)
+        def menu():
+            self.high_score_run=False
+            
+        next_page_button = Button(rect=(550, 450, 150, 50),color=DARK_YELLOW,function=next_page,**NEXT_BUTTON_STYLE)
+        previous_page_button=Button(rect=(0, 450, 150, 50),color=DARK_RED,function=previous_page,**PREVIOUS_BUTTON_STYLE)
+        menu_button = Button(rect=(0, 0, 150, 50),color=DARK_YELLOW,function=menu,**MENU_BUTTON_STYLE)
+        buttons = [next_page_button,previous_page_button,menu_button]
+
         while self.high_score_run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.high_score_run=False
-                if event.type==pygame.KEYDOWN:
-                    if event.key==pygame.K_RIGHT:
-                        page=min(page+1,ceil(len(self.score.all())/5)-1)
-                    if event.key==pygame.K_LEFT:
-                        page=max(page-1, 0)
-                if event.type==pygame.MOUSEBUTTONDOWN:
-                    if menu_button.collidepoint(event.pos):
-                        self.high_score_run=False
-            self.screen.fill((0, 0, 0))
-            menu_button=pygame.draw.rect(self.screen, (255, 255,0), pygame.Rect(0, 0, 150, 50))
-            menu_button_text = secondary_font.render('Back to menu', False, (255, 0, 0))
-            self.screen.blit(menu_button_text, (20, 10))
-            title = main_font.render('High scores', False, (255, 0, 0))
-            self.screen.blit(title, (250, 20))
+                    self.display_run=False
+                for button in buttons:
+                    button.check_event(event)
 
+            self.screen.fill((0, 0, 0))
+
+            title = main_font.render('High scores', False, (255, 0, 0))
             page_text = main_font.render("Page {}/{}".format(
-                page+1, ceil(len(self.score.all())/5)), False, (255, 0, 0))
+                self.page+1, num_of_pages), False, (255, 0, 0))
+
+            self.screen.blit(title, (250, 20))
             self.screen.blit(page_text, (550, 20))
-            data = self.score.all()[page*5:page*5+5]
+            data = self.score.all()[self.page*5:self.page*5+5]
+
+            for button in buttons:
+                button.update(self.screen)
 
             for i in range(0, len(data)):
-                score = "{}: {} Pts.".format(data[i][1], data[i][2])
+                score = "({}) {}: {} Pts.".format(data[i][3],data[i][1], data[i][2])
                 text = main_font.render(score, False, (255, 0, 0))
-                self.screen.blit(text, (250,150+50*i))
-            pygame.time.wait(300)
+                self.screen.blit(text, (220,150+50*i))
             pygame.display.flip()
 
 
 
     def run(self):
+        """This is the main menu loop"""
         self.display_run=True
         PLAY_BUTTON_STYLE=dict(DEFAULT_BUTTON_STYLE)
         PLAY_BUTTON_STYLE["text"]="Play"

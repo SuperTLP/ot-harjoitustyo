@@ -1,5 +1,4 @@
 from random import choice
-from entities.default_treat import DefaultTreat
 from entities.matrix_element import MatrixElement
 from services.treat_factory import TreatFactory
 treat_factory=TreatFactory()
@@ -20,20 +19,18 @@ GAME_OVER=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
 class Game:
     """Game is class responsible for integrating entities, and producing the image
     supplied for gui."""
-    """self.points is the current amount of points
-        the player has collected."""
-    """self.score is an instance of the Score class."""
-    """self.game_matrix is the current position of the game."""
-    """self.snake is an instance of the snake-class."""
-    """self.direction is the direction given to the snake
-       instance on advance.
-       self.player_name is name of the player
-       self.difficulty is the difficulty level chosen. Higher difficulty
-       indicates lower refresh interval in gui.
-    """
-
-    
     def __init__(self, snake, score):
+        """self.points is the current amount of points
+        the player has collected.
+        self.score is an instance of the Score class.
+        self.game_matrix is the current position of the game.
+        self.snake is an instance of the snake-class.
+        self.direction is the direction given to the snake
+        instance on advance.
+        self.player_name is name of the player
+        self.difficulty is the difficulty level chosen. Higher difficulty
+        indicates lower refresh interval in gui.
+        """
         self.difficulty="medium"
         self.points=0
         self.score=score
@@ -50,7 +47,7 @@ class Game:
                 self.coordinates.append([i, j])
 
     def start(self, name,difficulty):
-        """this method resets the game attributes."""
+        """this method resets game attributes."""
         self.points=0
         self.difficulty=difficulty
         self.game_matrix=[x[:] for x in START]
@@ -96,12 +93,12 @@ class Game:
                     i[j]=empty
 
     def free_filter(self, coordinate):
-        """returns locations [y, x] on game_matrix where 
+        """returns locations [y, x] on game_matrix where
         there are no snake_body or treat blocks."""
         return self.game_matrix[coordinate[0]][coordinate[1]].type=="empty"
 
     def no_snake_filter(self, coordinate):
-        """Returns locations [y, x] on self.game_matrix where 
+        """Returns locations [y, x] on self.game_matrix where
         there are no snake_body blocks."""
         return self.game_matrix[coordinate[0]][coordinate[1]].type!="snake"
 
@@ -111,13 +108,13 @@ class Game:
         return non_snake_coordinates
 
     def get_empty_coordinates(self):
-        """This is used to find free squares systematically to reduce overhead caused
-        by random polling"""
+        """This method returns empty coordinates [y, x] on game_matrix. Empty
+        coordinates means the element's type in that location is empty"""
         free_coordinates = list(filter(self.free_filter, self.coordinates))
         return free_coordinates
 
     def new_treat(self):
-        """this method receives new treat object from TreatFactory, adds
+        """this method fetches new treat object from TreatFactory, adds
         it to game_matrix and updates free_coordinates accordingly."""
         new_treat=TreatFactory().new_random_treat()
         free_coordinates=self.get_non_snake_coordinates()
@@ -130,7 +127,7 @@ class Game:
 
     def eat_treat(self, treat):
         """This method is called after is_treat method returns true, indicating
-        snake has moved on top of a treat. the treat's consume function is called 
+        snake has moved on top of a treat. the treat's consume function is called
         with argument snake, game or both depending on type of the treat."""
         self.points+=treat.points
         if treat.type=="treat":
@@ -155,7 +152,7 @@ class Game:
     def advance(self):
         """This method is the only method of game logic that is called by the GUI.
         This method initiates creation of a treat element, treat consumption
-        and asks snake to update it's position given the direction. This method 
+        and asks snake to update it's position given the direction. This method
         then updates the game_matrix and returns it to the GUI for rendering.
         """
         snake_image = self.snake.advance(self.direction)

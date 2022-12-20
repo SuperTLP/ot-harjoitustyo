@@ -18,7 +18,7 @@ MatrixElement(ReverseTreat(),"dual_treat", 2,20,"<-")
 ]
 
 class TreatFactory:
-    #This class handles creation of entities.
+    #This class handles creation of treats
     def __init__(self):
         pass
     def new_treat(self, tier):

@@ -1,8 +1,8 @@
 class MatrixElement:
-
+    """This is a default wrapper for all elements that appear on game_matrix. And
+        contains their default information"""
     def __init__(self, action,_type, tier, points,symbol):
-        """This is a default wrapper for all elements that appear on game_matrix. And
-        contains their default information:
+        """
         action - a treat instance. Is None if the instance is not a treat.
         symbol - symbol displayed on GUI for this element (can also be used for
         identification)

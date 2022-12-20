@@ -3,14 +3,6 @@ class DefaultTreat:
     that give one point each and either extend or contract snake
     length by effect."""
     def __init__(self, effect):
-        """
-        These class-variables are used by all treats in the game.
-        - Effect is the symbol displayed on a treat
-        - Type tells what kind of element this object is. It is used
-        for example, to differentiate between snake block, empty block and a treat.
-        - points defines how many points consuming this candy awards to the player.
-        - tier tells how rare and how useful this candy is to the player. Higher
-        tier means greater help in playing."""
         self.effect=effect
         self.type="treat"
         self.points=1
