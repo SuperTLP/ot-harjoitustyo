@@ -11,18 +11,20 @@ Tämän jälkeen Pelin tietokanta tulee alustaa komennolla
 poetry run invoke build
 ```
 
-
-
 ## Pelin alkuvalikko
-Alkuvalikossa navigoidaan nuolinäppäimillä. Ylös-nuolella liikutaan valinnoissa ylöspäin ja alas-nuolella alaspäin. Oikealla nuolella voidaan valinnan play kohdalla aloittaa peli, tai valinnan high scores kohdalla siirtyä tarkastelemaan korkeimpia pisteitä.
-
-Jotta pelaaja voi tallentaa tuloksensa nimellä, tulee hänen liikkua nuolinäppäimillä Valinnan Name kohdalle ja kirjoittaa oma nimensä.
+Pelissä voidaan liikkua näkymästä toiseen klikkaamalla hiirellä valikoissa näkyviä nappeja. Klikkaamalla Play-nappia pääsee nimi-näkymään. Klikkaamalla High-scores-nappia pääsee High-score näkymään. Missä tahansa valikon ikkunassa pääsee takaisin alkuvalikkoon Vasemmassa yläkulmassa sijaitsevaa Menu-nappia painamalla.
 
 ## High-score näkymä
-Korkeimpia pisteitä tarkasteltaessa näytetään yhdellä sivulla viisi tulosta kerrallaan. Pelaaja voi liikkua sivujen välillä nuolinäppäimillä. Takaisin alkuvalikkoon pääsee sulkemalla ikkunan rastista, tai painamalla go back-nappia vasemassa yläkulmassa.
+Korkeimpia pisteitä tarkasteltaessa näytetään yhdellä sivulla viisi tulosta kerrallaan. Viiden tuloksen sivuja voi selata painamalla Next- tai Previous-nappeja vasemmassa ja oikeassa alakulmassa. Takaisin alkuvalikkoon pääsee painamalla vasemmassa yläkulmassa sijaitsevaa Menu-painiketta. Tässä näkymässä nähdään pelaajien saavuttamat pisteet, sekä millä vaikeustasolla pisteet on saatu.
+
+## Nimi-näkymä
+Nimi-näkymään päästään alkuvalikosta painamalla Play-nappia. Tässä näkymässä pelaajan tulee syöttää pelille oma nimensä tallentaakseen pisteensä. Tämän jälkeen pelaaja voi siirtyä valitsemaan vaikeustason painamalla Next-nappia.
+
+## Vaikeustason valinta
+Painettuaan Next-nappia nimen valinnan jälkeen voi pelaaja valita vaikeustasoksi Hard, Medium tai Easy. Eroa vaikeustasoilla on nopeus, jolla peli etenee. Vaikeustason valinnan jälkeen peli alkaa.
 
 ## Pelaaminen
-Pelissä liikutaan nuolinäppäimillä. Mato etenee viimeksi painetun nuolinäppäimen osoittamaan suuntaan. Pelissä tarkoituksena on kerätä mahdollisimman paljon pisteitä syömällä erilaisia karkkeja.Punaiset ja vihreät karkit antavat yhden pisteen ja muun väriset erikoiskarkit antavat 20 tai 40 pistettä. Punainen karkki lyhentää madon pituutta karkissa ilmoitetun määrän verran. Vihreä karkki pidentää matoa samalla periaatteella. Erikoiskarkeilla on erilaisia toimintoja jotka helpottavat pelaamista. Peli päättyy, kun pelaaja osuu omaan häntäänsä tai seinään.
+Peli alkaa, kun pelaaja painaa ensimmäisen kerran oikeaa nuolinäppäintä pelinäkymässä. Pelissä liikutaan nuolinäppäimillä. Mato etenee viimeksi painetun nuolinäppäimen osoittamaan suuntaan. Pelissä tarkoituksena on kerätä mahdollisimman paljon pisteitä syömällä erilaisia karkkeja.Punaiset ja vihreät karkit antavat yhden pisteen ja muun väriset erikoiskarkit antavat 20 tai 40 pistettä. Punainen karkki lyhentää madon pituutta karkissa ilmoitetun määrän verran. Vihreä karkki pidentää matoa samalla periaatteella. Erikoiskarkeilla on erilaisia toimintoja jotka helpottavat pelaamista. Peli päättyy, kun pelaaja osuu omaan häntäänsä tai seinään.
 
 ## Erikoiskarkit
 Pelissä esiintyy useita erikoiskarkkeja, jotka ovat väriltään kullanvärisiä ja sinisiä. Sininen väri kuvastaa tason 2 karkkia, ja kultainen karkki tason 3 karkkia.
