@@ -76,7 +76,7 @@ class View:
 
                     effect = main_font.render(text, False, (255, 255, 255))
                     pygame.draw.rect(self.screen, (color), pygame.Rect(j*50,50+50*i, 50, 50))
-                    self.screen.blit(effect, (j*50+15,50+50*i))
+                    self.screen.blit(effect, (j*50+15,50+50*i+5))
                     
             points = main_font.render("points: "+str(self.game.points), False, (0, 0,0))
             self.screen.blit(points, (10,10))
