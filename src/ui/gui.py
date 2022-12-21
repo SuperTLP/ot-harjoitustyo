@@ -7,7 +7,8 @@ from ui.styles import (
 MEDIUM_BUTTON_STYLE, HARD_BUTTON_STYLE, 
 EASY_BUTTON_STYLE,DEFAULT_BUTTON_STYLE,
 NEXT_BUTTON_STYLE,PREVIOUS_BUTTON_STYLE,
-MENU_BUTTON_STYLE,
+MENU_BUTTON_STYLE,HIGH_SCORE_BUTTON_STYLE,
+PLAY_BUTTON_STYLE,
 DARK_RED,DARK_GREEN,DARK_YELLOW
 )
 from ui.ui_config import (
@@ -64,19 +65,19 @@ class View:
             for i in range(0, len(image)):
                 for j in range(0, len(image[0])):
                     color=(0, 0, 0)
+                    text=""
                     if image[i][j].type=="snake":
                         color=(255, 255, 255)
-                    text=""
                     if image[i][j].tier!=0:
                         color=tier_color_map[image[i][j].tier]
                         text=str(image[i][j].symbol)
                     if image[i][j].tier==1:
                         color=color_map[image[i][j].action.effect/abs(image[i][j].action.effect)]
-                    if image[i][j].tier==5:
-                        color=(0, 255, 255)
+
                     effect = main_font.render(text, False, (255, 255, 255))
                     pygame.draw.rect(self.screen, (color), pygame.Rect(j*50,50+50*i, 50, 50))
                     self.screen.blit(effect, (j*50+15,50+50*i))
+                    
             points = main_font.render("points: "+str(self.game.points), False, (0, 0,0))
             self.screen.blit(points, (10,10))
             pygame.display.flip()
@@ -90,25 +91,20 @@ class View:
         self.name_view_run=False
         player_name=name
         ##One of these functions is executed when a button is pressed
-        def start_hard():
-            self.start_game(player_name, "hard")
-        def start_medium():
-            self.start_game(player_name, "medium")
-        def start_easy():
-            self.start_game(player_name, "easy")
         def quit():
             self.difficulty_selector_run=False
-
-        #Create buttons for difficulties.
-        hard_button = Button(rect=(250, 150, 150, 50),color=DARK_RED,function=start_hard,**HARD_BUTTON_STYLE)
-        medium_button = Button(rect=(250, 250, 150, 50),color=DARK_YELLOW,function=start_medium,**MEDIUM_BUTTON_STYLE)
-        easy_button = Button(rect=(250, 350, 150, 50),color=DARK_GREEN,function=start_easy,**EASY_BUTTON_STYLE)
-        menu_button = Button(rect=(0, 0, 150, 50),color=DARK_YELLOW,function=quit,**MENU_BUTTON_STYLE)
+        def start_game(difficulty):
+            self.start_game(player_name, difficulty)
+        buttons =[
+        Button(rect=(250, 150, 150, 50),color=DARK_RED,function=lambda: start_game("hard"),**HARD_BUTTON_STYLE),
+        Button(rect=(250, 250, 150, 50),color=DARK_YELLOW,function=lambda:start_game("medium"),**MEDIUM_BUTTON_STYLE),
+        Button(rect=(250, 350, 150, 50),color=DARK_GREEN,function=lambda: start_game("easy"),**EASY_BUTTON_STYLE),
+        Button(rect=(0, 0, 150, 50),color=DARK_YELLOW,function=quit,**MENU_BUTTON_STYLE),
+        ]
         #The loop
         while self.difficulty_selector_run:
             #Go through all events to tell what the user has done
             for event in pygame.event.get():
-                hard_button.check_event(event)
                 if event.type == pygame.QUIT:
                     self.display_run=False
                     self.difficulty_selector_run=False
@@ -117,21 +113,16 @@ class View:
                         player_name+=event.unicode
                     if event.key==pygame.K_BACKSPACE:
                         player_name=player_name[:-1]
-                medium_button.check_event(event)
-                easy_button.check_event(event)
-                menu_button.check_event(event)
+                for button in buttons:
+                    button.check_event(event)
 
             self.screen.fill((0, 0, 0))
-
-            #text on top of the screen
             title = main_font.render(
                 """Select difficulty to start game""", False, (255, 0, 0))
             self.screen.blit(title, (20, 50))
             #These methods are required to update button visuals on hover.
-            hard_button.update(self.screen)
-            medium_button.update(self.screen)
-            easy_button.update(self.screen)
-            menu_button.update(self.screen)
+            for button in buttons:
+                button.update(self.screen)
             pygame.display.update()
 
     def start_name_view(self):
@@ -239,11 +230,6 @@ class View:
     def run(self):
         """This is the main menu loop"""
         self.display_run=True
-        PLAY_BUTTON_STYLE=dict(DEFAULT_BUTTON_STYLE)
-        PLAY_BUTTON_STYLE["text"]="Play"
-        PLAY_BUTTON_STYLE["font"]=main_font
-        HIGH_SCORE_BUTTON_STYLE=dict(HARD_BUTTON_STYLE)
-        HIGH_SCORE_BUTTON_STYLE["text"]="High scores"
         play_button = Button(rect=(250, 100, 200, 50),color=DARK_YELLOW,function=self.start_name_view,**PLAY_BUTTON_STYLE)
         high_score_button = Button(rect=(250, 200, 200, 50),color=DARK_RED,function=self.start_high_score,**HIGH_SCORE_BUTTON_STYLE)
         while self.display_run:
