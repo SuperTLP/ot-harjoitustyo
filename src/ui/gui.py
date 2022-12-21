@@ -207,7 +207,8 @@ class View:
                     button.check_event(event)
 
             self.screen.fill((0, 0, 0))
-
+            if num_of_pages==0:
+                self.page=-1
             title = main_font.render('High scores', False, (255, 0, 0))
             page_text = main_font.render("Page {}/{}".format(
                 self.page+1, num_of_pages), False, (255, 0, 0))
