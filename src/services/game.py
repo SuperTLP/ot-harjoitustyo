@@ -55,10 +55,11 @@ class Game:
         """Sets self.game_matrix to custom matrix. used by special treats."""
         self.game_matrix=matrix
 
-    def change_direction(self, direction):
+    def change_direction(self, direction, force=False):
         """Sets self.direction if snake does not turn on itself."""
-        if forbidden_directions[self.direction]!=direction:
-            self.direction=direction
+        if forbidden_directions[self.direction]==direction and force==False:
+            return
+        self.direction=direction
 
     def out_out_bounds(self, head):
         """This method tests whether the snake has hit wall"""

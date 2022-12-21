@@ -50,10 +50,8 @@ class View:
                         started=True
                     if event.key == pygame.K_UP:
                         self.game.change_direction(0)
-                        started=True
                     if event.key == pygame.K_DOWN:
                         self.game.change_direction(2)
-                        started=True
 
             self.screen.fill((0, 0, 0))
             pygame.draw.rect(self.screen, (0, 255, 255), pygame.Rect(0, 0, 750, 50))
@@ -163,7 +161,8 @@ class View:
 
                 
     def start_ending_screen(self, points):
-        """"""
+        """This view starts after the player loses the game. On this view
+        the player sees how many points he got, and can then return to main menu."""
         self.ending_screen_run=True
         def quit():
             self.ending_screen_run=False
@@ -173,6 +172,7 @@ class View:
                 pass
                 if event.type==pygame.QUIT:
                     self.ending_screen_run=False
+                    self.display_run=False
                 menu_button.check_event(event)
             self.screen.fill((0, 0, 0))
             menu_button.update(self.screen)

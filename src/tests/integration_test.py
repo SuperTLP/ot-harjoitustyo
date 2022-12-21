@@ -70,3 +70,16 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(str(list(reversed([[2, 2], [3,2], [3, 4], [3, 5],[3, 6]]))),
         str(self.snake.position))
         self.assertEqual(self.game.direction, 0)
+
+    def test_reverse_treat_opposite_direction(self):
+        treat = MatrixElement(ReverseTreat(),"dual_treat",2,20,"<-")
+        self.game.start("Riku", "easy")
+        self.snake.set_position([[3, 1],[3,2]])
+        self.game.game_matrix[3][3]=treat
+        self.game.advance()
+        self.assertEqual(self.game.points, 20)
+        self.assertEqual(str(list(reversed([[3,2],[3,3]]))),
+        str(self.snake.position))
+        self.assertEqual(self.game.direction, 3)
+        self.assertEqual(self.game.game_over,False)
+
