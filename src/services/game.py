@@ -1,20 +1,12 @@
 from random import choice
 from entities.matrix_element import MatrixElement
 from services.treat_factory import TreatFactory
+from service_config.game_config import GAME_OVER,forbidden_directions
 treat_factory=TreatFactory()
 snake_body=MatrixElement(None,"snake",0,0,0)
 empty=MatrixElement(None,"empty",0,0,0)
 
 START=[[empty]*14 for i in range(0, 9)]
-
-GAME_OVER=[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-        [0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
-        [0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1],
-        [0, 0, 0, 0, 1, 0, 0, 2, 2, 2, 0, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
-        [0, 2, 2, 0, 0, 2, 0, 2, 2, 2, 0, 2, 2, 0],
-        [0, 2, 0, 2, 0, 2, 0, 2, 0, 0, 0, 2, 0, 2],
-        [0, 2, 2, 0, 0, 2, 0, 2, 2, 2, 0, 2, 2, 0]]
 
 class Game:
     """Game is class responsible for integrating entities, and producing the image
@@ -47,7 +39,7 @@ class Game:
                 self.coordinates.append([i, j])
 
     def start(self, name,difficulty):
-        """this method resets game attributes."""
+        """this method resets game attributes. and returns initial image for gui"""
         self.points=0
         self.difficulty=difficulty
         self.game_matrix=[x[:] for x in START]
@@ -57,7 +49,6 @@ class Game:
             self.game_matrix[snake_block[0]][snake_block[1]]=snake_body
         self.direction=1
         self.game_over=False
-        #Return game_matrix for initial image before game starts.
         return self.game_matrix
 
     def set_game_matrix(self, matrix):
@@ -65,7 +56,9 @@ class Game:
         self.game_matrix=matrix
 
     def change_direction(self, direction):
-        self.direction=direction
+        """Sets self.direction if snake does not turn on itself."""
+        if forbidden_directions[self.direction]!=direction:
+            self.direction=direction
 
     def out_out_bounds(self, head):
         """This method tests whether the snake has hit wall"""

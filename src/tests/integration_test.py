@@ -36,9 +36,8 @@ class TestIntegration(unittest.TestCase):
             snake_head=self.snake.position[len(self.snake.position)-1]
             self.game.game_matrix[snake_head[0]][snake_head[1]+1]=candy
             self.game.advance()
-        self.game.game_matrix[snake_head[0]][snake_head[1]+1]=empty
-        self.game.advance()
-        self.assertEqual(len(self.snake.position), 9)
+        self.assertEqual(len(self.snake.position), 8)
+        self.assertEqual(self.snake.pending_blocks,1)
         self.assertEqual(self.game.points, 5)
         self.snake.set_position([[1, 85]])
         self.game.advance()
@@ -71,10 +70,3 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(str(list(reversed([[2, 2], [3,2], [3, 4], [3, 5],[3, 6]]))),
         str(self.snake.position))
         self.assertEqual(self.game.direction, 0)
-
-
-
-
-
-
-

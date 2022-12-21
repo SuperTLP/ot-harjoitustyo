@@ -1,5 +1,4 @@
-START=[[3, 1], [3, 2], [3, 3], [3, 4]]
-
+from service_config.snake_config import START,directions
 class Snake:
     """instance of this class is the snake controlled by the player."""
     def __init__(self, position=START):
@@ -15,12 +14,7 @@ class Snake:
         self.pending_blocks=0
         self.start_position=position[:]
         self.position=position[:]
-        self.directions={
-            0: [-1, 0],
-            1: [0, 1],
-            2: [1, 0],
-            3: [0, -1]
-        }
+        self.directions=directions
     def reset(self):
         """This method resets the snake's position to the given position
         when the class instance was created."""

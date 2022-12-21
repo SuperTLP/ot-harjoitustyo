@@ -32,10 +32,24 @@ class TestDefaultTreat(unittest.TestCase):
         self.snake.set_pending_blocks.assert_called_with(0)
         self.snake.set_position.assert_called_with([[1, 3]])
     
-    def test_treat_only_reduces_snake_length(self):
+    def test_pending_blocks_does_not_change(self):
         self.snake.position=[[1, 2], [1, 3], [1, 4], [1, 5]]
         self.snake.pending_blocks=5
         treat = MatrixElement(DefaultTreat(-2),"treat",1,1,-2)
         treat.action.consume(self.snake)
-        self.assertEqual(self.snake.pending_blocks, 5)
+        self.snake.set_pending_blocks.assert_not_called()
         self.snake.set_position.assert_called_with([[1, 4], [1, 5]])
+
+    def test_pending_blocks_decrease_correctly(self):
+        self.snake.position=[[1, 2], [1, 3], [1, 4]]
+        treat = MatrixElement(DefaultTreat(-5),"treat",1,1,-2)
+        self.snake.pending_blocks=16
+        treat.action.consume(self.snake)
+        self.snake.set_pending_blocks.assert_called_with(13)
+
+    def test_pending_blocks_increase_correctly(self):
+        self.snake.position=[[1, 2]]
+        treat = MatrixElement(DefaultTreat(2),"treat",1,1,2)
+        self.snake.pending_blocks=4
+        treat.action.consume(self.snake)
+        self.snake.set_pending_blocks.assert_called_with(6)

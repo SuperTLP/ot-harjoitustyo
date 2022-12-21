@@ -43,21 +43,23 @@ class View:
                 if event.type == pygame.QUIT:
                     self.game_run=False
                 if event.type == pygame.KEYDOWN:
-                    started=True
                     if event.key == pygame.K_LEFT:
                         self.game.change_direction(3)
                     if event.key == pygame.K_RIGHT:
                         self.game.change_direction(1)
+                        started=True
                     if event.key == pygame.K_UP:
                         self.game.change_direction(0)
+                        started=True
                     if event.key == pygame.K_DOWN:
                         self.game.change_direction(2)
+                        started=True
 
             self.screen.fill((0, 0, 0))
             pygame.draw.rect(self.screen, (0, 255, 255), pygame.Rect(0, 0, 750, 50))
             image=starting_image
             if started:
-                image = self.game.advance()   
+                image = self.game.advance() 
             if image==GAME_OVER:
                 self.game_run=False
                 self.start_ending_screen(self.game.points)
@@ -77,7 +79,9 @@ class View:
                     effect = main_font.render(text, False, (255, 255, 255))
                     pygame.draw.rect(self.screen, (color), pygame.Rect(j*50,50+50*i, 50, 50))
                     self.screen.blit(effect, (j*50+15,50+50*i+5))
-                    
+            if not started:
+                start_prompt = main_font.render("Press right arrowkey to start", False, (255, 255, 255)) 
+                self.screen.blit(start_prompt, (200,50))
             points = main_font.render("points: "+str(self.game.points), False, (0, 0,0))
             self.screen.blit(points, (10,10))
             pygame.display.flip()
