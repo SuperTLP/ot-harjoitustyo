@@ -15,7 +15,8 @@
 |12.12|6:00|Paranneltiin pelin dokumentaatiota ja lisättiin testejä. Poistettiin CustomMatrixElement luokka, palautettiin MatrixElement luokka, luotiin uusi luokkakaavio |
 |17.12|6:00|Lisättiin peliin uusia näkymiä, lisättiin 3 vaikeustasoa ja helpotettiin käytettävyyttä vaihtamalla menun napit klikattavaksi.|
 |20.12|3:00|Muutettiin High-score näkymän napit klikattavaksi, lisättiin vaikeustasot high-score näkymän tuloksien viereen|
-| yht| 43:30||
+|21.12|4:00|refaktorointia|
+| yht| 47:30||
 
 
 
