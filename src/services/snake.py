@@ -1,4 +1,5 @@
-from service_config.snake_config import START,directions
+from service_config.service_config import START,directions
+
 class Snake:
     """instance of this class is the snake controlled by the player."""
     def __init__(self, position=START):

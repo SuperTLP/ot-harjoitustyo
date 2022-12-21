@@ -1,7 +1,7 @@
 from random import choice
 from entities.matrix_element import MatrixElement
 from services.treat_factory import TreatFactory
-from service_config.game_config import GAME_OVER,directions
+from service_config.service_config import GAME_OVER,directions
 treat_factory=TreatFactory()
 snake_body=MatrixElement(None,"snake",0,0,0)
 empty=MatrixElement(None,"empty",0,0,0)
@@ -55,7 +55,7 @@ class Game:
         """Sets self.game_matrix to custom matrix. used by special treats."""
         self.game_matrix=matrix
 
-    def change_direction(self, direction, force=False):
+    def change_direction(self, direction):
         """Sets self.direction if snake does not turn on itself."""
         if len(self.snake.position)==1:
             self.direction=direction
@@ -131,7 +131,7 @@ class Game:
     def eat_treat(self, treat):
         """This method is called after is_treat method returns true, indicating
         snake has moved on top of a treat. the treat's consume function is called
-        with argument snake, game or both depending on type of the treat."""
+        with argument self.snake, self or both depending on type of the treat."""
         self.points+=treat.points
         if treat.type=="treat":
             treat.action.consume(self.snake)
