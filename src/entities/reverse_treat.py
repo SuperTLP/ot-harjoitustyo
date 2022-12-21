@@ -4,21 +4,20 @@ direction_map={
     2:0,
     3:1
 }
-
 direction_from_coordinates={
     "[-1, 0]":2,
     "[0, 1]":3,
     "[1, 0]":0,
     "[0, -1]":1
 }
-
 class ReverseTreat:
     #Instance of this class reverses snake's position when consumed.
     #This means the snake will continue in opposite direction.
     def __init__(self):
         pass
     def consume(self, game,snake):
-        """This method reverses snake's position and sets game's direction to opposite"""
+        """This method reverses snake's position list
+        and sets game's direction to opposite."""
         if len(snake.position)==1:
             game.change_direction(direction_map[game.direction],True)
             return

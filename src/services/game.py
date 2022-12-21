@@ -1,7 +1,7 @@
 from random import choice
 from entities.matrix_element import MatrixElement
 from services.treat_factory import TreatFactory
-from service_config.game_config import GAME_OVER,forbidden_directions
+from service_config.game_config import GAME_OVER,directions
 treat_factory=TreatFactory()
 snake_body=MatrixElement(None,"snake",0,0,0)
 empty=MatrixElement(None,"empty",0,0,0)
@@ -57,7 +57,16 @@ class Game:
 
     def change_direction(self, direction, force=False):
         """Sets self.direction if snake does not turn on itself."""
-        if forbidden_directions[self.direction]==direction and force==False:
+        if len(self.snake.position)==1:
+            self.direction=direction
+            return
+        snake_head=self.snake.position[-1]
+        previous=self.snake.position[-2]
+        next_head=[
+        snake_head[0]+directions[direction][0],
+        snake_head[1]+directions[direction][1]
+        ]
+        if len(self.snake.position)>1 and next_head==previous:
             return
         self.direction=direction
 
