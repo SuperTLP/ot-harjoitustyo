@@ -16,11 +16,13 @@ class Game:
 
     def __init__(self, snake, score):
         """
+        Arguments:
+        -score is an instance of the Score class.
+        -snake is an instance of the snake-class.
+
         self.points is the number of points the player has collected
         self.difficulty is the difficulty level selected by player.
         self.player_name is the name of the player.
-        self.score is an instance of the Score class.
-        self.snake is an instance of the snake-class.
         self.game_matrix is the current position of the game.
         self.coordinates is 2 dimensional list of game coordinates.
         This reduces overhead caused by searching free coordinates.
@@ -41,7 +43,13 @@ class Game:
         self.game_over=True
 
     def start(self, name,difficulty):
-        """this method initializes game attributes and returns initial image for gui"""
+        """
+        arguments:
+        -name: name of the player
+        -difficulty: difficulty level the game is played on
+
+        this method initializes game attributes and returns initial image for gui
+        """
         self.points=0
         self.difficulty=difficulty
         self.game_matrix=[x[:] for x in Game.START]
@@ -53,52 +61,79 @@ class Game:
         return self.game_matrix
 
     def set_game_matrix(self, matrix):
-        """Sets self.game_matrix to custom matrix. used by special treats."""
+        """
+        argument:
+        -matrix: new value for self.game_matrix
+
+        this method sets self.game_matrix to custom matrix. used by special treats.
+        """
         self.game_matrix=matrix
 
     def out_out_bounds(self, head):
-        """This method tests whether the snake has hit wall"""
+        """
+        argument:
+        -head: snake's current head coordinates.
+
+        This method tests whether the snake has hit wall
+        """
         return (head[1]<0 or head[0]>=len(self.game_matrix) or
         head[0]<0 or head[1]>=len(self.game_matrix[0]))
 
     def snake_collision(self, position):
-        """Checks if the first element (head) of the snake's position
-        overlaps with some other snake_body element."""
+        """
+        argument:
+        -position: snake's position
+
+        Checks if the first element (head) of the snake's position
+        overlaps with some other snake_body element. Returns True or False
+        accordingly.
+        """
         return position[-1] in position[:-1]
 
     def purge_candy(self):
-        """This method removes all treats from the map. Used by the PurgeTreat
-        consume method."""
+        """
+        This method removes all treats from game_matrix. Used by the PurgeTreat
+        consume method.
+        """
         for i in self.game_matrix:
             for j, elem in enumerate(i):
                 if elem.type!="snake":
                     i[j]=self.empty
 
     def remove_previous_snake(self):
-        """This clears previous snake blocks. Used before rendering new snake position."""
+        """
+        This clears previous snake blocks. Used before rendering new snake position.
+        """
         for i in self.game_matrix:
             for j, elem in enumerate(i):
                 if elem.type=="snake":
                     i[j]=self.empty
 
     def get_non_snake_coordinates(self):
-        """This method is used to find coordinates [y,x] where there are no
-        snake_body blocks."""
+        """
+        This method is used to find coordinates [y,x] where there are no
+        snake_body blocks. It then returns those coordinates.
+        """
         non_snake_coordinates=[
         x[:] for x in self.coordinates if
         self.game_matrix[x[0]][x[1]].type!="snake"]
         return non_snake_coordinates
 
     def get_empty_coordinates(self):
-        """This method returns empty coordinates [y, x] on game_matrix. Empty
-        coordinates mean the element's type in that location is empty"""
+        """
+        This method returns empty coordinates [y, x] on game_matrix. Empty
+        coordinates mean the element's type in that location is empty. Those
+        Coordinates are then returned.
+        """
         free_coordinates = [x[:] for x in self.coordinates if
         self.game_matrix[x[0]][x[1]].type=="empty"]
         return free_coordinates
 
     def new_treat(self):
-        """this method fetches new treat object from TreatFactory and adds
-        it to game_matrix"""
+        """
+        this method fetches new treat object from TreatFactory and adds
+        it to game_matrix
+        """
         new_treat=TreatFactory().new_random_treat()
         free_coordinates=self.get_non_snake_coordinates()
         if new_treat.tier==1:
@@ -109,9 +144,14 @@ class Game:
         self.game_matrix[coordinates[0]][coordinates[1]]=new_treat
 
     def eat_treat(self, treat):
-        """This method is called after is_treat method returns true, indicating
+        """
+        argument:
+        -treat: the treat that is to be consumed
+
+        This method is called after is_treat method returns true, indicating
         snake has moved on top of a treat. the treat's consume function is called
         with argument self.snake or self depending on type of the treat."""
+
         self.points+=treat.points
         if treat.type=="treat":
             treat.action.consume(self.snake)
@@ -119,14 +159,24 @@ class Game:
             treat.action.consume(self)
 
     def is_treat(self, head):
-        """This method tests whether the snake has moved on a consumable
-        element. Returns True or False accordingly."""
+        """
+        argument:
+        -head: coordinates of snake's head.
+
+        This method tests whether the snake has moved on a consumable
+        element. Returns True or False accordingly.
+        """
         if self.game_matrix[head[0]][head[1]].tier!=0:
             return True
         return False
 
     def draw_snake(self,snake):
-        """This method renders snake's body on the game_matrix."""
+        """
+        argument:
+        -snake: instance of snake class.
+
+        This method renders snake's body on the game_matrix.
+        """
         for block in snake:
             self.game_matrix[block[0]][block[1]]=self.snake_body
 

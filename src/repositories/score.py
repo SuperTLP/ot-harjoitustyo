@@ -1,11 +1,20 @@
 class Score:
     """This class is responsible for saving and retreiving score-related data."""
     def __init__(self, database):
-        """self.database is the database where scores are stored."""
+        """
+        argument:
+        -database: the database where scores are stored."""
         self.database=database
 
     def new(self, name, score, difficulty):
-        """This method inserts new score into database with given name,score and difficulty."""
+        """
+        Arguments:
+        -name: Name of the player
+        -score: The score the player got
+        - difficulty: the difficulty level the score was gotten on
+
+        This method inserts new score into database with given name,score and difficulty.
+        """
         cur = self.database.cursor()
         cur.execute("insert into scores (name, score, difficulty) values (?, ?, ?)",
         [name, score, difficulty])

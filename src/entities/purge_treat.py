@@ -4,5 +4,9 @@ class PurgeTreat:
         pass
 
     def consume(self, game):
+        """
+        argument:
+        -game: instance of game class."""
+        
         game.purge_candy()
     

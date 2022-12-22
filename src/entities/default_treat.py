@@ -3,25 +3,35 @@ class DefaultTreat:
     that alter snake's length by effect. Effect can be negative or positive."""
     def __init__(self, effect):
         """
-        Self.effect tells by how much snake's length is altered. Negative
+        argument:
+        - effect tells by how much snake's length is altered. Negative
         effect indicates snake is contracted.
         """
         self.effect=effect
 
     def new_pending_blocks(self,position, blocks):
-        """Calculate how much snakes pending blocks should be after consumption."""
+        """
+        argument:
+        -position: position of a snake instance
+        - blocks: snake instance's pending blocks
+
+        This method calculates how much snake's pending blocks should be
+        after it's length is contracted. This value is then returned.
+        """
         leftover=len(position)+self.effect-1
         new_blocks=blocks+leftover
         new_blocks = max(new_blocks,0)
         return new_blocks
 
     def consume(self, snake):
-        """This method changes the snake's length depending on
-        effect. If effect is greater than or equal to 0, this amount will
-        be added to snake's pending blocks. Snake will then extend itself.
-        If effect is negative, snake's length will first be reduced by removing
-        elements from snake's position. Then pending blocks will be removed
-        if the effect would make snake's position shorter than 1 block."""
+        """
+        argument:
+        -snake: instance of Snake class to be modified
+
+        This method alters snake's length by effect. Snake's position
+        will first be reduced and then pending blocks will be deleted if snake's
+        current length is smaller than 1 after being modified.
+        """
         new_position=[i[:] for i in snake.position[:]]
         blocks = snake.pending_blocks
         if self.effect>=0:

@@ -23,14 +23,19 @@ class TreatFactory:
         pass
 
     def new_treat(self, tier):
-        #This method creates a new treat of a certain tier and returns it.
+        """
+        argument:
+        -tier: number indicating what tier treat is to be created.
+
+        This method creates a new treat of specific tier and returns it.
+        """
         possible_treats=[treat for treat in TreatFactory.all_treats if treat.tier==tier]
         new_treat=choice(possible_treats)
         return new_treat
 
     def new_random_treat(self):
-        #This method selects a random tier for treat and selects a random
-        #treat of that tier.
+        """This method selects a random tier for treat and selects a random
+        treat of that tier."""
         tier=1
         lottery = randint(0, 150)
         if lottery in [148, 149]:
