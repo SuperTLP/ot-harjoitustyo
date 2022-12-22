@@ -30,6 +30,8 @@ Syötettyään nimensä pelille ja vaikeustasonäkymään siirtymisen jälkeen v
 ## Pelaaminen
 Peli alkaa, kun pelaaja painaa ensimmäisen kerran oikeaa nuolinäppäintä pelinäkymässä. Pelissä liikutaan nuolinäppäimillä. Mato etenee viimeksi painetun nuolinäppäimen osoittamaan suuntaan. Pelissä tarkoituksena on kerätä mahdollisimman paljon pisteitä syömällä erilaisia karkkeja.Punaiset ja vihreät karkit antavat yhden pisteen ja muun väriset erikoiskarkit antavat 20 tai 40 pistettä. Punainen karkki lyhentää madon pituutta karkissa ilmoitetun määrän verran. Vihreä karkki pidentää matoa samalla periaatteella. Erikoiskarkeilla on erilaisia toimintoja jotka helpottavat pelaamista. Peli päättyy, kun pelaaja osuu omaan häntäänsä tai seinään.
 
+Pelin päättymisen jälkeen pelaaja näkee saavuttamansa pisteet. Takaisin päävalikkoon pääsee painamalla keskellä ruutua olevaa Menu-paniketta.
+
 ## Erikoiskarkit
 Pelissä esiintyy useita erikoiskarkkeja, jotka ovat väriltään kullanvärisiä ja sinisiä. Sininen väri kuvastaa tason 2 karkkia, ja kultainen karkki tason 3 karkkia.
 
