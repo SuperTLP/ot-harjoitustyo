@@ -2,10 +2,11 @@ class DefaultTreat:
     """instances of this class are consumable treats in the game,
     that alter snake's length by effect. Effect can be negative or positive."""
     def __init__(self, effect):
+        """
+        Self.effect tells by how much snake's length is altered. Negative
+        effect indicates snake is contracted.
+        """
         self.effect=effect
-        self.type="treat"
-        self.points=1
-        self.tier=1
     def new_pending_blocks(self,position, blocks):
         """Calculate how much snakes pending blocks should be after consumption."""
         leftover=len(position)+self.effect-1
