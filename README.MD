@@ -11,7 +11,7 @@ Pelissä käärmettä ohjataan nuolinäppäimillä, ja pyritään syömään mah
 
 ## Dokumentaatio
 
-[vaatimusmäärittely.md](https://github.com/SuperTLP/ot-harjoitustyo/blob/master/laskarit/viikko1/vaatimusmäärittely.md)
+[vaatimusmäärittely.md](dokumentaatio/vaatimusmäärittely.md)
 
 [tuntikirjanpito.md](https://github.com/SuperTLP/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
