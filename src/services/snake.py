@@ -44,7 +44,7 @@ class Snake:
         return new_head
     
     def set_position(self, position):
-        """This set's the snakes position to given list.
+        """This sets the snakes position to given list.
         This is used by special treats to alter the snake's behaviour."""
         self.position=[i[:] for i in position[:]]
         
