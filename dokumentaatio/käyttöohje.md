@@ -32,7 +32,7 @@ Peli alkaa, kun pelaaja painaa ensimmäisen kerran oikeaa nuolinäppäintä peli
 
 Pelin päättymisen jälkeen pelaaja näkee saavuttamansa pisteet. Takaisin päävalikkoon pääsee painamalla keskellä ruutua olevaa Menu-paniketta.
 
-## Karkit
+## Pelissä esiintyvät Karkit
 
 ### Tavalliset karkit
 - Punainen karkki lyhentää matoa karkissa ilmoitetun määrän verran.
