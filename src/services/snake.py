@@ -32,9 +32,8 @@ class Snake:
             return
         previous=self.position[-2]
         next_head=self.new_head(direction)
-        if next_head==previous:
-            return
-        self.direction=direction
+        if next_head!=previous:
+            self.direction=direction
 
     def new_head(self, direction):
         """This calculates what the next coordinates of snake's head
