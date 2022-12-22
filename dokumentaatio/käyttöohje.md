@@ -57,7 +57,7 @@ Peliss채 esiintyy useita erikoiskarkkeja, jotka ovat v채rilt채채n kullanv채risi�
 
 ![FloodTreat](./kuvat/flood_treat.png)
 
-Kultaiset karkit antavat pelaajalle 40 pistett채, ja siniset karkit 20 pistett채.
+Kultaiset karkit antavat pelaajalle 40 pistett채, ja siniset karkit 20 pistett채. Tavalliset karkit antavat yhden pisteen.
 
 
 
