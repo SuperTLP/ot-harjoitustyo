@@ -28,7 +28,7 @@ Nimi-näkymään päästään alkuvalikosta painamalla Play-nappia. Tässä näk
 Syötettyään nimensä pelille ja vaikeustasonäkymään siirtymisen jälkeen voi pelaaja valita vaikeustasoksi Hard, Medium tai Easy. Eroa vaikeustasoilla on nopeus, jolla peli etenee. Vaikeustason valinnan jälkeen peli alkaa.
 
 ## Pelaaminen
-Peli alkaa, kun pelaaja painaa ensimmäisen kerran oikeaa nuolinäppäintä pelinäkymässä. Pelissä liikutaan nuolinäppäimillä. Mato etenee viimeksi painetun nuolinäppäimen osoittamaan suuntaan. Pelissä tarkoituksena on kerätä mahdollisimman paljon pisteitä syömällä erilaisia karkkeja.Punaiset ja vihreät karkit antavat yhden pisteen ja muun väriset erikoiskarkit antavat 20 tai 40 pistettä. Punainen karkki lyhentää madon pituutta karkissa ilmoitetun määrän verran. Vihreä karkki pidentää matoa samalla periaatteella. Erikoiskarkeilla on erilaisia toimintoja jotka helpottavat pelaamista. Peli päättyy, kun pelaaja osuu omaan häntäänsä tai seinään.
+Peli alkaa, kun pelaaja painaa ensimmäisen kerran oikeaa nuolinäppäintä pelinäkymässä. Pelissä liikutaan nuolinäppäimillä. Mato etenee viimeksi painetun nuolinäppäimen osoittamaan suuntaan. Pelissä tarkoituksena on kerätä mahdollisimman paljon pisteitä syömällä erilaisia karkkeja. Peli päättyy, kun pelaaja osuu omaan häntäänsä tai seinään.
 
 Pelin päättymisen jälkeen pelaaja näkee saavuttamansa pisteet. Takaisin päävalikkoon pääsee painamalla keskellä ruutua olevaa Menu-paniketta.
 
