@@ -7,6 +7,7 @@ class DefaultTreat:
         effect indicates snake is contracted.
         """
         self.effect=effect
+
     def new_pending_blocks(self,position, blocks):
         """Calculate how much snakes pending blocks should be after consumption."""
         leftover=len(position)+self.effect-1

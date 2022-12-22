@@ -5,26 +5,26 @@ from entities.purge_treat import PurgeTreat
 from entities.reverse_treat import ReverseTreat
 from entities.matrix_element import MatrixElement
 
-all_treats=[
-MatrixElement(DefaultTreat(1), "treat", 1, 1, 1),
-MatrixElement(DefaultTreat(1),"treat", 1, 1, 1),
-MatrixElement(DefaultTreat(1),"treat", 1, 1, 1),
-MatrixElement(DefaultTreat(1),"treat", 1, 1, 1),
-MatrixElement(DefaultTreat(-1),"treat", 1, 1, -1),
-MatrixElement(DefaultTreat(-2),"treat", 1, 1, -2),
-MatrixElement(FloodTreat(),"matrix_treat",3,40,"$"),
-MatrixElement(PurgeTreat(),"matrix_treat",2,20,"X"),
-MatrixElement(ReverseTreat(),"treat", 2,20,"<-")
-]
-
 class TreatFactory:
-    #This class handles creation of treats
+    """This class handles creation of treats
+    all_treats is a list of all treats in game."""
+    all_treats=[
+        MatrixElement(DefaultTreat(1), "treat", 1, 1, 1),
+        MatrixElement(DefaultTreat(1),"treat", 1, 1, 1),
+        MatrixElement(DefaultTreat(1),"treat", 1, 1, 1),
+        MatrixElement(DefaultTreat(1),"treat", 1, 1, 1),
+        MatrixElement(DefaultTreat(-1),"treat", 1, 1, -1),
+        MatrixElement(DefaultTreat(-2),"treat", 1, 1, -2),
+        MatrixElement(FloodTreat(),"matrix_treat",3,40,"$"),
+        MatrixElement(PurgeTreat(),"matrix_treat",2,20,"X"),
+        MatrixElement(ReverseTreat(),"treat", 2,20,"<-")
+        ]
     def __init__(self):
         pass
 
     def new_treat(self, tier):
         #This method creates a new treat of a certain tier and returns it.
-        possible_treats=[treat for treat in all_treats if treat.tier==tier]
+        possible_treats=[treat for treat in TreatFactory.all_treats if treat.tier==tier]
         new_treat=choice(possible_treats)
         return new_treat
 

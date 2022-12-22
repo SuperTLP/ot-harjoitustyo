@@ -15,12 +15,11 @@ from ui.ui_config import (
     color_map,tier_color_map,difficulty_map,GAME_OVER
 )
 
-main_font = pygame.font.SysFont('Comic Sans MS', 30)
-secondary_font=pygame.font.SysFont('Comic Sans MS', 20)
-
 class View:
     """This class is responsible for graphical views of the game. Each method
     corresponds to a certain view."""
+    main_font = pygame.font.SysFont('Comic Sans MS', 30)
+
     def __init__(self, game, score):
         self.score=score
         self.game=game
@@ -73,13 +72,13 @@ class View:
                     if image[i][j].tier==1:
                         color=color_map[image[i][j].action.effect/abs(image[i][j].action.effect)]
 
-                    effect = main_font.render(text, False, (255, 255, 255))
+                    effect = View.main_font.render(text, False, (255, 255, 255))
                     pygame.draw.rect(self.screen, (color), pygame.Rect(j*50,50+50*i, 50, 50))
                     self.screen.blit(effect, (j*50+15,50+50*i+5))
             if not started:
-                start_prompt = main_font.render("Press right arrowkey to start", False, (255, 255, 255)) 
+                start_prompt = View.main_font.render("Press right arrowkey to start", False, (255, 255, 255)) 
                 self.screen.blit(start_prompt, (200,50))
-            points = main_font.render("points: "+str(self.game.points), False, (0, 0,0))
+            points = View.main_font.render("points: "+str(self.game.points), False, (0, 0,0))
             self.screen.blit(points, (10,10))
             pygame.display.flip()
             pygame.time.wait(interval)
@@ -118,7 +117,7 @@ class View:
                     button.check_event(event)
 
             self.screen.fill((0, 0, 0))
-            title = main_font.render(
+            title = View.main_font.render(
                 """Select difficulty to start game""", False, (255, 0, 0))
             self.screen.blit(title, (20, 50))
             #These methods are required to update button visuals on hover.
@@ -154,7 +153,7 @@ class View:
             if len(player_name)>=1:
                 next_button.update(self.screen)
             menu_button.update(self.screen)
-            name_prompt=main_font.render("Your name: "+player_name, False, (255, 255, 255))
+            name_prompt=View.main_font.render("Your name: "+player_name, False, (255, 255, 255))
             self.screen.blit(name_prompt, (150, 80))
             pygame.display.flip()
 
@@ -175,8 +174,8 @@ class View:
                 menu_button.check_event(event)
             self.screen.fill((0, 0, 0))
             menu_button.update(self.screen)
-            game_over_text=main_font.render("Game over", False, (255, 0,0))
-            points_text=main_font.render("Your points: "+str(points), False, (255, 255, 255))
+            game_over_text=View.main_font.render("Game over", False, (255, 0,0))
+            points_text=View.main_font.render("Your points: "+str(points), False, (255, 255, 255))
             self.screen.blit(game_over_text, (220, 120))
             self.screen.blit(points_text, (220, 150))
 
@@ -212,8 +211,8 @@ class View:
             self.screen.fill((0, 0, 0))
             if num_of_pages==0:
                 self.page=-1
-            title = main_font.render('High scores', False, (255, 0, 0))
-            page_text = main_font.render("Page {}/{}".format(
+            title = View.main_font.render('High scores', False, (255, 0, 0))
+            page_text = View.main_font.render("Page {}/{}".format(
                 self.page+1, num_of_pages), False, (255, 0, 0))
 
             self.screen.blit(title, (250, 20))
@@ -225,7 +224,7 @@ class View:
 
             for i in range(0, len(data)):
                 score = "({}) {}: {} Pts.".format(data[i][3],data[i][1], data[i][2])
-                text = main_font.render(score, False, (255, 0, 0))
+                text = View.main_font.render(score, False, (255, 0, 0))
                 self.screen.blit(text, (220,150+50*i))
             pygame.display.flip()
 
@@ -247,7 +246,7 @@ class View:
                 high_score_button.check_event(event)
 
             self.screen.fill((0, 0, 0))
-            title = main_font.render('Snake Ultimate', False, (255, 0, 0)) 
+            title = View.main_font.render('Snake Ultimate', False, (255, 0, 0)) 
             play_button.update(self.screen)
             high_score_button.update(self.screen)
             self.screen.blit(title, (250, 20))

@@ -1,4 +1,4 @@
-from service_config.service_config import START,directions
+from service_config.service_config import START,DIRECTIONS
 
 class Snake:
     """instance of this class is the snake controlled by the player."""
@@ -39,8 +39,8 @@ class Snake:
         """This calculates what the next coordinates of snake's head
         are going to be given direction."""
         new_head=self.position[len(self.position)-1][:]
-        new_head[0]+=directions[direction][0]
-        new_head[1]+=directions[direction][1]
+        new_head[0]+=DIRECTIONS[direction][0]
+        new_head[1]+=DIRECTIONS[direction][1]
         return new_head
 
     def set_position(self, position):

@@ -2,14 +2,18 @@ from random import choice
 from entities.matrix_element import MatrixElement
 from services.treat_factory import TreatFactory
 from service_config.service_config import GAME_OVER
-snake_body=MatrixElement(None,"snake",0,0,0)
-empty=MatrixElement(None,"empty",0,0,0)
-
-START=[[empty]*14 for i in range(0, 9)]
 
 class Game:
     """Game is class responsible for integrating entities, and producing the image
-    supplied for gui."""
+    supplied for gui.
+    snake_body is used to mark snake location in game.
+    empty is used to mark empty locations in game.
+    START is empty matrix used to initialize game.
+    """
+    snake_body=MatrixElement(None,"snake",0,0,0)
+    empty=MatrixElement(None,"empty",0,0,0)
+    START=[[MatrixElement(None,"empty",0,0,0)]*14 for i in range(0, 9)]
+
     def __init__(self, snake, score):
         """
         self.points is the number of points the player has collected
@@ -28,8 +32,9 @@ class Game:
         self.player_name=""
         self.score=score
         self.snake=snake
-        self.game_matrix=[x[:] for x in START]
+        self.game_matrix=[x[:] for x in Game.START]
         self.coordinates = []
+
         for i in range(0, len(self.game_matrix)):
             for j in range(0, len(self.game_matrix[0])):
                 self.coordinates.append([i, j])
@@ -39,11 +44,11 @@ class Game:
         """this method initializes game attributes and returns initial image for gui"""
         self.points=0
         self.difficulty=difficulty
-        self.game_matrix=[x[:] for x in START]
+        self.game_matrix=[x[:] for x in Game.START]
         self.player_name=name
         snake_position=self.snake.reset()
         for snake_block in snake_position:
-            self.game_matrix[snake_block[0]][snake_block[1]]=snake_body
+            self.game_matrix[snake_block[0]][snake_block[1]]=self.snake_body
         self.game_over=False
         return self.game_matrix
 
@@ -67,14 +72,14 @@ class Game:
         for i in self.game_matrix:
             for j, elem in enumerate(i):
                 if elem.type!="snake":
-                    i[j]=empty
+                    i[j]=self.empty
 
     def remove_previous_snake(self):
         """This clears previous snake blocks. Used before rendering new snake position."""
         for i in self.game_matrix:
             for j, elem in enumerate(i):
                 if elem.type=="snake":
-                    i[j]=empty
+                    i[j]=self.empty
 
     def get_non_snake_coordinates(self):
         """This method is used to find coordinates [y,x] where there are no
@@ -123,7 +128,7 @@ class Game:
     def draw_snake(self,snake):
         """This method renders snake's body on the game_matrix."""
         for block in snake:
-            self.game_matrix[block[0]][block[1]]=snake_body
+            self.game_matrix[block[0]][block[1]]=self.snake_body
 
     def advance(self):
         """
