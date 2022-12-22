@@ -16,7 +16,8 @@
 |17.12|6:00|Lisättiin peliin uusia näkymiä, lisättiin 3 vaikeustasoa ja helpotettiin käytettävyyttä vaihtamalla menun napit klikattavaksi.|
 |20.12|3:00|Muutettiin High-score näkymän napit klikattavaksi, lisättiin vaikeustasot high-score näkymän tuloksien viereen|
 |21.12|4:00|refaktorointia|
-| yht| 47:30||
+|22.12|2:00|Poistettiin madon suunta Game-oliosta ja siirrettiin se mato-luokan attribuutiksi. Refaktoroitiin muutoksen hajottama koodi. Korjattiin bugi jossa mato voisi kääntyä itsensä päälle juuri lyhentyessään yhden pituiseksi.|
+| yht| 49:30||
 
 
 
