@@ -17,8 +17,9 @@ class Snake:
         self.direction=1
 
     def reset(self):
-        """This method resets snake's direction to 1,, pending_blocks to 0
-        and position to the given position when the class instance was created."""
+        """This method resets snake's direction to 1, pending_blocks to 0
+        and position to the given position when the class instance was created.
+        Position is returned to game for initial rendering."""
         self.position=[x[:] for x in self.start_position[:]]
         self.pending_blocks=0
         self.direction=1
