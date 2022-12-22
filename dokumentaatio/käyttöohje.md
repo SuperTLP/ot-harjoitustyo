@@ -32,12 +32,30 @@ Peli alkaa, kun pelaaja painaa ensimmäisen kerran oikeaa nuolinäppäintä peli
 
 Pelin päättymisen jälkeen pelaaja näkee saavuttamansa pisteet. Takaisin päävalikkoon pääsee painamalla keskellä ruutua olevaa Menu-paniketta.
 
-## Erikoiskarkit
+## Karkit
+
+### Tavalliset karkit
+- Punainen karkki lyhentää matoa karkissa ilmoitetun määrän verran.
+
+![DefaultTreat](./kuvat/negative_default_treat.png)
+
+- Vihreä karkki pidentää matoa karkissa ilmoitetun määrän verran.
+
+![DefaultTreat](./kuvat/positive_default_treat.png)
+
+### Erikoiskarkit
 Pelissä esiintyy useita erikoiskarkkeja, jotka ovat väriltään kullanvärisiä ja sinisiä. Sininen väri kuvastaa tason 2 karkkia, ja kultainen karkki tason 3 karkkia.
 - **Sininen karkki** joka on merkitty **rasti**lla poistaa kaikki pelin kentällä olevat karkit.
+
 ![PurgeTreat](./kuvat/purge_treat.png)
+
 - **Sininen karkki** jossa on merkintä **<-** kääntää madon suunnan päinvastaiseksi.
+
+![ReverseTreat](./kuvat/reverse_treat.png)
+
 - **Kultainen karkki** Jossa on merkintä **$** Lisää kartalle suuren määrän matoa lyhentäviä karkkeja.
+
+![FloodTreat](./kuvat/flood_treat.png)
 
 Kultaiset karkit antavat pelaajalle 40 pistettä, ja siniset karkit 20 pistettä.
 
