@@ -17,6 +17,7 @@ Pelin käyttöliittymällä on viisi näkymää:
 - Game over - näkymä
 - High Score
 
+Käyttöliittymä on toteutettu yhtenä View-luokkana, jonka metodeja näkymät ovat.
 Päävalikossa pelaaja syöttää nimensä pelille. Päävalikosta voi siirtyä tarkastelemaan korkeimpia pisteitä high-score näkymään, tai peli-näkymään pelaamaan peliä.
 
 Käyttöliittymässä Peli-näkymä kutsuu jokaisella peliloopin kierroksella Game-luokan advance funktiota, joka edistää peliä yhden askeleen. Täten Käyttöliittymä on myös vastuussa pelin taajuudesta.
