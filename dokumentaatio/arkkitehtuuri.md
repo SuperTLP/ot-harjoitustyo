@@ -25,7 +25,7 @@ Vaikeustason valinnan jälkeen kontrolli siirtyy pelinäkymään, missä oikeaa 
 
 ## Pelilogiikka
 
-Pelilogiikka on keskitetty Game-luokalle. Tämä tarkoittaa sitä, että Game-luokka on ainoa yhteys käyttöliittymästä pelilogiikkaan. Luokka säilyttää pelin tilan, ja päivittää muut pelilogiikan oliot kutsumalla niiden metodeja. se päivittää esimerkiksi mato-olion kutsumalla tämän advance-metodia ja pyytää TreatFactory-luokkaa luomaan uuden karkin peliin jokaisella pelin iteraatiolla.
+Pelilogiikka on keskitetty Game-luokalle. Se säilyttää pelin tilan, ja päivittää muut pelilogiikan oliot kutsumalla niiden metodeja. se päivittää esimerkiksi mato-olion kutsumalla tämän advance-metodia ja pyytää TreatFactory-luokkaa luomaan uuden karkin peliin jokaisella pelin iteraatiolla.
 Snake-luokka on vastuussa kaikesta matoon liittyvien tietojen tallentamisesta. Tähän sisältyy esimerkiksi madon sijainti.
 TreatFactory on vastuussa pelissä ilmestyvien karkkien luomisesta ja tiettyjen karkkien ilmestymisen todennäköisyydestä.
 
@@ -50,10 +50,7 @@ TreatFactory arpoo uutta karkkia luodessaan numeron, joka päättää minkä tas
 
 MatrixElement on luokka, jonka olio sisältää perustietoja kaikista pelissä esiintyvistä asioista. Pelin karkit ovat MatrixElement luokan olioita, joiden .action attribuutti on kyseisen karkkiluokan olio. Myös madon palikat sekä tyhjät ruudut ovat MatrixElement-luokan olioita, joiden .action on None, ja joiden taso on 0. Siis jokainen karkkiolio liittyy aina yhteen MatrixElement-olioon, mutta MatrixElement-olio ei välttämättä sisällä karkkioliota.
 
-Karkkiluokat ovat riippuvaisia joko madosta, pelistä tai molemmista. Kun Karkkiolion .consume-metodia kutsutaan, tekee se muutoksia matoon tai peliin, riippuen minkä tyyppinen karkki on kyseessä. Tämä ilmoitetaan MatrixElement olion .type attribuutissa.
-
-
-
+Karkkiluokat ovat riippuvaisia joko madosta tai pelistä. Kun Karkkiolion .consume-metodia kutsutaan, tekee se muutoksia matoon tai peliin, riippuen minkä tyyppinen karkki on kyseessä. Tämä ilmoitetaan MatrixElement olion .type attribuutissa.
 
 
 ### Pelin eteneminen
@@ -106,7 +103,7 @@ sequenceDiagram
   
 ```
 
-Siis edellisten sekvenssikaavioiden aikana pelaaja vaihtoi kulkusuunnan oikealle painamalla oikeaa nuolinäppäintä. Mato liikkui ensin tyhjän ruudun päälle, jonka jälkeen madon pään oikealle puolelle ilmestyi suunnan vaihtava karkki. Seuraavalla askeleella mato liikkui tämän karkin päälle, jolloin karkki syötiin, ja se muutti pelin suunnan, sekä madon position.
+Siis edellisten sekvenssikaavioiden aikana pelaaja vaihtoi madon kulkusuunnan oikealle painamalla oikeaa nuolinäppäintä. Mato liikkui ensin tyhjän ruudun päälle, jonka jälkeen madon pään oikealle puolelle ilmestyi suunnan vaihtava karkki. Seuraavalla askeleella mato liikkui tämän karkin päälle, jolloin karkki syötiin, ja se muutti madon suunnan, sekä sen position.
 
 
   
