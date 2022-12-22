@@ -13,6 +13,7 @@ poetry run invoke build
 Nyt pelin voi käynnistää komennolla
 ```
 poetry run invoke start
+```
 
 ## Pelin alkuvalikko
 Pelissä voidaan liikkua näkymästä toiseen klikkaamalla hiirellä valikoissa näkyviä nappeja. Klikkaamalla Play-nappia pääsee nimi-näkymään. Klikkaamalla High-scores-nappia pääsee High-score näkymään. Missä tahansa valikon ikkunassa pääsee takaisin alkuvalikkoon Vasemmassa yläkulmassa sijaitsevaa Menu-nappia painamalla.
