@@ -13,9 +13,9 @@ class MatrixElement:
 
             type:
                 defines whether this block is part of snake, empty block, treat affecting
-                the game matrix, treat affecting the snake, or treat affecting both.
+                a game instance or a treat affecting a snake instance.
                 Possible values respectively:
-                snake, empty, matrix_treat, treat, dual_treat .
+                snake, empty, matrix_treat, treat.
 
             tier:
                 this is a number representing how big of an impact this element has for

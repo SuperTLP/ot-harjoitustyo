@@ -28,8 +28,8 @@ class Game:
         self.coordinates is 2 dimensional list of game coordinates.
         This reduces overhead caused by searching free coordinates.
         self.game_over indicates whether the game is currently running. Is
-        False until game is started with .start method.
-        """
+        False until game is started with .start method."""
+
         self.points=0
         self.difficulty="medium"
         self.player_name=""
@@ -147,7 +147,7 @@ class Game:
     def eat_treat(self, treat):
         """
         argument:
-            treat: the treat that is to be consumed
+            treat: MatrixElement instance containing a treat.
 
         This method is called after is_treat method returns true, indicating
         snake has moved on top of a treat. the treat's consume function is called
@@ -171,14 +171,14 @@ class Game:
             return True
         return False
 
-    def draw_snake(self,snake):
+    def draw_snake(self,position):
         """
         argument:
-            snake: instance of snake class.
+            position: position of a snake class instance.
 
         This method renders snake's body on the game_matrix."""
 
-        for block in snake:
+        for block in position:
             self.game_matrix[block[0]][block[1]]=self.snake_body
 
     def advance(self):

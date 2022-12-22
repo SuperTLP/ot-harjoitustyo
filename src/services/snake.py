@@ -48,12 +48,13 @@ class Snake:
         argument:
             direction: numeric direction where snake is going to advance
 
-        This calculates what the next coordinates of snake's head
+        This method calculates what the next coordinates of snake's head
         are going to be given direction and returns it."""
 
         new_head=self.position[len(self.position)-1][:]
         new_head[0]+=DIRECTIONS[direction][0]
         new_head[1]+=DIRECTIONS[direction][1]
+
         return new_head
 
     def set_position(self, position):
@@ -69,14 +70,15 @@ class Snake:
     def set_pending_blocks(self, blocks):
         """
         argument:
-            blocks: numer that snake's pending_blocks should be set to.
+            blocks: number that snake's pending_blocks should be set to.
 
         This method sets snake's pending blocks to a given number."""
 
         self.pending_blocks=blocks
 
     def advance(self):
-        """This method moves the snake forward every time the game advances."""
+        """This method moves the snake forward"""
+
         new_head=self.new_head(self.direction)
         self.position.append(new_head)
         if self.pending_blocks<=0:
