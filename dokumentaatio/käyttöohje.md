@@ -34,8 +34,8 @@ Pelin päättymisen jälkeen pelaaja näkee saavuttamansa pisteet. Takaisin pä�
 
 ## Erikoiskarkit
 Pelissä esiintyy useita erikoiskarkkeja, jotka ovat väriltään kullanvärisiä ja sinisiä. Sininen väri kuvastaa tason 2 karkkia, ja kultainen karkki tason 3 karkkia.
-
 - **Sininen karkki** joka on merkitty **rasti**lla poistaa kaikki pelin kentällä olevat karkit.
+![PurgeTreat](./kuvat/purge_treat.png)
 - **Sininen karkki** jossa on merkintä **<-** kääntää madon suunnan päinvastaiseksi.
 - **Kultainen karkki** Jossa on merkintä **$** Lisää kartalle suuren määrän matoa lyhentäviä karkkeja.
 
