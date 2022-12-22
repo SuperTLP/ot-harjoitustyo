@@ -4,13 +4,13 @@ class Snake:
     """instance of this class is the snake controlled by the player."""
     def __init__(self, position=START):
         """
-        - pending_blocks is the number of times the snake will be extended
+        self.pending_blocks is the number of times the snake will be extended
         in the future. Each advance of the game reduces the value by one.
-        - start_position is a list containing original coordinates
+        self.start_position is a list containing original coordinates
         of the snake. This is never changed.
-        - self.position is a list containing the current coordinates
+        self.position is a list containing the current coordinates
         of the snake.
-        - self.direction is numeric value of snake's current direction."""
+        self.direction is numeric value of snake's current direction."""
         self.pending_blocks=0
         self.start_position=position[:]
         self.position=position[:]
