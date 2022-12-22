@@ -2,7 +2,6 @@ from random import choice
 from entities.matrix_element import MatrixElement
 from services.treat_factory import TreatFactory
 from service_config.service_config import GAME_OVER
-treat_factory=TreatFactory()
 snake_body=MatrixElement(None,"snake",0,0,0)
 empty=MatrixElement(None,"empty",0,0,0)
 
@@ -70,32 +69,26 @@ class Game:
                 if elem.type!="snake":
                     i[j]=empty
 
-    def clear_game_matrix(self):
+    def remove_previous_snake(self):
         """This clears previous snake blocks. Used before rendering new snake position."""
         for i in self.game_matrix:
             for j, elem in enumerate(i):
                 if elem.type=="snake":
                     i[j]=empty
 
-    def free_filter(self, coordinate):
-        """returns true if given coordinates are empty on game_matrix."""
-        return self.game_matrix[coordinate[0]][coordinate[1]].type=="empty"
-
-    def no_snake_filter(self, coordinate):
-        """Returns true if given coordinates are not coordinates of a
-        snake body block"""
-        return self.game_matrix[coordinate[0]][coordinate[1]].type!="snake"
-
     def get_non_snake_coordinates(self):
         """This method is used to find coordinates [y,x] where there are no
         snake_body blocks."""
-        non_snake_coordinates=list(filter(self.no_snake_filter, self.coordinates))
+        non_snake_coordinates=[
+        x[:] for x in self.coordinates if
+        self.game_matrix[x[0]][x[1]].type!="snake"]
         return non_snake_coordinates
 
     def get_empty_coordinates(self):
         """This method returns empty coordinates [y, x] on game_matrix. Empty
         coordinates mean the element's type in that location is empty"""
-        free_coordinates = list(filter(self.free_filter, self.coordinates))
+        free_coordinates = [x[:] for x in self.coordinates if
+        self.game_matrix[x[0]][x[1]].type=="empty"]
         return free_coordinates
 
     def new_treat(self):
@@ -127,7 +120,7 @@ class Game:
             return True
         return False
 
-    def update_snake_position(self,snake):
+    def draw_snake(self,snake):
         """This method renders snake's body on the game_matrix."""
         for block in snake:
             self.game_matrix[block[0]][block[1]]=snake_body
@@ -147,7 +140,7 @@ class Game:
             return GAME_OVER
         if self.is_treat(head):
             self.eat_treat(self.game_matrix[head[0]][head[1]])
-        self.clear_game_matrix()
-        self.update_snake_position(snake_image)
+        self.remove_previous_snake()
+        self.draw_snake(snake_image)
         self.new_treat()
         return self.game_matrix
