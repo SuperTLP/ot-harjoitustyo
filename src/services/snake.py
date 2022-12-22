@@ -19,7 +19,7 @@ class Snake:
     def reset(self):
         """This method resets snake's direction to 1,, pending_blocks to 0
         and position to the given position when the class instance was created."""
-        self.position=self.start_position[:]
+        self.position=[x[:] for x in self.start_position[:]]
         self.pending_blocks=0
         self.direction=1
         return self.position
