@@ -32,7 +32,7 @@ class Snake:
             return
         previous=self.position[-2]
         next_head=self.new_head(direction)
-        if len(self.position)>1 and next_head==previous:
+        if next_head==previous:
             return
         self.direction=direction
 
