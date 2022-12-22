@@ -12,12 +12,16 @@ class Game:
     supplied for gui."""
     def __init__(self, snake, score):
         """
+        self.points is the number of points the player has collected
+        self.difficulty is the difficulty level selected by player.
+        self.player_name is the name of the player.
         self.score is an instance of the Score class.
         self.snake is an instance of the snake-class.
         self.game_matrix is the current position of the game.
-        indicates lower refresh interval in gui.
         self.coordinates is 2 dimensional list of game coordinates.
         This reduces overhead caused by searching free coordinates.
+        self.game_over indicates whether the game is currently running. Is
+        False until game is started with .start method.
         """
         self.points=0
         self.difficulty="medium"
@@ -32,11 +36,7 @@ class Game:
         self.game_over=True
 
     def start(self, name,difficulty):
-        """this method initializes game attributes and returns initial image for gui
-        - self.points is the current amount of points
-        the player has collected.
-        - self.difficulty is the difficulty level chosen. Higher difficulty
-        - self.player_name is name of the player"""
+        """this method initializes game attributes and returns initial image for gui"""
         self.points=0
         self.difficulty=difficulty
         self.game_matrix=[x[:] for x in START]
