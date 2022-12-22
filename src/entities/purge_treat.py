@@ -7,6 +7,6 @@ class PurgeTreat:
         """
         argument:
         -game: instance of game class."""
-        
+
         game.purge_candy()
     

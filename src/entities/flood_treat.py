@@ -16,7 +16,7 @@ class FloodTreat:
         """
         argument:
         - game: Instance of Game class.
-        
+
         This method replaces every second element on every row of the game's
         game_matrix with defaultTreat element with effect of -2.
         """

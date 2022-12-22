@@ -28,9 +28,15 @@ class View:
         self.game_run=False
 
     def start_game(self, name, difficulty):
-        """This is the main game loop. Game's change_direction method is called on
+        """
+        arguments:
+        -name: name of the player
+        -difficulty: the difficulty level the game is played on.
+
+        This is the main game loop. Game's change_direction method is called on
         arrowkeys to change the direction the snake advances. depending on selected
         difficulty, the game updates once every 100, 200 or 300 milliseconds."""
+
         self.difficulty_selector_run=False
         self.game_run=True
         starting_image=self.game.start(name, difficulty)
@@ -84,9 +90,14 @@ class View:
             pygame.time.wait(interval)
 
     def start_difficulty_selector(self, name):
-        """This is loop of the view where user can select desired difficulty level.
+        """
+        argument:
+        -name: name of the player.
+
+        This is loop of the view where user can select desired difficulty level.
         when a difficulty level is selected, the control transitions to the
         game loop."""
+
         self.difficulty_selector_run=True
         self.name_view_run=False
         player_name=name
@@ -128,6 +139,7 @@ class View:
     def start_name_view(self):
         """This is loop of the view where user can enter their name. The name is passed
         to the difficulty selection after next button is pressed."""
+        
         self.name_view_run=True
         player_name=""
         def select_name():
@@ -161,6 +173,7 @@ class View:
     def start_ending_screen(self, points):
         """This view starts after the player loses the game. On this view
         the player sees how many points he got, and can then return to main menu."""
+
         self.ending_screen_run=True
         def quit():
             self.ending_screen_run=False
@@ -185,6 +198,7 @@ class View:
     def start_high_score(self):
         """This is the high score window loop. User can use buttons to
         navigate between windows and see scores players have gotten."""
+
         self.high_score_run=True
         self.page=0
         num_of_pages=ceil(len(self.score.all())/5)
@@ -233,6 +247,7 @@ class View:
     def run(self):
         """This is the main menu loop. Here the player can either continue
         to select their name or continue to inspect high scores"""
+
         self.display_run=True
         play_button = Button(rect=(250, 100, 200, 50),color=DARK_YELLOW,function=self.start_name_view,**PLAY_BUTTON_STYLE)
         high_score_button = Button(rect=(250, 200, 200, 50),color=DARK_RED,function=self.start_high_score,**HIGH_SCORE_BUTTON_STYLE)
