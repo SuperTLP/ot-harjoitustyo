@@ -97,10 +97,10 @@ sequenceDiagram
   Game->>Game:is_treat(position[-1])
   Game->>MatrixElement:MatrixElement.action.consume(self, snake)
   MatrixElement->>ReverseTreat:consume()
-  ReverseTreat->>Game: change_direction(-1)
+  ReverseTreat->>Snake: change_direction(3)
   ReverseTreat->>Snake:set_position(reversed(position))
   Game->>TreatFactory:new_random_treat()
-  TreatFactory-->>Game: MarixElement(PurgeTreat, "matrix_treat", 2, 20,"X")
+  TreatFactory-->>Game: MarixElement(PurgeTreat(), "matrix_treat", 2, 20,"X")
   Game-->>GUI:game_matrix
   
   
