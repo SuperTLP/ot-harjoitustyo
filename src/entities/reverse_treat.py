@@ -24,7 +24,7 @@ class ReverseTreat:
     def get_opposite_direction(self,position):
         """
         argument:
-        - position: position of snake class instance.
+            position: position of snake class instance.
 
         This method calculates what the snake's direction should be
         after it's reversed and returns it.
@@ -38,11 +38,11 @@ class ReverseTreat:
     def consume(self, snake):
         """
         argument:
-        - snake: snake class instance.
+            snake: snake class instance.
 
         This method reverses snake's position
-        and sets it's direction to opposite.
-        """
+        and sets it's direction to opposite."""
+
         if len(snake.position)==1:
             snake.change_direction(ReverseTreat.DIRECTIONS[snake.direction])
             return

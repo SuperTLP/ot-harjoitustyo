@@ -15,11 +15,11 @@ class FloodTreat:
     def consume(self, game):
         """
         argument:
-        - game: Instance of Game class.
+            game: Instance of Game class.
 
         This method replaces every second element on every row of the game's
-        game_matrix with defaultTreat element with effect of -2.
-        """
+        game_matrix with defaultTreat element with effect of -2."""
+
         matrix_copy=[row[:] for row in game.game_matrix[:]]
         for row_index, row in enumerate(matrix_copy):
 

@@ -4,16 +4,16 @@ class DefaultTreat:
     def __init__(self, effect):
         """
         argument:
-        - effect tells by how much snake's length is altered. Negative
-        effect indicates snake is contracted.
-        """
+            effect: how much snake's length is altered. Negative
+            effect indicates snake is contracted."""
+
         self.effect=effect
 
     def new_pending_blocks(self,position, blocks):
         """
         argument:
-        -position: position of a snake instance
-        - blocks: snake instance's pending blocks
+            position: position of a snake instance
+            blocks: snake instance's pending blocks
 
         This method calculates how much snake's pending blocks should be
         after it's length is contracted. This value is then returned.
@@ -26,12 +26,12 @@ class DefaultTreat:
     def consume(self, snake):
         """
         argument:
-        -snake: instance of Snake class to be modified
+            snake: instance of Snake class to be modified
 
         This method alters snake's length by effect. Snake's position
         will first be reduced and then pending blocks will be deleted if snake's
-        current length is smaller than 1 after being modified.
-        """
+        current length is smaller than 1 after being modified."""
+
         new_position=[i[:] for i in snake.position[:]]
         blocks = snake.pending_blocks
         if self.effect>=0:

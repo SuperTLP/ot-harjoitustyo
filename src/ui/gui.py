@@ -30,8 +30,8 @@ class View:
     def start_game(self, name, difficulty):
         """
         arguments:
-        -name: name of the player
-        -difficulty: the difficulty level the game is played on.
+            name: name of the player
+            difficulty: the difficulty level the game is played on.
 
         This is the main game loop. Game's change_direction method is called on
         arrowkeys to change the direction the snake advances. depending on selected
@@ -92,7 +92,7 @@ class View:
     def start_difficulty_selector(self, name):
         """
         argument:
-        -name: name of the player.
+            name: name of the player.
 
         This is loop of the view where user can select desired difficulty level.
         when a difficulty level is selected, the control transitions to the
@@ -139,7 +139,7 @@ class View:
     def start_name_view(self):
         """This is loop of the view where user can enter their name. The name is passed
         to the difficulty selection after next button is pressed."""
-        
+
         self.name_view_run=True
         player_name=""
         def select_name():

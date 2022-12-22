@@ -3,18 +3,18 @@ class Score:
     def __init__(self, database):
         """
         argument:
-        -database: the database where scores are stored."""
+            database: the database where scores are stored."""
         self.database=database
 
     def new(self, name, score, difficulty):
         """
         Arguments:
-        -name: Name of the player
-        -score: The score the player got
-        - difficulty: the difficulty level the score was gotten on
+            name: Name of the player
+            score: The score the player got
+            difficulty: the difficulty level the score was gotten on
 
-        This method inserts new score into database with given name,score and difficulty.
-        """
+        This method inserts new score into database with given name,score and difficulty."""
+
         cur = self.database.cursor()
         cur.execute("insert into scores (name, score, difficulty) values (?, ?, ?)",
         [name, score, difficulty])

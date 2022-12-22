@@ -4,7 +4,8 @@ from services.treat_factory import TreatFactory
 from service_config.service_config import GAME_OVER
 
 class Game:
-    """Game is class responsible for integrating entities, and producing the image
+    """
+    Game is class responsible for integrating entities, and producing the image
     supplied for gui.
     snake_body is used to mark snake location in game.
     empty is used to mark empty locations in game.
@@ -17,8 +18,8 @@ class Game:
     def __init__(self, snake, score):
         """
         Arguments:
-        -score is an instance of the Score class.
-        -snake is an instance of the snake-class.
+            score: an instance of the Score class.
+            snake: an instance of the Snake-class.
 
         self.points is the number of points the player has collected
         self.difficulty is the difficulty level selected by player.
@@ -45,11 +46,11 @@ class Game:
     def start(self, name,difficulty):
         """
         arguments:
-        -name: name of the player
-        -difficulty: difficulty level the game is played on
+            name: name of the player
+            difficulty: difficulty level the game is played on
 
-        this method initializes game attributes and returns initial image for gui
-        """
+        this method initializes game attributes and returns initial image for gui"""
+
         self.points=0
         self.difficulty=difficulty
         self.game_matrix=[x[:] for x in Game.START]
@@ -63,38 +64,38 @@ class Game:
     def set_game_matrix(self, matrix):
         """
         argument:
-        -matrix: new value for self.game_matrix
+            matrix: new value for self.game_matrix
 
-        this method sets self.game_matrix to custom matrix. used by special treats.
-        """
+        this method sets self.game_matrix to custom matrix. used by special treats."""
+
         self.game_matrix=matrix
 
     def out_out_bounds(self, head):
         """
         argument:
-        -head: snake's current head coordinates.
+            head: snake's current head coordinates.
 
-        This method tests whether the snake has hit wall
-        """
+        This method tests whether the snake has hit wall"""
+
         return (head[1]<0 or head[0]>=len(self.game_matrix) or
         head[0]<0 or head[1]>=len(self.game_matrix[0]))
 
     def snake_collision(self, position):
         """
         argument:
-        -position: snake's position
+            position: snake's position
 
         Checks if the first element (head) of the snake's position
         overlaps with some other snake_body element. Returns True or False
-        accordingly.
-        """
+        accordingly."""
+
         return position[-1] in position[:-1]
 
     def purge_candy(self):
         """
         This method removes all treats from game_matrix. Used by the PurgeTreat
-        consume method.
-        """
+        consume method."""
+
         for i in self.game_matrix:
             for j, elem in enumerate(i):
                 if elem.type!="snake":
@@ -102,8 +103,8 @@ class Game:
 
     def remove_previous_snake(self):
         """
-        This clears previous snake blocks. Used before rendering new snake position.
-        """
+        This clears previous snake blocks. Used before rendering new snake position."""
+
         for i in self.game_matrix:
             for j, elem in enumerate(i):
                 if elem.type=="snake":
@@ -112,8 +113,8 @@ class Game:
     def get_non_snake_coordinates(self):
         """
         This method is used to find coordinates [y,x] where there are no
-        snake_body blocks. It then returns those coordinates.
-        """
+        snake_body blocks. It then returns those coordinates."""
+
         non_snake_coordinates=[
         x[:] for x in self.coordinates if
         self.game_matrix[x[0]][x[1]].type!="snake"]
@@ -123,8 +124,8 @@ class Game:
         """
         This method returns empty coordinates [y, x] on game_matrix. Empty
         coordinates mean the element's type in that location is empty. Those
-        Coordinates are then returned.
-        """
+        Coordinates are then returned."""
+
         free_coordinates = [x[:] for x in self.coordinates if
         self.game_matrix[x[0]][x[1]].type=="empty"]
         return free_coordinates
@@ -132,8 +133,8 @@ class Game:
     def new_treat(self):
         """
         this method fetches new treat object from TreatFactory and adds
-        it to game_matrix
-        """
+        it to game_matrix"""
+
         new_treat=TreatFactory().new_random_treat()
         free_coordinates=self.get_non_snake_coordinates()
         if new_treat.tier==1:
@@ -146,7 +147,7 @@ class Game:
     def eat_treat(self, treat):
         """
         argument:
-        -treat: the treat that is to be consumed
+            treat: the treat that is to be consumed
 
         This method is called after is_treat method returns true, indicating
         snake has moved on top of a treat. the treat's consume function is called
@@ -161,11 +162,11 @@ class Game:
     def is_treat(self, head):
         """
         argument:
-        -head: coordinates of snake's head.
+            head: coordinates of snake's head.
 
         This method tests whether the snake has moved on a consumable
-        element. Returns True or False accordingly.
-        """
+        element. Returns True or False accordingly."""
+
         if self.game_matrix[head[0]][head[1]].tier!=0:
             return True
         return False
@@ -173,10 +174,10 @@ class Game:
     def draw_snake(self,snake):
         """
         argument:
-        -snake: instance of snake class.
+            snake: instance of snake class.
 
-        This method renders snake's body on the game_matrix.
-        """
+        This method renders snake's body on the game_matrix."""
+
         for block in snake:
             self.game_matrix[block[0]][block[1]]=self.snake_body
 
@@ -184,8 +185,8 @@ class Game:
         """
         This method initiates creation of a treat element, treat consumption
         and asks snake to update it's position given the direction. This method
-        then updates the game_matrix and returns it to the GUI for rendering.
-        """
+        then updates the game_matrix and returns it to the GUI for rendering. """
+
         snake_image = self.snake.advance()
         head = snake_image[len(snake_image)-1]
         if not self.game_over and (self.out_out_bounds(head) or self.snake_collision(snake_image)):

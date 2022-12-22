@@ -5,7 +5,7 @@ class Snake:
     def __init__(self, position=START):
         """
         argument:
-        -position: initial coordinates of snake's body. saved in self.start_position.
+            position: initial coordinates of snake's body. saved in self.start_position.
 
         self.pending_blocks is the number of times the snake will be extended
         in the future. Each advance reduces the value by one.
@@ -30,8 +30,8 @@ class Snake:
     def change_direction(self, direction):
         """
         argument:
-        -direction: numeric direction for snake. values are:
-        0: up, 1: right, 2: down, 3: left.
+            direction: numeric direction for snake. values are:
+            0: up, 1: right, 2: down, 3: left.
 
         This method ets self.direction if snake does not turn on itself."""
 
@@ -46,7 +46,7 @@ class Snake:
     def new_head(self, direction):
         """
         argument:
-        -direction: numeric direction where snake is going to advance
+            direction: numeric direction where snake is going to advance
 
         This calculates what the next coordinates of snake's head
         are going to be given direction and returns it."""
@@ -59,7 +59,7 @@ class Snake:
     def set_position(self, position):
         """
         argument:
-        -position: 2-dimensional list that snake's position is to be set to.
+            position: 2-dimensional list that snake's position is to be set to.
 
         This method sets the snakes position to custom list..
         This is used by special treats to alter the snake's behaviour."""
@@ -69,9 +69,10 @@ class Snake:
     def set_pending_blocks(self, blocks):
         """
         argument:
-        -blocks: numer that snake's pending_blocks should be set to.
+            blocks: numer that snake's pending_blocks should be set to.
 
         This method sets snake's pending blocks to a given number."""
+
         self.pending_blocks=blocks
 
     def advance(self):
