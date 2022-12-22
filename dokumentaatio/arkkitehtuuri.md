@@ -95,7 +95,7 @@ sequenceDiagram
   Snake-->>Game:position (2 dimensional list)
   Game->>Game:is_treat(position[-1])
   Game->>MatrixElement:MatrixElement.action.consume(snake)
-  MatrixElement->>ReverseTreat:consume()
+  MatrixElement->>ReverseTreat:consume(snake)
   ReverseTreat->>Snake:set_position(reversed(position))
   ReverseTreat->>Snake: change_direction(3)
   Game->>TreatFactory:new_random_treat()
