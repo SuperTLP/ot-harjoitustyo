@@ -23,10 +23,8 @@ class MatrixElement:
                 and higher rarity.
 
             points:
-                the number of points colliding with this block awards the player.
+                the number of points colliding with this block awards the player."""
 
-        """
-        
         self.action=action
         self.symbol=symbol
         self.type=_type
