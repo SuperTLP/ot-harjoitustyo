@@ -76,7 +76,7 @@ sequenceDiagram
   Game->>Game:clear_game_matrix()
   Game->>Game:update_game_matrix(position)
   Game->>TreatFactory:generate_random_treat()
-  TreatFactory-->>Game:MarixElement(ReverseTreat(), "dual_treat", 2, 20,"$")
+  TreatFactory-->>Game:MarixElement(ReverseTreat(), "treat", 2, 20,"$")
   Game-->>GUI:game_matrix
   ```
   Tarkastellaan seuraavaksi sekvenssikaaviota tilanteesta, missä Pelaaja syö madon suunnan kääntäävn karkin (jatkoa edelliselle sekvenssikaaviolle):

@@ -7,7 +7,7 @@ class DefaultTreat:
         self.points=1
         self.tier=1
     def new_pending_blocks(self,position, blocks):
-        """Calculate how much snakes pending blocks be"""
+        """Calculate how much snakes pending blocks should be after consumption."""
         leftover=len(position)+self.effect-1
         new_blocks=blocks+leftover
         new_blocks = max(new_blocks,0)
@@ -18,7 +18,7 @@ class DefaultTreat:
         be added to snake's pending blocks. Snake will then extend itself.
         If effect is negative, snake's length will first be reduced by removing
         elements from snake's position. Then pending blocks will be removed
-        if the effect is larger than snake's length"""
+        if the effect would make snake's position shorter than 1 block."""
         new_position=[i[:] for i in snake.position[:]]
         blocks = snake.pending_blocks
         if self.effect>=0:

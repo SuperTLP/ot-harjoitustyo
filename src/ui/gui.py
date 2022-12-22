@@ -14,14 +14,13 @@ DARK_RED,DARK_GREEN,DARK_YELLOW
 from ui.ui_config import (
     color_map,tier_color_map,difficulty_map,GAME_OVER
 )
-#generate rgb color given positivity / negativity of defaulttreat effect.
 
 main_font = pygame.font.SysFont('Comic Sans MS', 30)
 secondary_font=pygame.font.SysFont('Comic Sans MS', 20)
 
 class View:
     """This class is responsible for graphical views of the game. Each method
-    corresponds to a certain window."""
+    corresponds to a certain view."""
     def __init__(self, game, score):
         self.score=score
         self.game=game
@@ -44,14 +43,14 @@ class View:
                     self.game_run=False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        self.game.change_direction(3)
+                        self.game.snake.change_direction(3)
                     if event.key == pygame.K_RIGHT:
-                        self.game.change_direction(1)
+                        self.game.snake.change_direction(1)
                         started=True
                     if event.key == pygame.K_UP:
-                        self.game.change_direction(0)
+                        self.game.snake.change_direction(0)
                     if event.key == pygame.K_DOWN:
-                        self.game.change_direction(2)
+                        self.game.snake.change_direction(2)
 
             self.screen.fill((0, 0, 0))
             pygame.draw.rect(self.screen, (0, 255, 255), pygame.Rect(0, 0, 750, 50))
@@ -233,7 +232,8 @@ class View:
 
 
     def run(self):
-        """This is the main menu loop"""
+        """This is the main menu loop. Here the player can either continue
+        to select their name or continue to inspect high scores"""
         self.display_run=True
         play_button = Button(rect=(250, 100, 200, 50),color=DARK_YELLOW,function=self.start_name_view,**PLAY_BUTTON_STYLE)
         high_score_button = Button(rect=(250, 200, 200, 50),color=DARK_RED,function=self.start_high_score,**HIGH_SCORE_BUTTON_STYLE)

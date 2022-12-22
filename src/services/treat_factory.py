@@ -14,7 +14,7 @@ MatrixElement(DefaultTreat(-1),"treat", 1, 1, -1),
 MatrixElement(DefaultTreat(-2),"treat", 1, 1, -2),
 MatrixElement(FloodTreat(),"matrix_treat",3,40,"$"),
 MatrixElement(PurgeTreat(),"matrix_treat",2,20,"X"),
-MatrixElement(ReverseTreat(),"dual_treat", 2,20,"<-")
+MatrixElement(ReverseTreat(),"treat", 2,20,"<-")
 ]
 
 class TreatFactory:

@@ -4,11 +4,11 @@ new_treat=MatrixElement(DefaultTreat(-2),"treat",1,1,-2)
 
 class FloodTreat:
     #Instance of this class spawns a snake-length-reducing candy in every second
-    #matrix position.
+    #matrix position. when consumed
     def __init__(self):
         pass
     def consume(self, game):
-        """replace every second element on every second row of the game_matrix
+        """replace every second element on every row of the game_matrix
         with defaultTreat element with effect of -2."""
         matrix_copy=[row[:] for row in game.game_matrix[:]]
         for row_index, row in enumerate(matrix_copy):

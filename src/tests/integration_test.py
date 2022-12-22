@@ -22,7 +22,7 @@ class TestIntegration(unittest.TestCase):
 
     def test_movement(self):
         self.game.start("Tester", "easy")
-        self.game.change_direction(1)
+        self.snake.change_direction(1)
         for i in range(0, 20):
             self.game.advance()
         self.assertEqual(self.game.game_over, True)
@@ -30,10 +30,9 @@ class TestIntegration(unittest.TestCase):
 
     def test_points_increase(self):
         candy=MatrixElement(DefaultTreat(1),"treat",1,1,1)
-        empty=MatrixElement(None,"empty",0,0,0)
         self.game.start("Tester", "easy")
         for i in range(0, 5):
-            snake_head=self.snake.position[len(self.snake.position)-1]
+            snake_head=self.snake.position[-1]
             self.game.game_matrix[snake_head[0]][snake_head[1]+1]=candy
             self.game.advance()
         self.assertEqual(len(self.snake.position), 8)
@@ -61,7 +60,7 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(str(self.score.all()), "[(1, 'Tester', 8, 'easy')]")
 
     def test_reverse_treat_consumption(self):
-        treat = MatrixElement(ReverseTreat(),"dual_treat",2,20,"<-")
+        treat = MatrixElement(ReverseTreat(),"treat",2,20,"<-")
         self.game.start("Riku", "easy")
         self.snake.set_position([[1, 2], [2, 2], [3,2], [3, 4], [3, 5]])
         self.game.game_matrix[3][6]=treat
@@ -69,10 +68,10 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(self.game.points, 20)
         self.assertEqual(str(list(reversed([[2, 2], [3,2], [3, 4], [3, 5],[3, 6]]))),
         str(self.snake.position))
-        self.assertEqual(self.game.direction, 0)
+        self.assertEqual(self.snake.direction, 0)
 
     def test_reverse_treat_opposite_direction(self):
-        treat = MatrixElement(ReverseTreat(),"dual_treat",2,20,"<-")
+        treat = MatrixElement(ReverseTreat(),"treat",2,20,"<-")
         self.game.start("Riku", "easy")
         self.snake.set_position([[3, 1],[3,2]])
         self.game.game_matrix[3][3]=treat
@@ -80,6 +79,19 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(self.game.points, 20)
         self.assertEqual(str(list(reversed([[3,2],[3,3]]))),
         str(self.snake.position))
-        self.assertEqual(self.game.direction, 3)
+        self.assertEqual(self.snake.direction, 3)
         self.assertEqual(self.game.game_over,False)
+
+    def test_snake_length_increases_correctly(self):
+        snake=Snake([[1, 3], [1, 4], [1, 5]])
+        game=Game(snake,self.score)
+        game.start("Tester","easy")
+        for i in range(0, 4):
+            candy=MatrixElement(DefaultTreat(1),"treat",1,1,1)
+            snake_head=snake.position[-1]
+            game.game_matrix[snake_head[0]][snake_head[1]+1]=candy
+            game.advance()
+        self.assertEqual(len(snake.position),6)
+        self.assertEqual(snake.pending_blocks,1)
+
 

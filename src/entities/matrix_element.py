@@ -1,6 +1,6 @@
 class MatrixElement:
     """This is a default wrapper for all elements that appear on game_matrix. And
-        contains their default information"""
+        contains their basic information"""
     def __init__(self, action,_type, tier, points,symbol):
         """
         action - a treat instance. Is None if the instance is not a treat.
@@ -8,8 +8,8 @@ class MatrixElement:
         identification)
         type - defines whether this block is part of snake, empty block, treat affecting
         the game matrix, treat affecting the snake, or treat affecting both.
-        Possible respectively:
-        snake, empty, matrix_treat, treat, dual_treat.
+        Possible values respectively:
+        snake, empty, matrix_treat, treat, dual_treat .
         tier: this is a number representing how big of an impact this element has for
         the player's success. Higher tier represents greater positive impact and higher rarity.
         points - the number of points colliding with this block awards the player.

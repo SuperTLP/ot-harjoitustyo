@@ -26,12 +26,4 @@ class TestGame(unittest.TestCase):
         expected_snake_coordinates=[[1, 5], [1, 6], [1, 7]]
         for element in expected_snake_coordinates:
             self.assertEqual(game.game_matrix[element[0]][element[1]].type, "snake")
-            
-    def test_snake_does_not_turn_on_itself(self):
-        snake=MagicMock()
-        snake.advance=MagicMock()
-        snake.position=[[1, 5], [1, 6], [1, 7]]
-        game = Game(snake, self.db)
-        game.change_direction(1)
-        game.change_direction(3)
-        self.assertEqual(game.direction,1)
+
