@@ -29,7 +29,7 @@ luokkaoliot, eikä Mock-olioita. Testiluokan jokaisessa testimetodissa luodaan G
 Toisin kuin repositories-luokan testeissä, integraatiotestissä luodaan oikea tietokanta, jonne testien tulokset tallennetaan.
 
 TestIntegration-luokan testeissä pelissä matoa liikutellaan useiden karkkien päälle, ja tarkistetaan, että jokaisen luokan tiedot päivittyvät oikein.
-Tähän kuuluu Snake-olion position, Pending_blocks, sekä Game-olion pisteet ja direction -attribuutit.
+Tähän kuuluu Snake-olion position, Pending_blocks ja direction, sekä Game-olion pisteet.
 
 ## Testikattavuus
 22.12.2022 Testikattavuus on 93%
