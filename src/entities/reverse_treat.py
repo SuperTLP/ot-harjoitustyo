@@ -15,6 +15,7 @@ class ReverseTreat:
     when consumed. This means the snake will continue in opposite direction."""
     def __init__(self):
         pass
+
     def get_opposite_direction(self,position):
         """This method calculates what the snake's direction should be
         after it's reversed"""
@@ -23,6 +24,7 @@ class ReverseTreat:
         new_direction=str([new_direction_y,new_direction_x])
         new_numeric_direction=numeric_direction_from_coordinates[new_direction]
         return new_numeric_direction
+
     def consume(self, snake):
         """This method reverses snake's position list
         and sets it's direction to opposite."""

@@ -13,6 +13,7 @@ class DefaultTreat:
         new_blocks=blocks+leftover
         new_blocks = max(new_blocks,0)
         return new_blocks
+
     def consume(self, snake):
         """This method changes the snake's length depending on
         effect. If effect is greater than or equal to 0, this amount will

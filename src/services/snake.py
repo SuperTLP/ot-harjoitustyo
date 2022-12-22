@@ -42,16 +42,16 @@ class Snake:
         new_head[0]+=directions[direction][0]
         new_head[1]+=directions[direction][1]
         return new_head
-    
+
     def set_position(self, position):
         """This sets the snakes position to given list.
         This is used by special treats to alter the snake's behaviour."""
         self.position=[i[:] for i in position[:]]
-        
+
     def set_pending_blocks(self, blocks):
         """This method sets snake's pending blocks to a given number."""
         self.pending_blocks=blocks
-        
+
     def advance(self):
         """This method moves the snake forward every time the game advances."""
         new_head=self.new_head(self.direction)

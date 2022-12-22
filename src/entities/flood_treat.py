@@ -7,6 +7,7 @@ class FloodTreat:
     #matrix position. when consumed
     def __init__(self):
         pass
+
     def consume(self, game):
         """replace every second element on every row of the game_matrix
         with defaultTreat element with effect of -2."""

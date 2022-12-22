@@ -21,11 +21,13 @@ class TreatFactory:
     #This class handles creation of treats
     def __init__(self):
         pass
+
     def new_treat(self, tier):
         #This method creates a new treat of a certain tier and returns it.
         possible_treats=[treat for treat in all_treats if treat.tier==tier]
         new_treat=choice(possible_treats)
         return new_treat
+
     def new_random_treat(self):
         #This method selects a random tier for treat and selects a random
         #treat of that tier.
