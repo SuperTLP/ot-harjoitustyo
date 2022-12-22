@@ -69,9 +69,10 @@ sequenceDiagram
   participant Snake
   
   User->>GUI:Right Arrowkey
-  GUI->>Game:change_direction(1)
+  GUI->>Game:game.snake.change_direction(1)
+  Game->>Snake:change_direction(1)
   GUI->>Game:Advance()
-  Game->>Snake:Advance(1)
+  Game->>Snake:Advance()
   Snake-->>Game:position(2 dimensional array)
   Game->>Game:clear_game_matrix()
   Game->>Game:update_game_matrix(position)
@@ -91,7 +92,7 @@ sequenceDiagram
   participant MatrixElement
   participant ReverseTreat
   GUI->>Game:advance()
-  Game->>Snake:advance(1)
+  Game->>Snake:advance()
   Snake-->>Game:position (2 dimensional list)
   Game->>Game:is_treat(position[-1])
   Game->>MatrixElement:MatrixElement.action.consume(self, snake)
