@@ -26,6 +26,8 @@ Pelissä käärmettä ohjataan nuolinäppäimillä, ja pyritään syömään mah
 
 [Toinen julkaisu](https://github.com/SuperTLP/ot-harjoitustyo/releases/tag/viikko6)
 
+[Loppupalautus](https://github.com/SuperTLP/ot-harjoitustyo/releases/tag/loppupalautus)
+
 ## Asennus
 
 1. Asenna riippuvuudet komennolla
