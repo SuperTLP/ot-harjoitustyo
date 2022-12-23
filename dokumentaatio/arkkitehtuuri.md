@@ -38,7 +38,7 @@ Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
 ![Luokkakaavio](./kuvat/luokkakaavio.png)
 
 - **Game-Snake**:
-Pelille injektoidaan Snake-olio, joka on vastuussa madon sijainnin ja muiden madon kannalta kriittisten tietojen säilyttämisestä. Game-luokka pyytää pelin jokaisella iteraatiolla tätä päivittämään itsensä kutsumalla tämän .advance-metodia. Tämä metodi palauttaa pelille madon uuden sijainnin pelissä. Peli käyttää myös Snake-olion position-attribuuttia selvittääkseen, onko mato törmännyt seinään tai itseensä, tai onko se siirtynyt karkin päälle.
+Game-oliolle injektoidaan Snake-olio, joka on vastuussa madon sijainnin ja muiden madon kannalta kriittisten tietojen säilyttämisestä. Game-olio pyytää pelin jokaisella iteraatiolla tätä päivittämään itsensä kutsumalla tämän .advance-metodia. Tämä metodi palauttaa pelille madon uuden sijainnin pelissä. Game käyttää myös Snake-olion position-attribuuttia selvittääkseen, onko mato törmännyt seinään tai itseensä, tai onko se siirtynyt karkin päälle.
 
 - **Game->TreatFactory**:
 Peli pyytää pelin jokaisella iteraatiolla TreatFactory-oliota luomaan uuden karkin kutsumalla tämän .generate_random_treat metodia. Metodi palauttaa uuden karkin sisältävän MatrixElement olion, jonka peli lisää kartalle.
