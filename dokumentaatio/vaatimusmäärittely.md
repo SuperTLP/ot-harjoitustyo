@@ -17,6 +17,8 @@ Luodaan matopeli, jossa pelaajien pisteet tallennetaan paikallisesti tietokantaa
 - pelissä on erikoiskarkki, jonka syöminen kääntää madon suunnan. (tehty)
 - pelissä on erikoiskarkki, jonka syöminen lisää kartalle matoa lyhentäviä karkkeja (tehty)
 - peliä voi pelata eri vaikeustasoilla, jotka määräävät madon liikkumisnopeuden (tehty)
+- pelin päättymisen jälkeen pelaaja näkee kuinka paljon pisteitä hän sai.
+- pelin yläkulmassa näkyy pelaajan senhetkiset pisteet
 
 ## korkeimpien pisteiden tarkasteleminen
 - Pelissä high-score näkymässä näkee suuruusjärjestyksessä pelaajien saavuttamat pisteet suurimmasta pienimpään (tehty)
