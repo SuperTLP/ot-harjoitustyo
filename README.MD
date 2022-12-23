@@ -9,17 +9,17 @@ Pelissä käärmettä ohjataan nuolinäppäimillä, ja pyritään syömään mah
 
 ## Dokumentaatio
 
-[vaatimusmäärittely.md](dokumentaatio/vaatimusmäärittely.md)
+- [käyttöohje.md](dokumentaatio/käyttöohje.md)
 
-[tuntikirjanpito.md](dokumentaatio/tuntikirjanpito.md)
+- [vaatimusmäärittely.md](dokumentaatio/vaatimusmäärittely.md)
 
-[arkkitehtuuri.md](dokumentaatio/arkkitehtuuri.md)
+- [tuntikirjanpito.md](dokumentaatio/tuntikirjanpito.md)
 
-[changelog.md](dokumentaatio/changelog.md)
+- [arkkitehtuuri.md](dokumentaatio/arkkitehtuuri.md)
 
-[käyttöohje.md](dokumentaatio/käyttöohje.md)
+- [changelog.md](dokumentaatio/changelog.md)
 
-[testaus.md](dokumentaatio/testaus.md)
+- [testaus.md](dokumentaatio/testaus.md)
 
 ## Pelin julkaisut
 [Ensimmäinen julkaisu](https://github.com/SuperTLP/ot-harjoitustyo/releases/tag/viikko5)
