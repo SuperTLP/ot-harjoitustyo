@@ -76,7 +76,7 @@ sequenceDiagram
   TreatFactory-->>Game:MarixElement(ReverseTreat(), "treat", 2, 20,"<-")
   Game-->>GUI:game_matrix
   ```
-  Tarkastellaan seuraavaksi sekvenssikaaviota tilanteesta, missä Pelaaja syö madon suunnan kääntäävn karkin (jatkoa edelliselle sekvenssikaaviolle):
+  Tarkastellaan seuraavaksi sekvenssikaaviota tilanteesta, missä Pelaaja syö madon suunnan kääntävän karkin (jatkoa edelliselle sekvenssikaaviolle):
  
 ```mermaid
 sequenceDiagram
