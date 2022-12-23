@@ -37,6 +37,8 @@ poetry run invoke build
 
 ## Komennot
 
+*Komennot suoritetaan pelin hakemistossa komentorivillä*
+
 ### Pelaaminen
 Pelin pystyy käynnistämään komennolla
 ~~~
