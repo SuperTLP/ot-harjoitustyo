@@ -97,28 +97,7 @@ sequenceDiagram
   ReverseTreat->>Snake: change_direction(3)
   Game->>TreatFactory:new_random_treat()
   TreatFactory-->>Game: MarixElement(PurgeTreat(), "matrix_treat", 2, 20,"X")
-  Game-->>GUI:game_matrix
-  
-  
+  Game-->>GUI:game_matrix 
 ```
 
 Siis edellisten sekvenssikaavioiden aikana pelaaja vaihtoi madon kulkusuunnan oikealle painamalla oikeaa nuolinäppäintä. Mato liikkui ensin tyhjän ruudun päälle, jonka jälkeen madon pään oikealle puolelle ilmestyi suunnan vaihtava karkki. Seuraavalla askeleella mato liikkui tämän karkin päälle, jolloin karkki syötiin, ja se muutti madon suunnan, sekä sen position. Tämän jälkeen Peli pyysi TreatFactorya luomaan uuden karkin, joka sattui tällä kertaa olemaan PurgeTreat, joka poistaa kaikki karkit kartalta.
-
-
-  
-  
-  
-  
-
-```
-
-
-
-
-
-
-
-
-
-
-
