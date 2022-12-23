@@ -106,14 +106,13 @@ class View:
         """
 
         self.difficulty_selector_run=True
-        player_name=name
-        ##One of these functions is executed when a button is pressed
+
         def quit():
             self.difficulty_selector_run=False
 
         def start_game(difficulty):
             self.difficulty_selector_run=False
-            self.start_game(player_name, difficulty)
+            self.start_game(name, difficulty)
 
         buttons =[
         Button(rect=(250, 150, 150, 50),color=DARK_RED,function=lambda: start_game("hard"),**HARD_BUTTON_STYLE),
@@ -121,18 +120,13 @@ class View:
         Button(rect=(250, 350, 150, 50),color=DARK_GREEN,function=lambda: start_game("easy"),**EASY_BUTTON_STYLE),
         Button(rect=(0, 0, 150, 50),color=DARK_YELLOW,function=quit,**MENU_BUTTON_STYLE),
         ]
-        #The loop
+
         while self.difficulty_selector_run:
-            #Go through all events to tell what the user has done
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.display_run=False
                     self.difficulty_selector_run=False
-                if event.type==pygame.KEYDOWN:
-                    if str(event.unicode) in " abcdefghijklmnopqrstuvwxyzoåäö"+"abcdefghijklmnopqrstuvwxyzoåäö".upper():
-                        player_name+=event.unicode
-                    if event.key==pygame.K_BACKSPACE:
-                        player_name=player_name[:-1]
                 for button in buttons:
                     button.check_event(event)
 
@@ -140,7 +134,7 @@ class View:
             title = View.main_font.render(
                 """Select difficulty to start game""", False, (255, 0, 0))
             self.screen.blit(title, (20, 50))
-            #These methods are required to update button visuals on hover.
+
             for button in buttons:
                 button.update(self.screen)
             pygame.display.update()

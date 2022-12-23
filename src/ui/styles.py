@@ -9,7 +9,7 @@ DARK_GREEN=(0, 220, 0)
 LIGHT_GREEN=(0, 255, 0)
 BLACK=(0, 0, 0)
 WHITE=(255, 255, 255)
-#This file is GUI, and thus is not tested
+
 main_font = pygame.font.SysFont('Comic Sans MS', 30)
 DEFAULT_BUTTON_STYLE = {
     "hover_color": LIGHT_YELLOW,

@@ -18,10 +18,3 @@ class TestScore(unittest.TestCase):
         self.db.cursor.assert_called()
         self.cursor.execute.assert_called_with("insert into scores (name, score, difficulty) values (?, ?, ?)", ["tester", 20, "easy"])
         self.db.commit.assert_called()
-
-
-
-
-# cur = self.database.cursor()
-# cur.execute("insert into scores (name, score) values (?, ?)", [name, score])
-# self.database.commit()
