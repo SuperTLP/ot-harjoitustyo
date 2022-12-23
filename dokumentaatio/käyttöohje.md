@@ -1,4 +1,4 @@
-## Ohjeet pelaamiseen
+# Käyttöohje
 
 ## Pelin käynnistäminen
 Pelin käynnistäminen ei vaadi konfiguraatiota, vaan pelkästään kolmen komennon suorittamista pelin hakemistossa.
