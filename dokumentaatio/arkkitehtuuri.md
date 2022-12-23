@@ -54,6 +54,10 @@ MatrixElement on luokka, jonka olio sisältää perustietoja kaikista pelissä e
 
 - **karkkiluokkien riippuvuus Snake-luokasta tai Game-luokasta**: Karkkiluokat ovat riippuvaisia joko madosta tai pelistä. Jokainen karkkiolio ottaa .consume metodin argumentiksi joko Game-olion tai Snake-olion, riippuen siitä, kumpaa oliota karkki muokkaa. Tämä on ilmoitettu Karkkia vastaavan MatrixElement-olion .type-attribuutissa. Se on "treat", jos .consume metodi muokkaa matoa, ja "matrix_treat", jos .consume muokkaa Game-oliota.
 
+## Tietojen pysyväistallennus
+
+Peli käyttää yhtä sqlite-tietokantaa, jossa on yksi taulu scores. Tällä taululla on neljä kenttää: id, pelaajan nimi, pisteet sekä vaikeustaso. Game-olio tallentaa tauluun uuden tuloksen pelin päättyessä kutsumalla Score-olion .new-metodia.
+
 
 ### Pelin eteneminen
 
