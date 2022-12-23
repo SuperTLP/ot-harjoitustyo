@@ -37,11 +37,20 @@ Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
 
 ![Luokkakaavio](./kuvat/luokkakaavio.png)
 
+## Oleelliset riippuvuudet ja yhteydet
+
+### Services-olioiden riippuvuudet ja yhteydet
+
 - **Game-Snake**:
 Game-oliolle injektoidaan Snake-olio, joka on vastuussa madon sijainnin ja muiden madon kannalta kriittisten tietojen säilyttämisestä. Game-olio pyytää pelin jokaisella iteraatiolla tätä päivittämään itsensä kutsumalla tämän .advance-metodia. Tämä metodi palauttaa pelille madon uuden sijainnin pelissä. Game käyttää myös Snake-olion position-attribuuttia selvittääkseen, onko mato törmännyt seinään tai itseensä, tai onko se siirtynyt karkin päälle.
 
 - **Game->TreatFactory**:
 Peli pyytää pelin jokaisella iteraatiolla TreatFactory-oliota luomaan uuden karkin kutsumalla tämän .generate_random_treat metodia. Metodi palauttaa uuden karkin sisältävän MatrixElement olion, jonka peli lisää kartalle.
+
+- **Game-Score**:
+Game-oliolle injektoidaan Score-olio. Game käyttää tätä oliota uuden tuloksen tallentamiseen pelin päätyttyä, kutsumalla Scoren .new-metodia.
+
+### Entities-olioiden riippuvuudet ja yhteydet
 
 - **TreatFactory->MatrixElement**:
 TreatFactory arpoo uutta karkkia luodessaan numeron, joka päättää minkä tasoinen karkki luodaan. Tietyn numeron perusteella peli valitsee tason 1, 2 tai 3 ja suodattaa kaikkien karkkien listasta tasoa vastaavat MatrixElement-oliot joiden .tier attribuutti on kyseinen taso.
@@ -54,9 +63,15 @@ MatrixElement on luokka, jonka olio sisältää perustietoja kaikista pelissä e
 
 - **karkkiluokkien riippuvuus Snake-luokasta tai Game-luokasta**: Karkkiluokat ovat riippuvaisia joko madosta tai pelistä. Jokainen karkkiolio ottaa .consume metodin argumentiksi joko Game-olion tai Snake-olion, riippuen siitä, kumpaa oliota karkki muokkaa. Tämä on ilmoitettu Karkkia vastaavan MatrixElement-olion .type-attribuutissa. Se on "treat", jos .consume metodi muokkaa matoa, ja "matrix_treat", jos .consume muokkaa Game-oliota.
 
+### Käyttöliittymän riippuvuudet ja yhteydet
+Gui-luokalle injektoidaan sekä peli-, että score-oliot. Käyttöliittymän pelistä vastaava metodi kutsuu tietyin väliajoin Game-olion .advance-metodia tuottaen uuden kuvan. Käyttöliittymän korkeimpien pisteiden tarkastelusta vastaava metodi kutsuu Score-olion .all-metodia hakien kaikki paikallisesti tallennetut pisteet.
+
+
 ## Tietojen pysyväistallennus
 
 Peli käyttää yhtä sqlite-tietokantaa, jossa on yksi taulu scores. Tällä taululla on neljä kenttää: id, pelaajan nimi, pisteet sekä vaikeustaso. Game-olio tallentaa tauluun uuden tuloksen pelin päättyessä kutsumalla Score-olion .new-metodia.
+
+
 
 
 ### Pelin eteneminen
