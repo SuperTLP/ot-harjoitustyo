@@ -21,9 +21,9 @@ Luodaan matopeli, jossa pelaajien pisteet tallennetaan paikallisesti tietokantaa
 - madon pituus kasvaa kun pelaaja syö vihreitä karkkeja (tehty)
 - pelaajan mato lyhenee kun pelaaja syö punaisia karkkeja (tehty)
 - pelissä on harvinaisia erikoiskarkkeja, joiden syömisestä saa enemmän pisteitä kuin tavallisista karkeista (tehty)
-- pelissä on erikoiskarkki, jonka syöminen poistaa kaikki karkit kartalta ja joka antaa 20 pistettä (tehty)
-- pelissä on erikoiskarkki, jonka syöminen kääntää madon suunnan ja joka antaa 20 pistettä. (tehty)
-- pelissä on erikoiskarkki, jonka syöminen lisää kartalle matoa lyhentäviä karkkeja ja joka antaa 40 pistettä (tehty)
+- pelissä on erikoiskarkki, jonka syöminen poistaa kaikki karkit kartalta ja lisää 20 pistettä (tehty)
+- pelissä on erikoiskarkki, jonka syöminen kääntää madon suunnan ja lisää 20 pistettä. (tehty)
+- pelissä on erikoiskarkki, jonka syöminen lisää kartalle matoa lyhentäviä karkkeja ja lisää 40 pistettä (tehty)
 
 
 ## korkeimpien pisteiden tarkasteleminen
