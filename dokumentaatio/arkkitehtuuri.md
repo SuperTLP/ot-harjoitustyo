@@ -1,4 +1,4 @@
-# Ohjelman rakenne
+# Arkkitehtuurikuvaus
 
 ## Arkkitehtuuri
 
