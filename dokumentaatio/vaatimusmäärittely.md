@@ -18,8 +18,8 @@ Luodaan matopeli, jossa pelaajien pisteet tallennetaan paikallisesti tietokantaa
 
 ### Pelissä esiintyvät karkit
 
-- madon pituus kasvaa kun pelaaja syö vihreitä karkkeja (tehty)
-- pelaajan mato lyhenee kun pelaaja syö punaisia karkkeja (tehty)
+- madon pituus kasvaa ja pelaaja saa yhden pisteen syödessään vihreän karkin (tehty)
+- pelaajan mato lyhenee ja pelaaja saa yhden pisteen syödessään punaisen karkin (tehty)
 - pelissä on harvinaisia erikoiskarkkeja, joiden syömisestä saa enemmän pisteitä kuin tavallisista karkeista (tehty)
 - pelissä on erikoiskarkki, jonka syöminen poistaa kaikki karkit kartalta ja lisää 20 pistettä (tehty)
 - pelissä on erikoiskarkki, jonka syöminen kääntää madon suunnan ja lisää 20 pistettä. (tehty)
