@@ -10,7 +10,7 @@ class TestReverseTreat(unittest.TestCase):
         self.game=MagicMock()
         self.snake.change_direction=MagicMock()
 
-    def test_snake_longer_than_1(self):
+    def test_snake_position_correct(self):
         treat = MatrixElement(ReverseTreat(),"matrix_treat",2,20,"<-")
         treat.action.consume(self.snake)
         self.snake.set_position.assert_called_with([[1, 4], [1, 3], [1, 2]])
