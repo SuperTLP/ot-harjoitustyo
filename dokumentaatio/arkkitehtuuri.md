@@ -26,10 +26,13 @@ Vaikeustason valinnan jälkeen kontrolli siirtyy pelinäkymään, missä oikeaa 
 
 ## Pelilogiikka
 
+### Game
 Pelilogiikka on keskitetty Game-luokalle. Se säilyttää pelin tilan, ja päivittää muut pelilogiikan oliot kutsumalla niiden metodeja. se päivittää esimerkiksi mato-olion kutsumalla tämän advance-metodia ja pyytää TreatFactory-luokkaa luomaan uuden karkin peliin jokaisella pelin iteraatiolla. Game-olio on ainoa pelilogiikan olio, johon käyttöliittymä on yhteydessä.
 
+### Snake
 Snake-luokka on vastuussa kaikista matoon liittyvien tietojen tallentamisesta. Tähän sisältyy esimerkiksi madon sijainti. Mato ei tee peliin liittyviä tarkastuksia esimerkiksi omaan häntäänsä tai seinään osumisesta, vaan palauttaa .advance metodissaan Game-oliolle nykyisen sijaintinsa. Game-olio tarkastaa matoon liittyvät ehdot.
 
+### TreatFactory
 TreatFactory on vastuussa pelissä ilmestyvien karkkien luomisesta ja tiettyjen karkkien ilmestymistodennäköisyydestä. Game-olio kutsuu jokaisella pelin iteraatiolla TreatFactoryn .new_random_treat metodia, joka valitsee satunnaisen tason karkille (1-3) ja valitsee sitten satunnaisen tasoa vastaavan karkin.
 
 
@@ -38,7 +41,9 @@ Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
 
 ![Luokkakaavio](./kuvat/luokkakaavio.png)
 
+### Treat-olioiden riippuvuus pelilogiikkaan
 
+Kaikki pelin matriisin alkiot ovat MatrixElement-olioita. Tyhjillä ruuduilla olion .type attribuutti on "empty" ja madon ruumista vastaavilla alkioilla "snake". Karkit ovat MatrixElement-olioita, joille on injektoitu jokin Entities-hakemistossa olevista Treat-olioista .action attribuutiksi. Jokaisella Treat oliolla on .consume-metodi, joka ottaa argumentikseen joko Game- tai Snake-olion. Game tarkistaa jokaisella pelin iteraatiolla, onko madon uuden pään kohdalla karkki, tarkastamalla onko tässä sijainnissa alkion .type attribuutti "treat" tai "matrixtreat"
 
 
 ## Tietojen pysyväistallennus
