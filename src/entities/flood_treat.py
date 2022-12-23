@@ -4,8 +4,7 @@ from entities.matrix_element import MatrixElement
 class FloodTreat:
     """
     Instance of this class spawns a snake-length-reducing candy in every second
-    matrix position. when consumed
-    new_treat is the element that consume function spawns.
+    matrix position when consumed. new_treat is the element that consume function spawns.
     """
     new_treat=MatrixElement(DefaultTreat(-2),"treat",1,1,-2)
 
@@ -14,11 +13,12 @@ class FloodTreat:
 
     def consume(self, game):
         """
+        This method replaces every second element on every row of the game's
+        game_matrix with defaultTreat element with effect of -2.
+
         argument:
             game: Instance of Game class.
-
-        This method replaces every second element on every row of the game's
-        game_matrix with defaultTreat element with effect of -2."""
+        """
 
         matrix_copy=[row[:] for row in game.game_matrix[:]]
         for row_index, row in enumerate(matrix_copy):

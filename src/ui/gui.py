@@ -16,28 +16,33 @@ from ui.ui_config import (
 )
 
 class View:
-    """This class is responsible for graphical views of the game. Each method
-    corresponds to a certain view."""
+    """
+    This class is responsible for graphical views of the game. Each method
+    corresponds to a certain view.
+    """
     main_font = pygame.font.SysFont('Comic Sans MS', 30)
 
     def __init__(self, game, score):
+        """
+        arguments:
+            game: instance of Game class
+            score: instance of Score class
+        """
         self.score=score
         self.game=game
         self.screen=pygame.display.set_mode([700, 500])
-        self.display_run=True
-        self.game_run=False
 
     def start_game(self, name, difficulty):
         """
+        This is the main game loop. Game's change_direction method is called on
+        arrowkeys to change the direction the snake advances. depending on selected
+        difficulty, the game updates once every 100, 200 or 300 milliseconds.
+
         arguments:
             name: name of the player
             difficulty: the difficulty level the game is played on.
+        """
 
-        This is the main game loop. Game's change_direction method is called on
-        arrowkeys to change the direction the snake advances. depending on selected
-        difficulty, the game updates once every 100, 200 or 300 milliseconds."""
-
-        self.difficulty_selector_run=False
         self.game_run=True
         starting_image=self.game.start(name, difficulty)
         interval=difficulty_map[difficulty]
@@ -46,6 +51,7 @@ class View:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.game_run=False
+                    self.display_run=False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         self.game.snake.change_direction(3)
@@ -91,21 +97,24 @@ class View:
 
     def start_difficulty_selector(self, name):
         """
-        argument:
-            name: name of the player.
-
         This is loop of the view where user can select desired difficulty level.
         when a difficulty level is selected, the control transitions to the
-        game loop."""
+        game loop.
+
+        argument:
+            name: name of the player.
+        """
 
         self.difficulty_selector_run=True
-        self.name_view_run=False
         player_name=name
         ##One of these functions is executed when a button is pressed
         def quit():
             self.difficulty_selector_run=False
+
         def start_game(difficulty):
+            self.difficulty_selector_run=False
             self.start_game(player_name, difficulty)
+
         buttons =[
         Button(rect=(250, 150, 150, 50),color=DARK_RED,function=lambda: start_game("hard"),**HARD_BUTTON_STYLE),
         Button(rect=(250, 250, 150, 50),color=DARK_YELLOW,function=lambda:start_game("medium"),**MEDIUM_BUTTON_STYLE),
@@ -137,17 +146,24 @@ class View:
             pygame.display.update()
 
     def start_name_view(self):
-        """This is loop of the view where user can enter their name. The name is passed
-        to the difficulty selection after next button is pressed."""
+        """
+        This is loop of the view where user can enter their name. The name is passed
+        to the difficulty selection after next button is pressed.
+        """
 
         self.name_view_run=True
         player_name=""
+
         def select_name():
+            self.name_view_run=False
             self.start_difficulty_selector(player_name)
+
         def quit():
             self.name_view_run=False
+
         next_button = Button(rect=(250, 400, 200, 50),color=DARK_YELLOW,function=select_name,**NEXT_BUTTON_STYLE)
         menu_button = Button(rect=(0, 0, 150, 50),color=DARK_YELLOW,function=quit,**MENU_BUTTON_STYLE)
+
         while self.name_view_run:
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:
@@ -171,20 +187,27 @@ class View:
 
                 
     def start_ending_screen(self, points):
-        """This view starts after the player loses the game. On this view
-        the player sees how many points he got, and can then return to main menu."""
+        """
+        This view starts after the player loses the game. On this view
+        the player sees how many points he got, and can then return to main menu.
+
+        argument:
+            points: number of points the player got.
+        """
 
         self.ending_screen_run=True
+
         def quit():
             self.ending_screen_run=False
+
         menu_button = Button(rect=(250, 230, 150, 50),color=DARK_YELLOW,function=quit,**MENU_BUTTON_STYLE)
         while self.ending_screen_run:
             for event in pygame.event.get():
-                pass
                 if event.type==pygame.QUIT:
                     self.ending_screen_run=False
                     self.display_run=False
                 menu_button.check_event(event)
+
             self.screen.fill((0, 0, 0))
             menu_button.update(self.screen)
             game_over_text=View.main_font.render("Game over", False, (255, 0,0))
@@ -196,16 +219,21 @@ class View:
             pygame.time.wait(20)
 
     def start_high_score(self):
-        """This is the high score window loop. User can use buttons to
-        navigate between windows and see scores players have gotten."""
+        """
+        This is the high score window loop. User can use buttons to
+        navigate between windows and see scores players have gotten.
+        """
 
         self.high_score_run=True
         self.page=0
         num_of_pages=ceil(len(self.score.all())/5)
+
         def next_page():
             self.page=min(self.page+1,num_of_pages-1)
+
         def previous_page():
             self.page=max(self.page-1, 0)
+
         def menu():
             self.high_score_run=False
             
@@ -245,18 +273,19 @@ class View:
 
 
     def run(self):
-        """This is the main menu loop. Here the player can either continue
-        to select their name or continue to inspect high scores"""
+        """
+        This is the main menu loop. Here the player can either continue
+        to select their name or continue to inspect high scores
+        """
 
         self.display_run=True
         play_button = Button(rect=(250, 100, 200, 50),color=DARK_YELLOW,function=self.start_name_view,**PLAY_BUTTON_STYLE)
         high_score_button = Button(rect=(250, 200, 200, 50),color=DARK_RED,function=self.start_high_score,**HIGH_SCORE_BUTTON_STYLE)
+
         while self.display_run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.display_run=False
-                if event.type == pygame.KEYDOWN:
-                    pass
                 play_button.check_event(event)
                 high_score_button.check_event(event)
 

@@ -7,7 +7,9 @@ from entities.matrix_element import MatrixElement
 
 class TreatFactory:
     """This class handles creation of treats
-    all_treats is a list of all treats in game."""
+    all_treats is a list of all treats in game.
+    """
+
     all_treats=[
         MatrixElement(DefaultTreat(1), "treat", 1, 1, 1),
         MatrixElement(DefaultTreat(1),"treat", 1, 1, 1),
@@ -19,23 +21,33 @@ class TreatFactory:
         MatrixElement(PurgeTreat(),"matrix_treat",2,20,"X"),
         MatrixElement(ReverseTreat(),"treat", 2,20,"<-")
         ]
+
     def __init__(self):
         pass
 
     def new_treat(self, tier):
         """
+        This method creates a new treat of specific tier
+
         argument:
             tier: number indicating what tier treat is to be created.
 
-        This method creates a new treat of specific tier and returns it."""
+        returns:
+            MatrixElement containing a treat of given tier
+        """
 
         possible_treats=[treat for treat in TreatFactory.all_treats if treat.tier==tier]
         new_treat=choice(possible_treats)
         return new_treat
 
     def new_random_treat(self):
-        """This method selects a random tier for treat and selects a random
-        treat of that tier."""
+        """
+        This method selects a random tier for treat and selects a random
+        treat of that tier.
+
+        returns:
+            MatrixElement containing a treat of random tier.
+        """
 
         tier=1
         lottery = randint(0, 150)
