@@ -1,3 +1,6 @@
+# Changelog
+
+
 ## viikko 3
 - Luotiin View luokka, joka on pelin käyttöliittymä.
 - Luotiin Game luokka, joka on vastuussa pelissä käytettävän matriisin muokkaamisesta ja pelilogiikasta

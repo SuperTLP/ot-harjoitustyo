@@ -32,7 +32,7 @@ TestIntegration-luokan testeissä pelissä matoa liikutellaan useiden karkkien p
 Tähän kuuluu Snake-olion position, Pending_blocks ja direction, sekä Game-olion points.
 
 ## Testikattavuus
-22.12.2022 Testikattavuus on 93%
+23.12.2022 Testikattavuus on 92%
 ![Pakkauskaavio](./kuvat/testikattavuus.png)
 
 ## Järjestelmätestaus
