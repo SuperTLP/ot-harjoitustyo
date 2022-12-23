@@ -43,7 +43,7 @@ Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
 
 ### Treat-olioiden riippuvuus pelilogiikkaan
 
-Kaikki pelin matriisin alkiot ovat MatrixElement-olioita. Tyhjillä ruuduilla olion .type attribuutti on "empty" ja madon ruumista vastaavilla alkioilla "snake". Karkit ovat MatrixElement-olioita, joille on injektoitu jokin Entities-hakemistossa olevista Treat-olioista .action attribuutiksi. Jokaisella Treat oliolla on .consume-metodi, joka ottaa argumentikseen joko Game- tai Snake-olion. Game tarkistaa jokaisella pelin iteraatiolla, onko madon uuden pään kohdalla karkki, tarkastamalla onko tässä sijainnissa alkion .type attribuutti "treat" tai "matrixtreat". Jos näin on, peli kutsuu madon sisältämän karkkiolion .consume-metodia joko argumentilla self, tai self.snake, riippuen siitä, muuttaako mato madon vai pelin attribuutteja.
+Kaikki pelin matriisin alkiot ovat MatrixElement-olioita. Tyhjillä ruuduilla olion .type attribuutti on "empty" ja madon ruumista vastaavilla alkioilla "snake". Karkit ovat MatrixElement-olioita, joille on injektoitu jokin Entities-hakemistossa olevista Treat-olioista .action attribuutiksi. Jokaisella Treat oliolla on .consume-metodi, joka ottaa argumentikseen joko Game- tai Snake-olion. .consume metodi kutsuu argumentiksi saadun olion muuttujia saaden aikaan erilaisia efektejä, kuten madon pidentymisen tai lyhentymisen, tai madon suunnan kääntymisen.
 
 
 ## Tietojen pysyväistallennus
