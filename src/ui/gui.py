@@ -89,7 +89,7 @@ class View:
                     self.screen.blit(effect, (j*50+15,50+50*i+5))
             if not started:
                 start_prompt = View.main_font.render("Press right arrowkey to start", False, (255, 255, 255)) 
-                self.screen.blit(start_prompt, (200,50))
+                self.screen.blit(start_prompt, (200,100))
             points = View.main_font.render("points: "+str(self.game.points), False, (0, 0,0))
             self.screen.blit(points, (10,10))
             pygame.display.flip()
