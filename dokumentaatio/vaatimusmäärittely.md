@@ -31,7 +31,7 @@ Luodaan matopeli, jossa pelaajien pisteet tallennetaan paikallisesti tietokantaa
 - Pelissä high-score näkymässä näkee suuruusjärjestyksessä pelaajien saavuttamat pisteet suurimmasta pienimpään (tehty)
 - Pelissä high-score näkymässä näkyy millä vaikeustasolla pistemäärä on saavutettu (tehty)
 - tuloksia näytetään sivuittain, viisi tulosta kerralla (tehty)
-- sivuja pystyy selaamaan alakulmissa olevilla napeilla
+- sivuja pystyy selaamaan alakulmissa olevilla napeilla (tehty)
 
 ## Käyttöympäristö
 
