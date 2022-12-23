@@ -26,11 +26,11 @@ Pelissä käärmettä ohjataan nuolinäppäimillä, ja pyritään syömään mah
 
 ## Asennus
 
-Asenna riippuvuudet komennolla
+1. Asenna riippuvuudet komennolla
 ~~~
 poetry install
 ~~~
-Suorita alustustoimenpiteet komennolla
+2. Suorita alustustoimenpiteet komennolla
 ~~~
 poetry run invoke build
 ~~~
