@@ -12,7 +12,7 @@ PLAY_BUTTON_STYLE,
 DARK_RED,DARK_GREEN,DARK_YELLOW
 )
 from ui.ui_config import (
-    color_map,tier_color_map,difficulty_map,GAME_OVER
+    color_map,tier_color_map,difficulty_map,GAME_OVER,ACCEPTED_LETTERS
 )
 
 class View:
@@ -170,7 +170,7 @@ class View:
                     self.name_view_run=False
                     self.display_run=False
                 if event.type==pygame.KEYDOWN:
-                    if str(event.unicode) in " abcdefghijklmnopqrstuvwxyzoåäö"+"abcdefghijklmnopqrstuvwxyzoåäö".upper():
+                    if str(event.unicode) in ACCEPTED_LETTERS:
                         player_name+=event.unicode
                     if event.key==pygame.K_BACKSPACE:
                         player_name=player_name[:-1]
