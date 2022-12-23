@@ -20,7 +20,6 @@ Luodaan matopeli, jossa pelaajien pisteet tallennetaan paikallisesti tietokantaa
 
 - madon pituus kasvaa ja pelaaja saa yhden pisteen syödessään vihreän karkin (tehty)
 - pelaajan mato lyhenee ja pelaaja saa yhden pisteen syödessään punaisen karkin (tehty)
-- punaiset karkit lyhentävät madon pituutta yhdellä tai kahdella palikalla (tehty)
 - tavallisten karkkien päällä lukee kuinka paljon karkit muuttavat madon pituutta (tehty)
 - pelissä on harvinaisia erikoiskarkkeja, joiden syömisestä saa enemmän pisteitä kuin tavallisista karkeista (tehty)
 - pelissä on erikoiskarkki, jonka syöminen poistaa kaikki karkit kartalta ja lisää 20 pistettä (tehty)
@@ -31,6 +30,8 @@ Luodaan matopeli, jossa pelaajien pisteet tallennetaan paikallisesti tietokantaa
 ## korkeimpien pisteiden tarkasteleminen
 - Pelissä high-score näkymässä näkee suuruusjärjestyksessä pelaajien saavuttamat pisteet suurimmasta pienimpään (tehty)
 - Pelissä high-score näkymässä näkyy millä vaikeustasolla pistemäärä on saavutettu (tehty)
+- tuloksia näytetään sivuittain, viisi tulosta kerralla (tehty)
+- sivuja pystyy selaamaan alakulmissa olevilla napeilla
 
 ## Käyttöympäristö
 
