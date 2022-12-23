@@ -1,6 +1,5 @@
 # Arkkitehtuurikuvaus
 
-## Arkkitehtuuri
 
 ### Peli noudattaa seuraavanlaista rakennetta:
 
