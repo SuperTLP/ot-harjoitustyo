@@ -264,8 +264,6 @@ class View:
                 self.screen.blit(text, (220,150+50*i))
             pygame.display.flip()
 
-
-
     def run(self):
         """
         This is the main menu loop. Here the player can either continue
