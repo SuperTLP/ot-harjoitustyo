@@ -10,15 +10,20 @@ Luodaan matopeli, jossa pelaajien pisteet tallennetaan paikallisesti tietokantaa
 ## Pelissä:
 - pelaaja voi ohjata matoa nuolinäppäimillä (tehty)
 - pelaaja saa pisteitä kun syö kartalle ilmestyviä karkkeja (tehty)
+- pelin yläkulmassa näkyy pelaajan senhetkiset pisteet (tehty)
+- peliä voi pelata eri vaikeustasoilla, jotka määräävät madon liikkumisnopeuden (tehty)
 - peli päättyy, kun pelaaja osuu omaan matoonsa tai seinään (tehty)
+- pelin päättymisen jälkeen pelaaja näkee kuinka paljon pisteitä hän sai (tehty)
+
+
+### Pelissä esiintyvät karkit
+
 - pelaajan madon pituus kasvaa kun pelaaja syö vihreitä karkkeja (tehty)
 - pelaajan mato lyhenee kun pelaaja syö punaisia karkkeja (tehty)
 - pelissä on erikoiskarkki, jonka syöminen poistaa kaikki karkit kartalta (tehty)
 - pelissä on erikoiskarkki, jonka syöminen kääntää madon suunnan. (tehty)
 - pelissä on erikoiskarkki, jonka syöminen lisää kartalle matoa lyhentäviä karkkeja (tehty)
-- peliä voi pelata eri vaikeustasoilla, jotka määräävät madon liikkumisnopeuden (tehty)
-- pelin päättymisen jälkeen pelaaja näkee kuinka paljon pisteitä hän sai.
-- pelin yläkulmassa näkyy pelaajan senhetkiset pisteet
+
 
 ## korkeimpien pisteiden tarkasteleminen
 - Pelissä high-score näkymässä näkee suuruusjärjestyksessä pelaajien saavuttamat pisteet suurimmasta pienimpään (tehty)
