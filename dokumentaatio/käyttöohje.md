@@ -1,7 +1,7 @@
 ## Ohjeet pelaamiseen
 
 ## Pelin käynnistäminen
-Pelin käynnistäminen ei vaadi konfiguraatiota, vaan pelkästään kahden komennon suorittamista pelin hakemistossa.
+Pelin käynnistäminen ei vaadi konfiguraatiota, vaan pelkästään kolmen komennon suorittamista pelin hakemistossa.
 Pelin riippuvuudet tulee asentaa komennolla
 ```
 poetry install
@@ -22,7 +22,7 @@ Pelissä voidaan liikkua näkymästä toiseen klikkaamalla hiirellä valikoissa 
 Korkeimpia pisteitä tarkasteltaessa näytetään yhdellä sivulla viisi tulosta kerrallaan. Viiden tuloksen sivuja voi selata painamalla Next- tai Previous-nappeja vasemmassa ja oikeassa alakulmassa. Takaisin alkuvalikkoon pääsee painamalla vasemmassa yläkulmassa sijaitsevaa Menu-painiketta. Tässä näkymässä nähdään pelaajien saavuttamat pisteet, sekä millä vaikeustasolla pisteet on saatu.
 
 ## Nimen valinta
-Nimen valintaan päästään alkuvalikosta painamalla Play-nappia. Tässä näkymässä pelaajan tulee syöttää pelille oma nimensä tallentaakseen pisteensä. Nimi voi sisältää pelkästään kirjaimia. Nimen syöttämisen jälkeen pelaaja voi siirtyä valitsemaan vaikeustason painamalla Next-nappia.
+Nimen valintaan päästään alkuvalikosta painamalla Play-nappia. Tässä näkymässä pelaajan tulee syöttää pelille oma nimensä tallentaakseen pisteensä. Nimen syöttämisen jälkeen pelaaja voi siirtyä valitsemaan vaikeustason painamalla Next-nappia.
 
 ## Vaikeustason valinta
 Syötettyään nimensä pelille ja vaikeustasonäkymään siirtymisen jälkeen voi pelaaja valita vaikeustasoksi Hard, Medium tai Easy. Eroa vaikeustasoilla on nopeus, jolla peli etenee. Vaikeustason valinnan jälkeen peli alkaa.
