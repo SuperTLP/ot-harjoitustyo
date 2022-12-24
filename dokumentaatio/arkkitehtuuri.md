@@ -5,7 +5,7 @@
 
 ![Pakkauskaavio](./kuvat/pakkauskaavio.png)
 
-Ui sisältää käyttöliittymään liittyvän koodin. Services sisältää Pysyvien luokka-olioiden pelilogiikkaan liittyvän koodin. Tämä tarkoittaa olioita, joista luodaan vain yksi olio koko ohjelman suorituksen aikana. Entities sisältää lyhytikäisiä ja kulutettavia komponentteja. Näitä ovat Luokat, joista luodaan useita olioita ohjelman suorituksen aikana. Esimerkiksi Pelissä esiintyvät karkit.
+Ui sisältää käyttöliittymään liittyvän koodin. Services sisältää pelilogiikkaan liittyvän koodin. Entities sisältää lyhytikäiset komponentit sekä niihin liittyvän logiikan. Tämä tarkoittaa käytännössä Pelissä ilmestyvien karkkien toiminnallisuutta.
 
 ## Käyttöliittymä
 Pelin käyttöliittymällä on viisi näkymää:
