@@ -18,7 +18,7 @@ class Game:
     def __init__(self, snake, score_service):
         """
         Arguments:
-            score: an instance of the Score class.
+            score_service: an instance of the ScoreService class.
             snake: an instance of the Snake-class.
 
         self.points is the number of points the player has collected
