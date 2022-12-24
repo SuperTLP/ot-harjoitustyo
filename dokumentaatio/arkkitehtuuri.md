@@ -73,7 +73,7 @@ sequenceDiagram
   Snake-->>Game:position(2 dimensional array)
   Game->>Game:remove_previous_snake()
   Game->>Game:draw_snake(position)
-  Game->>TreatFactory:generate_random_treat()
+  Game->>TreatFactory:new_random_treat()
   TreatFactory-->>Game:MarixElement(ReverseTreat(), "treat", 2, 20,"<-")
   Game-->>GUI:game_matrix
   ```
