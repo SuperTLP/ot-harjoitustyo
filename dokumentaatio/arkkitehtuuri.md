@@ -22,7 +22,7 @@ Käyttöliittymä on toteutettu yhtenä View-luokkana, jonka metodeja näkymät 
 
 Käyttöliittymässä Peli-näkymä kutsuu jokaisella peliloopin kierroksella Game-luokan advance funktiota, joka edistää peliä yhden askeleen. Täten Käyttöliittymä on myös vastuussa pelin taajuudesta. Pelin vaikeustasot ovatkin säädetty muuttamalla Pelin taajuutta riippuen siitä, mikä vaikeustaso valittiin.
 
-High Score näkymässä korkeimmat pisteet haetaan kutsumalla Score-olion .all metodia, joka palauttaa kaikki tulokset suuruusjärjestyksessä pienimmästä suurimpaan.
+High Score-näkymässä korkeimmat pisteet haetaan kutsumalla ScoreService-olion .all metodia, joka palauttaa kaikki tulokset suuruusjärjestyksessä pienimmästä suurimpaan Score-oliona.
 
 Nimivalikossa valitaan pelissä käytettävä nimi. Nimen valitsemisen jälkeen next-napin painaminen siirtää kontrollin vaikeustasovalikkoon.
 Vaikeustason valinnan jälkeen kontrolli siirtyy pelinäkymään, missä oikeaa nuolinäppäintä painamalla peli alkaa.
@@ -30,7 +30,7 @@ Vaikeustason valinnan jälkeen kontrolli siirtyy pelinäkymään, missä oikeaa 
 ## Pelilogiikka
 
 ### Game
-Pelilogiikka on keskitetty Game-luokalle. Se säilyttää pelin tilan, ja päivittää muut pelilogiikan oliot kutsumalla niiden metodeja. se päivittää esimerkiksi mato-olion kutsumalla tämän advance-metodia ja pyytää TreatFactory-luokkaa luomaan uuden karkin peliin jokaisella pelin iteraatiolla. Game-olio on ainoa pelilogiikan olio, johon käyttöliittymä on yhteydessä. Game-oliolle injektoidaan Snake- ja ScoreService-oliot
+Pelilogiikka on keskitetty Game-luokalle. Se säilyttää pelin tilan, ja päivittää muut pelilogiikan oliot kutsumalla niiden metodeja. se päivittää esimerkiksi mato-olion kutsumalla tämän advance-metodia ja pyytää TreatFactory-luokkaa luomaan uuden karkin peliin jokaisella pelin iteraatiolla. Game-oliolle injektoidaan Snake- ja ScoreService-oliot.
 
 ### Snake
 Snake-luokka on vastuussa kaikista matoon liittyvien tietojen tallentamisesta. Tähän sisältyy esimerkiksi madon sijainti. Mato ei tee peliin liittyviä tarkastuksia esimerkiksi omaan häntäänsä tai seinään osumisesta, vaan palauttaa .advance metodissaan Game-oliolle nykyisen sijaintinsa. Game-olio tarkastaa matoon liittyvät ehdot.
