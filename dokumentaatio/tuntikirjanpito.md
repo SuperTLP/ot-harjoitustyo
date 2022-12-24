@@ -19,7 +19,7 @@
 |20.12|3:00|Muutettiin High-score näkymän napit klikattavaksi, lisättiin vaikeustasot high-score näkymän tuloksien viereen|
 |21.12|4:00|refaktorointia|
 |22.12|2:00|Poistettiin madon suunta Game-oliosta ja siirrettiin se mato-luokan attribuutiksi. Refaktoroitiin muutoksen hajottama koodi. Korjattiin bugi jossa mato voisi kääntyä itsensä päälle juuri lyhentyessään yhden pituiseksi.|
-|24.12|3:00|Nimettiin Score-luokka ScoreRepositoryksi, Luotiin ScoreService-luokka, joka on käyttöliittymän sekä Game-olion rajapinta ScoreRepository-luokkaan, eli pysyväistallennukseen.|
+|24.12|3:00|Nimettiin Score-luokka ScoreRepositoryksi, Luotiin ScoreService-luokka, joka on käyttöliittymän sekä Game-olion rajapinta ScoreRepository-luokkaan, eli pysyväistallennukseen. Luotiin Score-luokka, joka on nykyään yksittäistä pelin tulosta kuvaava Entity-luokka.|
 | yht| 52:30||
 
 
