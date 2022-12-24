@@ -5,7 +5,7 @@
 
 ![Pakkauskaavio](./kuvat/pakkauskaavio.png)
 
-Ui sisältää käyttöliittymään liittyvän koodin. Services sisältää pelilogiikkaan liittyvän koodin. Entities sisältää lyhytikäiset komponentit sekä niihin liittyvän logiikan. Tämä tarkoittaa käytännössä Pelissä ilmestyvien karkkien toiminnallisuutta. Repositories sisältää pysyväistallennukseen liittyvän koodin.
+Ui sisältää käyttöliittymään liittyvän koodin. Services sisältää pelilogiikkaan liittyvän koodin. Entities sisältää lyhytikäiset komponentit sekä niihin liittyvän logiikan. Tämä tarkoittaa käytännössä Pelissä ilmestyviä karkkeja ja niiden toiminnallisuutta. Repositories sisältää pysyväistallennukseen liittyvän koodin.
 
 ## Käyttöliittymä
 Pelin käyttöliittymällä on viisi näkymää:
