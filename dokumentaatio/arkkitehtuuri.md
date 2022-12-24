@@ -7,7 +7,7 @@ Peli noudattaa kolmitasoista kerrosarkkitehtuuria seuraavanlaisella pakkausraken
 
 ![Pakkauskaavio](./kuvat/pakkauskaavio.png)
 
-Ui sisältää käyttöliittymään liittyvän koodin. Services sisältää pelilogiikkaan liittyvän koodin. Entities sisältää pelilogiikan käyttämiä tietokohteita kuvaavia luokkia sekä lyhytikäisiä komponentteja. Tämä tarkoittaa käytännössä Pelissä ilmestyviä karkkeja. Repositories sisältää pysyväistallennukseen liittyvän koodin.
+Ui sisältää käyttöliittymään liittyvän koodin. Services sisältää pelilogiikkaan liittyvän koodin. Entities sisältää pelilogiikan käyttämiä tietokohteita kuvaavia luokkia sekä lyhytikäisiä komponentteja. Tämä tarkoittaa esimerkiksi Pelissä ilmestyviä karkkeja. Repositories sisältää pysyväistallennukseen liittyvän koodin.
 
 ## Käyttöliittymä
 Pelin käyttöliittymällä on viisi näkymää:
