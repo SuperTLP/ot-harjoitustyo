@@ -1,9 +1,12 @@
 class ReverseTreat:
-    """Instance of this class reverses snake's position and direction
-    when consumed. This means the snake will continue in opposite direction.
+    """
+    Class representing a single treat that reverses snake's direction.
+
     DIRECTIONS is a dict that gives opposite direction of the key.
+
     NUMERIC_DIRECTIONS is a dict that gives the numeric direction corresponding to
     given direction coordinates."""
+
     DIRECTIONS={
     0:2,
     1:3,

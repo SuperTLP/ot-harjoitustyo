@@ -1,4 +1,4 @@
-class Score:
+class ScoreRepository:
     """This class is responsible for saving and retreiving score-related data."""
     def __init__(self, database):
         """
@@ -30,5 +30,6 @@ class Score:
         """
 
         cur=self.database.cursor()
-        data = cur.execute("select * from scores order by score desc;").fetchall()
+        data = cur.execute("""select name, score, difficulty from scores
+        order by score desc;""").fetchall()
         return data

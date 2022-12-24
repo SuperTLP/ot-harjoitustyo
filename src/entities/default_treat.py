@@ -10,6 +10,7 @@ class DefaultTreat:
         self.effect=effect
 
     def new_pending_blocks(self,position, blocks):
+
         """
         This method calculates how much snake's pending blocks should be
         after it's length is contracted.

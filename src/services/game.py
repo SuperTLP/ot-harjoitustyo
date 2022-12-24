@@ -15,7 +15,7 @@ class Game:
     empty=MatrixElement(None,"empty",0,0,0)
     START=[[MatrixElement(None,"empty",0,0,0)]*14 for i in range(0, 9)]
 
-    def __init__(self, snake, score):
+    def __init__(self, snake, score_service):
         """
         Arguments:
             score: an instance of the Score class.
@@ -33,7 +33,7 @@ class Game:
         self.points=0
         self.difficulty="medium"
         self.player_name=""
-        self.score=score
+        self.score_service=score_service
         self.snake=snake
         self.game_matrix=[x[:] for x in Game.START]
         self.coordinates = []
@@ -225,7 +225,7 @@ class Game:
         head = snake_image[len(snake_image)-1]
         if not self.game_over and (self.out_out_bounds(head) or self.snake_collision(snake_image)):
             self.game_over=True
-            self.score.new(self.player_name, self.points,self.difficulty)
+            self.score_service.new(self.player_name, self.points, self.difficulty)
         if self.game_over:
             return GAME_OVER
         if self.is_treat(head):

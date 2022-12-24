@@ -22,13 +22,14 @@ class View:
     """
     main_font = pygame.font.SysFont('Comic Sans MS', 30)
 
-    def __init__(self, game, score):
+    def __init__(self, game, score_repository):
         """
         arguments:
             game: instance of Game class
-            score: instance of Score class
+            score_repository: instance of ScoreRepository class
         """
-        self.score=score
+
+        self.score_repository=score_repository
         self.game=game
         self.screen=pygame.display.set_mode([700, 500])
 
@@ -220,7 +221,7 @@ class View:
 
         self.high_score_run=True
         self.page=0
-        num_of_pages=ceil(len(self.score.all())/5)
+        num_of_pages=ceil(len(self.score_repository.all())/5)
 
         def next_page():
             self.page=min(self.page+1,num_of_pages-1)
@@ -253,15 +254,18 @@ class View:
 
             self.screen.blit(title, (250, 20))
             self.screen.blit(page_text, (550, 20))
-            data = self.score.all()[self.page*5:self.page*5+5]
+            data = self.score_repository.all()[self.page*5:self.page*5+5]
 
             for button in buttons:
                 button.update(self.screen)
 
-            for i in range(0, len(data)):
-                score = "({}) {}: {} Pts.".format(data[i][3],data[i][1], data[i][2])
+            for index, score in enumerate(data):
+                score = "({}) {}: {} Pts.".format(
+                    score.difficulty, score.name, score.score)
+
                 text = View.main_font.render(score, False, (255, 0, 0))
-                self.screen.blit(text, (220,150+50*i))
+                self.screen.blit(text, (220,150+50*index))
+
             pygame.display.flip()
 
     def run(self):

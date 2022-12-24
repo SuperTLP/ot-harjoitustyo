@@ -1,8 +1,8 @@
-from repositories.score import Score
+from repositories.score_repository import ScoreRepository
 import unittest
 from unittest import mock
 
-class TestScore(unittest.TestCase):
+class TestScoreRepository(unittest.TestCase):
     def setUp(self):
 
         self.cursor = mock.MagicMock()
@@ -13,8 +13,8 @@ class TestScore(unittest.TestCase):
         self.db.commit=mock.MagicMock()
 
     def test_new_score(self):
-        score = Score(self.db)
-        score.new("tester", 20, "easy")
+        score_repository = ScoreRepository(self.db)
+        score_repository.new("tester", 20, "easy")
         self.db.cursor.assert_called()
         self.cursor.execute.assert_called_with("insert into scores (name, score, difficulty) values (?, ?, ?)", ["tester", 20, "easy"])
         self.db.commit.assert_called()

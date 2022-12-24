@@ -1,5 +1,5 @@
 class PurgeTreat:
-    #Instance of this class removes all treats from the game matrix.
+    #Class representing a single treat that deletes all treats from game matrix.
     def __init__(self):
         pass
 

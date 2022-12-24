@@ -1,6 +1,9 @@
 class MatrixElement:
-    """This is a default wrapper for all elements that appear on game_matrix. And
-        contains their basic information"""
+    """
+    class representing a single element appearing on the game matrix. This is
+    default wrapper for all visible elements appearing in game.
+    """
+
     def __init__(self, action,_type, tier, points,symbol):
         """
         arguments:

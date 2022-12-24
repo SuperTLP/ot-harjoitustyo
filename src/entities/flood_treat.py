@@ -3,9 +3,9 @@ from entities.matrix_element import MatrixElement
 
 class FloodTreat:
     """
-    Instance of this class spawns a snake-length-reducing candy in every second
-    matrix position when consumed. new_treat is the element that consume function spawns.
+    class representing a single treat that spawns snake length reducing treats
     """
+
     new_treat=MatrixElement(DefaultTreat(-2),"treat",1,1,-2)
 
     def __init__(self):
