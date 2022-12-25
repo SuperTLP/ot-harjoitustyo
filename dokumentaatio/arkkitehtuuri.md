@@ -30,7 +30,7 @@ Vaikeustason valinnan jälkeen kontrolli siirtyy pelinäkymään, missä oikeaa 
 ## Pelilogiikka
 
 ### Game
-Game-olio on vastuussa matopelin pelilogiikasta. Se säilyttää pelin tilan, ja tarkistaa madon liikkeeseen kuuluvat ehdot. Se pyytää pelin jokaisella iteraatiolla TreatFactory-luokkaa luomaan uuden karkin kartalle. Game-oliolle injektoidaan Snake- ja ScoreService-oliot.
+Game-olio on vastuussa matopelin pelilogiikasta ja tarkistaa madon liikkeeseen kuuluvat ehdot. Se pyytää pelin jokaisella iteraatiolla TreatFactory-luokkaa luomaan uuden karkin kartalle. Game-oliolle injektoidaan Snake-olio, joka on vastuussa madon sijainnin muistamisesta sekä madon liikuttamisesta, GameMatrix-olio, joka on vastuussa pelin matriisin sekä karkkien sijaintien muistamisesta, sekä ScoreService-olio, joka on Game-olion sekä käyttöliittymän rajapinta pysyväistallennukseen.
 
 ### TreatFactory
 TreatFactory on vastuussa pelissä ilmestyvien karkkien luomisesta ja tiettyjen karkkien ilmestymistodennäköisyydestä. Game-olio kutsuu jokaisella pelin iteraatiolla TreatFactoryn .new_random_treat metodia, joka valitsee satunnaisen tason karkille (1-3) ja valitsee sitten satunnaisen tasoa vastaavan karkin.
