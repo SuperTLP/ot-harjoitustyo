@@ -44,9 +44,7 @@ Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
 
 ![Luokkakaavio](./kuvat/luokkakaavio.png)
 
-### Treat-olioiden riippuvuus pelilogiikkaan
-
-Kaikki pelin matriisin alkiot ovat MatrixElement-olioita. Tyhjillä ruuduilla olion .type attribuutti on "empty" ja madon ruumista vastaavilla alkioilla "snake". Karkit ovat MatrixElement-olioita, joille on injektoitu jokin Entities-hakemistossa olevista Treat-olioista .action attribuutiksi. Jokaisella Treat oliolla on .consume-metodi, joka ottaa argumentikseen joko Game- tai Snake-olion. .consume metodi kutsuu argumentiksi saadun olion muuttujia saaden aikaan erilaisia efektejä, kuten madon pidentymisen tai lyhentymisen, tai madon suunnan kääntymisen.
+Kaaviossa nähdään, miten jotkut Treat-luokat, eli karkit, ovat riippuvaisia pelin matriisista tai madosta. Tämä johtuu siitä, että erikoiskarkit tekevät näihin oliohin muutoksia esimerkiksi muuttamalla madon suunnan tai poistamalla kaikki karkit kartalta.
 
 
 ## Tietojen pysyväistallennus
