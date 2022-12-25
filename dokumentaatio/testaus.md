@@ -15,7 +15,7 @@ Ohjelmaa testataan unittestillä automaattisilla yksikkö- sekä integraatiotest
 
 **Snake**-oliota testataan TestSnake - testiluokalla. Snake-luokkaa testataan antamalla sille parametriksi lähtötilanne, ja varmistamalla että mato liikkuu oikein, Eli että sen self.position attribuutti on .advance-metodin kutsujen jälkeen haluttu arvo.
 
-**GameMatrix - ja MatrixElement**-luokilla ei toistaiseksi ole omia testiluokkia.
+**GameMatrix-,Score- ja MatrixElement**-luokilla ei toistaiseksi ole omia testiluokkia.
 
 ### Repositories-luokkien testaus
 Pelin repositories-kansiossa olevia luokka-olioita, eli tietokantatauluja vastaavia luokkia testataan injektoimalla niille MagicMock-olio db-parametrinä, eli tietokantana. Testeissä varmistetaan, että tietyillä parametreillä luokat kutsuvat tietokantaa oikealla SQL-kyselyllä.
