@@ -5,8 +5,7 @@ Ohjelmaa testataan unittestillä automaattisilla yksikkö- sekä integraatiotest
 ## yksikkötestaus
 
 ### Sovelluslogiikka
-**Game**-oliota testataan TestGame - testiluokalla. TestGamen testeissä Testattavalle Game-luokalle injektoidaan Tietokantaoliona ja Snake-oliona MagicMock-oliot,
-Joilla on ennalta määrätyt paluuarvot.
+**Game**-oliota testataan TestGame - testiluokalla. TestGamen testeissä Testattavalle Game-luokalle injektoidaan MagicMock Snake-, GameMatrix- ja Tietokantaoliot , Joilla on ennalta määrätyt paluuarvot.
 
 **TreatFactory ja ScoreService** luokilla ei toistaiseksi ole omaa testiluokkaansa.
 
