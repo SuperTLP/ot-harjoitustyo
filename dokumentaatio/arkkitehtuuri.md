@@ -49,7 +49,7 @@ Kaaviossa nähdään, että Treat-luokat, eli karkit, ovat riippuvaisia pelin ma
 
 ## Tietojen pysyväistallennus
 
-Peli käyttää yhtä sqlite-tietokantaa, jossa on yksi taulu scores. Tällä taululla on neljä kenttää: id, pelaajan nimi, pisteet sekä vaikeustaso. Game-olio tallentaa tauluun uuden tuloksen pelin päättyessä kutsumalla Score-olion .new-metodia.
+Peli käyttää yhtä sqlite-tietokantaa, jossa on yksi taulu scores. Tällä taululla on neljä kenttää: id, pelaajan nimi, pisteet sekä vaikeustaso. Game-olio tallentaa tauluun uuden tuloksen pelin päättyessä kutsumalla ScoreService-olion .new-metodia.
 
 ### Pelin eteneminen
 
