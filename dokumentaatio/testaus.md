@@ -8,19 +8,18 @@ Ohjelmaa testataan unittestillä automaattisilla yksikkö- sekä integraatiotest
 **Game**-oliota testataan TestGame - testiluokalla. TestGamen testeissä Testattavalle Game-luokalle injektoidaan Tietokantaoliona ja Snake-oliona MagicMock-oliot,
 Joilla on ennalta määrätyt paluuarvot.
 
-**Snake**-oliota testataan TestSnake - testiluokalla. Snake-luokkaa testataan injektoimalla sille lähtötilanne, ja varmistamalla että mato liikkuu oikein,
-Eli että sen self.position attribuutti on .advance-metodin kutsujen jälkeen haluttu arvo.
-
-**TreatFactory**-oliolla ei toistaiseksi ole omaa testiluokkaa.
+**TreatFactory ja ScoreService** luokilla ei toistaiseksi ole omaa testiluokkaansa.
 
 ### Entities-luokkien testaus
 
-Treat-olioita testataan kutsumalla niiden .consume-metodia MagicMock-argumentein. Testeissä varmistetaan, että karkit syötynä kutsuvat muutettavan olion oikeaa
-metodia oikealla arvolla.
+**Treat**-olioita testataan kutsumalla niiden .consume-metodia MagicMock-argumentein. Testeissä varmistetaan, että karkit syötynä kutsuvat muutettavan olion oikeaa metodia oikealla arvolla.
+
+**Snake**-oliota testataan TestSnake - testiluokalla. Snake-luokkaa testataan antamalla sille parametriksi lähtötilanne, ja varmistamalla että mato liikkuu oikein, Eli että sen self.position attribuutti on .advance-metodin kutsujen jälkeen haluttu arvo.
+
+**GameMatrix - ja MatrixElement**-luokilla ei toistaiseksi ole omia testiluokkia.
 
 ### Repositories-luokkien testaus
-Pelin repositories-kansiossa olevia luokka-olioita, eli tietokantatauluja vastaavia luokkia testataan injektoimalla niille MagicMock-olio db-parametrinä, eli
-tietokantana. Testeissä varmistetaan, että tietyillä parametreillä luokat kutsuvat tietokantaa oikealla SQL-kyselyllä.
+Pelin repositories-kansiossa olevia luokka-olioita, eli tietokantatauluja vastaavia luokkia testataan injektoimalla niille MagicMock-olio db-parametrinä, eli tietokantana. Testeissä varmistetaan, että tietyillä parametreillä luokat kutsuvat tietokantaa oikealla SQL-kyselyllä.
 
 ## Integraatiotestaus
 
