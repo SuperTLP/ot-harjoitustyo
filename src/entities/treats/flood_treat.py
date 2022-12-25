@@ -1,4 +1,4 @@
-from entities.default_treat import DefaultTreat
+from entities.treats.default_treat import DefaultTreat
 from entities.matrix_element import MatrixElement
 
 class FloodTreat:

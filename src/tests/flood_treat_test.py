@@ -1,4 +1,4 @@
-from entities.flood_treat import FloodTreat
+from entities.treats.flood_treat import FloodTreat
 import unittest
 from unittest.mock import MagicMock
 

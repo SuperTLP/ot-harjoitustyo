@@ -1,5 +1,5 @@
 import unittest
-from entities.purge_treat import PurgeTreat
+from entities.treats.purge_treat import PurgeTreat
 from unittest.mock import MagicMock
 from entities.matrix_element import MatrixElement
 class TestPurgeTreat(unittest.TestCase):

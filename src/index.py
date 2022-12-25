@@ -1,9 +1,10 @@
 import sqlite3
 from ui.gui import View
-from services.game import Game
-from services.snake import Snake
-from services.score_service import ScoreService
 from repositories.score_repository import ScoreRepository
+from entities.snake import Snake
+
+from services.game import Game
+from services.score_service import ScoreService
 
 db = sqlite3.connect("src/database.db")
 score_repository=ScoreRepository(db)

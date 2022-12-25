@@ -1,4 +1,4 @@
-from entities.reverse_treat import ReverseTreat
+from entities.treats.reverse_treat import ReverseTreat
 from entities.matrix_element import MatrixElement
 import unittest
 from unittest.mock import MagicMock

@@ -1,7 +1,7 @@
 from services.game import Game
-from services.snake import Snake
-from entities.default_treat import DefaultTreat
-from entities.reverse_treat import ReverseTreat
+from entities.snake import Snake
+from entities.treats.default_treat import DefaultTreat
+from entities.treats.reverse_treat import ReverseTreat
 from services.score_service import ScoreService
 
 from entities.matrix_element import MatrixElement

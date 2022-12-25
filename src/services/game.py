@@ -35,7 +35,7 @@ class Game:
         self.player_name=""
         self.score_service=score_service
         self.snake=snake
-        self.game_matrix=[x[:] for x in Game.START]
+        self.game_matrix=[x[:] for x in Game.START[:]]
         self.coordinates = []
 
         for i in range(0, len(self.game_matrix)):
@@ -54,7 +54,7 @@ class Game:
 
         self.points=0
         self.difficulty=difficulty
-        self.game_matrix=[x[:] for x in Game.START]
+        self.game_matrix=[x[:] for x in Game.START[:]]
         self.player_name=name
         snake_position=self.snake.reset()
         for snake_block in snake_position:

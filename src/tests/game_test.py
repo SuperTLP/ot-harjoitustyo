@@ -1,5 +1,5 @@
 from services.game import Game
-from services.snake import Snake
+from entities.snake import Snake
 import unittest
 from unittest.mock import MagicMock
 

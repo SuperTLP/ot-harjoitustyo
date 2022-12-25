@@ -1,8 +1,8 @@
 from random import choice, randint
-from entities.default_treat import DefaultTreat
-from entities.flood_treat import FloodTreat
-from entities.purge_treat import PurgeTreat
-from entities.reverse_treat import ReverseTreat
+from entities.treats.default_treat import DefaultTreat
+from entities.treats.flood_treat import FloodTreat
+from entities.treats.purge_treat import PurgeTreat
+from entities.treats.reverse_treat import ReverseTreat
 from entities.matrix_element import MatrixElement
 
 class TreatFactory:
