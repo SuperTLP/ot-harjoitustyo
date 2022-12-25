@@ -44,7 +44,7 @@ Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
 
 ![Luokkakaavio](./kuvat/luokkakaavio.png)
 
-Kaaviossa nähdään, miten jotkut Treat-luokat, eli karkit, ovat riippuvaisia pelin matriisista tai madosta. Tämä johtuu siitä, että erikoiskarkit tekevät näihin oliohin muutoksia esimerkiksi muuttamalla madon suunnan tai poistamalla kaikki karkit kartalta.
+Kaaviossa nähdään, että Treat-luokat, eli karkit, ovat riippuvaisia pelin matriisista tai madosta. Tämä johtuu siitä, että erikoiskarkit tekevät näihin oliohin muutoksia esimerkiksi muuttamalla madon suunnan tai poistamalla kaikki karkit kartalta.
 
 
 ## Tietojen pysyväistallennus
@@ -62,6 +62,7 @@ sequenceDiagram
   participant Game
   participant TreatFactory
   participant Snake
+  participant GameMatrix
   
   User->>GUI:Right Arrowkey
   GUI->>Game:game.snake.change_direction(1)
@@ -69,10 +70,10 @@ sequenceDiagram
   GUI->>Game:Advance()
   Game->>Snake:Advance()
   Snake-->>Game:position(2 dimensional array)
-  Game->>Game:remove_previous_snake()
-  Game->>Game:draw_snake(position)
+  Game->>GameMatrix: set_matrix(matrix with updated snake location)
   Game->>TreatFactory:new_random_treat()
   TreatFactory-->>Game:MarixElement(ReverseTreat(), "treat", 2, 20,"<-")
+  Game->>GameMatrix: set_matrix(matrix with new treat)
   Game-->>GUI:game_matrix
   ```
   Tarkastellaan seuraavaksi sekvenssikaaviota tilanteesta, missä Pelaaja syö madon suunnan kääntävän karkin (jatkoa edelliselle sekvenssikaaviolle):
