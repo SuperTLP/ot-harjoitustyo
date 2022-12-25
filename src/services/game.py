@@ -100,11 +100,12 @@ class Game:
         """
         This clears previous snake blocks. Used before rendering new snake position.
         """
-
-        for i in self.game_matrix.matrix:
+        new_matrix=[x[:] for x in self.game_matrix.matrix[:]]
+        for i in new_matrix:
             for j, elem in enumerate(i):
                 if elem.type=="snake":
                     i[j]=self.empty
+        self.game_matrix.set_matrix(new_matrix)
 
     def get_non_snake_coordinates(self):
         """
@@ -147,7 +148,10 @@ class Game:
         if len(free_coordinates)==0:
             return
         coordinates=choice(free_coordinates)
-        self.game_matrix.matrix[coordinates[0]][coordinates[1]]=new_treat
+
+        new_matrix=[x[:] for x in self.game_matrix.matrix[:]]
+        new_matrix[coordinates[0]][coordinates[1]]=new_treat
+        self.game_matrix.set_matrix(new_matrix)
 
     def eat_treat(self, treat):
 
@@ -191,9 +195,10 @@ class Game:
         argument:
             position: position of a snake class instance.
         """
-
+        new_matrix=[x[:] for x in self.game_matrix.matrix]
         for block in position:
-            self.game_matrix.matrix[block[0]][block[1]]=self.snake_body
+            new_matrix[block[0]][block[1]]=self.snake_body
+        self.game_matrix.set_matrix(new_matrix)
 
     def advance(self):
         """

@@ -5,10 +5,17 @@ from unittest.mock import MagicMock
 
 class TestGame(unittest.TestCase):
     def setUp(self):
+        self.set_matrix_called_with=""
         self.score_service=MagicMock()
         self.score_service.new=MagicMock()
         self.game_matrix=MagicMock()
         self.game_matrix.matrix=[[MagicMock()]*14 for i in range(0, 9)]
+
+        def return_args(args):
+            self.set_matrix_called_with=args
+        
+        self.game_matrix.set_matrix=return_args
+
         for row in self.game_matrix.matrix:
             for element in row:
                 element.type="empty"
@@ -31,8 +38,9 @@ class TestGame(unittest.TestCase):
         game.start("Riku", "easy")
         game.advance()
         expected_snake_coordinates=[[1, 5], [1, 6], [1, 7]]
+        arg_matrix = self.set_matrix_called_with
         for element in expected_snake_coordinates:
-            self.assertEqual(game.game_matrix.matrix[element[0]][element[1]].type, "snake")
+            self.assertEqual(arg_matrix[element[0]][element[1]].type, "snake")
 
     def test_consume_gives_points(self):
         self.snake.advance.return_value=[[1, 4], [1, 5], [1, 6]]

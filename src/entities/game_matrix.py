@@ -33,7 +33,7 @@ class GameMatrix:
             matrix: new value for self.matrix
         """
 
-        self.matrix=matrix
+        self.matrix=[x[:] for x in matrix]
 
     def reset(self):
         """
