@@ -1,7 +1,9 @@
 from services.game import Game
 from entities.snake import Snake
 from entities.treats.default_treat import DefaultTreat
+from entities.treats.purge_treat import PurgeTreat
 from entities.treats.reverse_treat import ReverseTreat
+from entities.game_matrix import GameMatrix
 from services.score_service import ScoreService
 
 from entities.matrix_element import MatrixElement
@@ -18,10 +20,11 @@ class TestIntegration(unittest.TestCase):
         cur.execute("drop table if exists scores")
         cur.execute("create table scores (id integer primary key autoincrement, name text, score int,difficulty text)")
         db.commit()
+        self.game_matrix=GameMatrix()
         self.snake=Snake([[3, 2], [3,3], [3, 4], [3, 5]])
         score_repository=ScoreRepository(db)
         self.score_service=ScoreService(score_repository)
-        self.game=Game(snake=self.snake, score_service=self.score_service)
+        self.game=Game(self.snake, self.game_matrix, self.score_service)
 
     def test_movement(self):
         self.game.start("Tester", "easy")
@@ -36,7 +39,7 @@ class TestIntegration(unittest.TestCase):
         self.game.start("Tester", "easy")
         for i in range(0, 5):
             snake_head=self.snake.position[-1]
-            self.game.game_matrix[snake_head[0]][snake_head[1]+1]=candy
+            self.game.game_matrix.matrix[snake_head[0]][snake_head[1]+1]=candy
             self.game.advance()
         self.assertEqual(len(self.snake.position), 8)
         self.assertEqual(self.snake.pending_blocks,1)
@@ -55,13 +58,13 @@ class TestIntegration(unittest.TestCase):
 
         for i in range(0, len(point_sequence)):
             snake_head=self.snake.position[len(self.snake.position)-1]
-            self.game.game_matrix[snake_head[0]][snake_head[1]+1]=MatrixElement(DefaultTreat(point_sequence[i]),"treat",1,1,point_sequence[i])
+            self.game.game_matrix.matrix[snake_head[0]][snake_head[1]+1]=MatrixElement(DefaultTreat(point_sequence[i]),"treat",1,1,point_sequence[i])
             self.game.advance()
 
-        self.game.game_matrix[snake_head[0]][snake_head[1]+1]=empty
+        self.game.game_matrix.matrix[snake_head[0]][snake_head[1]+1]=empty
         self.game.advance()
 
-        self.game.game_matrix[snake_head[0]][snake_head[1]+1]=empty
+        self.game.game_matrix.matrix[snake_head[0]][snake_head[1]+1]=empty
         self.game.advance()
         scores = self.score_service.all()
 
@@ -74,7 +77,7 @@ class TestIntegration(unittest.TestCase):
         treat = MatrixElement(ReverseTreat(),"treat",2,20,"<-")
         self.game.start("Riku", "easy")
         self.snake.set_position([[1, 2], [2, 2], [3,2], [3, 4], [3, 5]])
-        self.game.game_matrix[3][6]=treat
+        self.game.game_matrix.matrix[3][6]=treat
         self.game.advance()
         self.assertEqual(self.game.points, 20)
         self.assertEqual(str(list(reversed([[2, 2], [3,2], [3, 4], [3, 5],[3, 6]]))),
@@ -85,7 +88,7 @@ class TestIntegration(unittest.TestCase):
         treat = MatrixElement(ReverseTreat(),"treat",2,20,"<-")
         self.game.start("Riku", "easy")
         self.snake.set_position([[3, 1],[3,2]])
-        self.game.game_matrix[3][3]=treat
+        self.game.game_matrix.matrix[3][3]=treat
         self.game.advance()
         self.assertEqual(self.game.points, 20)
         self.assertEqual(str(list(reversed([[3,2],[3,3]]))),
@@ -94,15 +97,31 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(self.game.game_over,False)
 
     def test_snake_length_increases_correctly(self):
-        snake=Snake([[1, 3], [1, 4], [1, 5]])
-        game=Game(snake,self.score_service)
+        snake = Snake([[1, 3], [1, 4], [1, 5]])
+        game = Game(snake, self.game_matrix, self.score_service)
         game.start("Tester","easy")
         for i in range(0, 4):
             candy=MatrixElement(DefaultTreat(1),"treat",1,1,1)
             snake_head=snake.position[-1]
-            game.game_matrix[snake_head[0]][snake_head[1]+1]=candy
+            game.game_matrix.matrix[snake_head[0]][snake_head[1]+1]=candy
             game.advance()
         self.assertEqual(len(snake.position),6)
         self.assertEqual(snake.pending_blocks,1)
+
+    def test_purge_treat_works_correctly(self):
+        snake = Snake([[1, 3], [1, 4], [1, 5]])
+        game = Game(snake, self.game_matrix, self.score_service)
+        game.start("Tester","easy")
+        treat = MatrixElement(PurgeTreat(),"matrix_treat",2,20,"X")
+        default_treat=MatrixElement(DefaultTreat(1), "treat", 1, 1, "1")
+        game.game_matrix.matrix[1][6]=treat
+        game.game_matrix.matrix[0][0]=default_treat
+        game.advance()
+        for block in [[1, 4], [1, 5], [1, 6]]:
+            self.assertEqual(self.game.game_matrix.matrix[block[0]][block[1]].type,"snake")
+        self.assertEqual(game.points, 20)
+        self.assertEqual(game.game_matrix.matrix[0][0].type, "empty")
+
+        
 
 

@@ -11,16 +11,17 @@ class FloodTreat:
     def __init__(self):
         pass
 
-    def consume(self, game):
+    def consume(self, game_matrix):
         """
-        This method replaces every second element on every row of the game's
+        This method replaces every second element on every row of the
         game_matrix with defaultTreat element with effect of -2.
 
         argument:
-            game: Instance of Game class.
+            game_matrix: instance of GameMatrix class
         """
 
-        matrix_copy=[row[:] for row in game.game_matrix[:]]
+        matrix_copy=[row[:] for row in game_matrix.matrix[:]]
+
         for row_index, row in enumerate(matrix_copy):
 
             new_row = list(enumerate(row))[::2]
@@ -30,4 +31,5 @@ class FloodTreat:
             for column_index, element in new_row:
                 if element.type!="snake":
                     matrix_copy[row_index][column_index]=FloodTreat.new_treat
-        game.set_game_matrix(matrix_copy)
+
+        game_matrix.set_matrix(matrix_copy)
