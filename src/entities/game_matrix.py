@@ -18,7 +18,7 @@ class GameMatrix:
             self.coordinates is list of coordinates [y, x] on the matrix.
         """
 
-        self.matrix= [x[:] for x in GameMatrix.START[:]]
+        self.matrix= [row[:] for row in GameMatrix.START[:]]
         self.coordinates=[]
 
         for i in range(0, len(self.matrix)):
@@ -33,11 +33,11 @@ class GameMatrix:
             matrix: new value for self.matrix
         """
 
-        self.matrix=[x[:] for x in matrix]
+        self.matrix=[row[:] for row in matrix]
 
     def reset(self):
         """
         Resets matrix
         """
 
-        self.matrix=[x[:] for x in GameMatrix.START[:]]
+        self.matrix=[row[:] for row in GameMatrix.START[:]]

@@ -58,8 +58,11 @@ class Game:
         self.game_matrix.reset()
         snake_position=self.snake.reset()
 
+        new_matrix=[row[:] for row in self.game_matrix.matrix[:]]
+
         for snake_block in snake_position:
-            self.game_matrix.matrix[snake_block[0]][snake_block[1]]=self.snake_body
+            new_matrix[snake_block[0]][snake_block[1]]=self.snake_body
+        self.game_matrix.set_matrix(new_matrix)
 
         self.game_over=False
 
@@ -100,7 +103,7 @@ class Game:
         """
         This clears previous snake blocks. Used before rendering new snake position.
         """
-        new_matrix=[x[:] for x in self.game_matrix.matrix[:]]
+        new_matrix=[row[:] for row in self.game_matrix.matrix[:]]
         for i in new_matrix:
             for j, elem in enumerate(i):
                 if elem.type=="snake":
@@ -118,8 +121,8 @@ class Game:
         """
 
         non_snake_coordinates=[
-        x[:] for x in self.coordinates if
-        self.game_matrix.matrix[x[0]][x[1]].type!="snake"]
+        row[:] for row in self.coordinates if
+        self.game_matrix.matrix[row[0]][row[1]].type!="snake"]
         return non_snake_coordinates
 
     def get_empty_coordinates(self):
@@ -131,8 +134,8 @@ class Game:
             (game_matrix[y][x]) is empty.
         """
 
-        free_coordinates = [x[:] for x in self.coordinates if
-        self.game_matrix.matrix[x[0]][x[1]].type=="empty"]
+        free_coordinates = [row[:] for row in self.coordinates if
+        self.game_matrix.matrix[row[0]][row[1]].type=="empty"]
         return free_coordinates
 
     def new_treat(self):
@@ -149,7 +152,7 @@ class Game:
             return
         coordinates=choice(free_coordinates)
 
-        new_matrix=[x[:] for x in self.game_matrix.matrix[:]]
+        new_matrix=[row[:] for row in self.game_matrix.matrix[:]]
         new_matrix[coordinates[0]][coordinates[1]]=new_treat
         self.game_matrix.set_matrix(new_matrix)
 
@@ -195,7 +198,7 @@ class Game:
         argument:
             position: position of a snake class instance.
         """
-        new_matrix=[x[:] for x in self.game_matrix.matrix]
+        new_matrix=[row[:] for row in self.game_matrix.matrix]
         for block in position:
             new_matrix[block[0]][block[1]]=self.snake_body
         self.game_matrix.set_matrix(new_matrix)

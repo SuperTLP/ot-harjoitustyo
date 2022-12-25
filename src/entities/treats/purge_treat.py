@@ -15,5 +15,5 @@ class PurgeTreat:
             game_matrix: Instance of GameMatrix class.
         """
 
-        new_matrix=[x[:] for x in self.empty[:]]
+        new_matrix=[row[:] for row in self.empty[:]]
         game_matrix.set_matrix(new_matrix)

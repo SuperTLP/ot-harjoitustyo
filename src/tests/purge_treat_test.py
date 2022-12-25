@@ -23,7 +23,7 @@ class TestPurgeTreat(unittest.TestCase):
         self.game_matrix[0][1].type="snake"
         treat=PurgeTreat()
         treat.consume(self.game_matrix)
-        called_matrix=[x[:] for x in self.set_matrix_called_with]
+        called_matrix=[row[:] for row in self.set_matrix_called_with]
         for row in called_matrix:
             for element in row:
                 self.assertEqual(element.type, "empty")

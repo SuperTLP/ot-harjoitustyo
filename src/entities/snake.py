@@ -27,7 +27,7 @@ class Snake:
             snake's initial position
         """
 
-        self.position=[x[:] for x in self.start_position[:]]
+        self.position=[row[:] for row in self.start_position[:]]
         self.pending_blocks=0
         self.direction=1
         return self.position
