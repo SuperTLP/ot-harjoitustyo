@@ -5,7 +5,7 @@ Ohjelmaa testataan unittestillä automaattisilla yksikkö- sekä integraatiotest
 ## yksikkötestaus
 
 ### Sovelluslogiikka
-**Game**-oliota testataan TestGame - testiluokalla. TestGamen testeissä Testattavalle Game-luokalle injektoidaan MagicMock Snake-, GameMatrix- ja Tietokantaoliot , Joilla on ennalta määrätyt paluuarvot.
+**Game**-oliota testataan TestGame - testiluokalla. TestGamen testeissä Testattavalle Game-luokalle injektoidaan MagicMock Snake-, GameMatrix- ja ScoreService-oliot , Joilla on ennalta määrätyt paluuarvot.
 
 **TreatFactory ja ScoreService** luokilla ei toistaiseksi ole omaa testiluokkaansa.
 
@@ -22,9 +22,7 @@ Pelin repositories-kansiossa olevia luokka-olioita, eli tietokantatauluja vastaa
 
 ## Integraatiotestaus
 
-Ohjelman Integraatiotestaus tapahtuu yhdessä testiluokassa TestIntegration. Tässä luokassa testattaville luokille injektoidaan todelliset sovelluslogiikan
-luokkaoliot, eikä Mock-olioita. Testiluokan jokaisessa testimetodissa luodaan Game-olio, jolle injektoidaan Snake-olio, sekä testitietokantaolio.
-Toisin kuin repositories-luokan testeissä, integraatiotestissä luodaan oikea tietokanta, jonne testien tulokset tallennetaan.
+Ohjelman Integraatiotestaus tapahtuu yhdessä testiluokassa TestIntegration. Tässä luokassa testattaville luokille injektoidaan todelliset sovelluslogiikan luokkaoliot, eikä Mock-olioita. Testiluokan jokaisessa testimetodissa luodaan Game-olio, jolle injektoidaan Snake-olio, GameMatrix-, sekä ScoreService oliot. Toisin kuin repositories-luokan testeissä, integraatiotestissä luodaan oikea tietokanta, jonne testien tulokset tallennetaan.
 
 TestIntegration-luokan testeissä pelissä matoa liikutellaan useiden karkkien päälle, ja tarkistetaan, että jokaisen luokan tiedot päivittyvät oikein.
 Tähän kuuluu Snake-olion position, Pending_blocks ja direction, sekä Game-olion points.
