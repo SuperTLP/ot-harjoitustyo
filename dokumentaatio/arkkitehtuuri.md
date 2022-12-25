@@ -18,7 +18,7 @@ Pelin käyttöliittymällä on viisi näkymää:
 - Game over - näkymä
 - High Score
 
-Käyttöliittymä on toteutettu yhtenä View-luokkana, jonka metodeja näkymät ovat. Näkymien välillä siirrytään lopettamalla senhetkinen loop ja kutsumalla toista luokan View metodia. View-luokalle on injektoitu Game- ja Score-luokkien oliot.
+Käyttöliittymä on toteutettu yhtenä View-luokkana, jonka metodeja näkymät ovat. Näkymien välillä siirrytään lopettamalla senhetkinen loop ja kutsumalla toista luokan View metodia. View-luokalle on injektoitu Game- ja ScoreService-luokkien oliot.
 
 Käyttöliittymässä Peli-näkymä kutsuu jokaisella peliloopin kierroksella Game-luokan advance funktiota, joka edistää peliä yhden askeleen. Täten Käyttöliittymä on myös vastuussa pelin taajuudesta. Pelin vaikeustasot ovatkin säädetty muuttamalla Pelin taajuutta riippuen siitä, mikä vaikeustaso valittiin.
 
