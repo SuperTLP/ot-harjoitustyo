@@ -30,7 +30,7 @@ Vaikeustason valinnan jälkeen kontrolli siirtyy pelinäkymään, missä oikeaa 
 ## Pelilogiikka
 
 ### Game
-Game-olio on vastuussa matopelin pelilogiikasta. Se säilyttää pelin tilan, ja tarkistaa madon liikkeeseen kuuluvat ehdot. Se pyytää pelin jokaisella iteraatiolla TreatFactory-luokkaa luomaan uuden karkin kartalle. Game-oliolle injektoidaan Snake- ja ScoreService-oliot.
+Game-olio on vastuussa matopelin pelilogiikasta ja tarkistaa madon liikkeeseen kuuluvat ehdot. Se pyytää pelin jokaisella iteraatiolla TreatFactory-luokkaa luomaan uuden karkin kartalle. Game-oliolle injektoidaan Snake-olio, joka on vastuussa madon sijainnin muistamisesta sekä madon liikuttamisesta, GameMatrix-olio, joka on vastuussa pelin matriisin sekä karkkien sijaintien muistamisesta, sekä ScoreService-olio, joka on Game-olion sekä käyttöliittymän rajapinta pysyväistallennukseen.
 
 ### TreatFactory
 TreatFactory on vastuussa pelissä ilmestyvien karkkien luomisesta ja tiettyjen karkkien ilmestymistodennäköisyydestä. Game-olio kutsuu jokaisella pelin iteraatiolla TreatFactoryn .new_random_treat metodia, joka valitsee satunnaisen tason karkille (1-3) ja valitsee sitten satunnaisen tasoa vastaavan karkin.
@@ -44,9 +44,7 @@ Seuraava luokka/pakkauskaavio kuvaa luokkien suhdetta
 
 ![Luokkakaavio](./kuvat/luokkakaavio.png)
 
-### Treat-olioiden riippuvuus pelilogiikkaan
-
-Kaikki pelin matriisin alkiot ovat MatrixElement-olioita. Tyhjillä ruuduilla olion .type attribuutti on "empty" ja madon ruumista vastaavilla alkioilla "snake". Karkit ovat MatrixElement-olioita, joille on injektoitu jokin Entities-hakemistossa olevista Treat-olioista .action attribuutiksi. Jokaisella Treat oliolla on .consume-metodi, joka ottaa argumentikseen joko Game- tai Snake-olion. .consume metodi kutsuu argumentiksi saadun olion muuttujia saaden aikaan erilaisia efektejä, kuten madon pidentymisen tai lyhentymisen, tai madon suunnan kääntymisen.
+Kaaviossa nähdään, että Treat-luokat, eli karkit, ovat riippuvaisia pelin matriisista tai madosta. Tämä johtuu siitä, että erikoiskarkit tekevät näihin oliohin muutoksia esimerkiksi muuttamalla madon suunnan tai poistamalla kaikki karkit kartalta.
 
 
 ## Tietojen pysyväistallennus
@@ -64,6 +62,7 @@ sequenceDiagram
   participant Game
   participant TreatFactory
   participant Snake
+  participant GameMatrix
   
   User->>GUI:Right Arrowkey
   GUI->>Game:game.snake.change_direction(1)
@@ -71,11 +70,11 @@ sequenceDiagram
   GUI->>Game:Advance()
   Game->>Snake:Advance()
   Snake-->>Game:position(2 dimensional array)
-  Game->>Game:remove_previous_snake()
-  Game->>Game:draw_snake(position)
+  Game->>GameMatrix: set_matrix(matrix with updated snake location)
   Game->>TreatFactory:new_random_treat()
   TreatFactory-->>Game:MarixElement(ReverseTreat(), "treat", 2, 20,"<-")
-  Game-->>GUI:game_matrix
+  Game->>GameMatrix: set_matrix(matrix with new treat)
+  Game-->>GUI:game_matrix.matrix
   ```
   Tarkastellaan seuraavaksi sekvenssikaaviota tilanteesta, missä Pelaaja syö madon suunnan kääntävän karkin (jatkoa edelliselle sekvenssikaaviolle):
  
@@ -96,9 +95,11 @@ sequenceDiagram
   MatrixElement->>ReverseTreat:consume(snake)
   ReverseTreat->>Snake:set_position(reversed(position))
   ReverseTreat->>Snake: change_direction(3)
+  Game->>GameMatrix:set_matrix(matrix with updated snake position)
   Game->>TreatFactory:new_random_treat()
   TreatFactory-->>Game: MarixElement(PurgeTreat(), "matrix_treat", 2, 20,"X")
-  Game-->>GUI:game_matrix 
+  Game->>GameMatrix:set_matrix(matrix with new treat)
+  Game-->>GUI:game_matrix.matrix
 ```
 
-Siis edellisten sekvenssikaavioiden aikana pelaaja vaihtoi madon kulkusuunnan oikealle painamalla oikeaa nuolinäppäintä. Mato liikkui ensin tyhjän ruudun päälle, jonka jälkeen madon pään oikealle puolelle ilmestyi suunnan vaihtava karkki. Seuraavalla askeleella mato liikkui tämän karkin päälle, jolloin karkki syötiin, ja se muutti madon suunnan, sekä sen position. Tämän jälkeen Peli pyysi TreatFactorya luomaan uuden karkin, joka sattui tällä kertaa olemaan PurgeTreat, joka poistaa kaikki karkit kartalta.
+Siis edellisten sekvenssikaavioiden aikana pelaaja vaihtoi madon kulkusuunnan oikealle painamalla oikeaa nuolinäppäintä. Mato liikkui ensin tyhjän ruudun päälle, jonka jälkeen madon pään oikealle puolelle ilmestyi suunnan vaihtava karkki. Seuraavalla askeleella mato liikkui tämän karkin päälle, jolloin karkki syötiin, ja se muutti madon suunnan, sekä sen position. Tämän jälkeen Peli pyysi TreatFactorya luomaan uuden karkin, joka sattui tällä kertaa olemaan PurgeTreat, joka poistaa kaikki karkit kartalta. Peli tallensi uuden karkin sijainnin GameMatrix luokan oliolle lisäämällä sen edelliselle matriisille ja kutsumalla sitten tämän .set_matrix metodia.
