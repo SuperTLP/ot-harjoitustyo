@@ -30,13 +30,13 @@ Vaikeustason valinnan jälkeen kontrolli siirtyy pelinäkymään, missä oikeaa 
 ## Pelilogiikka
 
 ### Game
-Pelilogiikka on keskitetty Game-luokalle. Se säilyttää pelin tilan, ja päivittää muut pelilogiikan oliot kutsumalla niiden metodeja. se päivittää esimerkiksi mato-olion kutsumalla tämän advance-metodia ja pyytää TreatFactory-luokkaa luomaan uuden karkin peliin jokaisella pelin iteraatiolla. Game-oliolle injektoidaan Snake- ja ScoreService-oliot.
-
-### Snake
-Snake-luokka on vastuussa kaikista matoon liittyvien tietojen tallentamisesta. Tähän sisältyy esimerkiksi madon sijainti. Mato ei tee peliin liittyviä tarkastuksia esimerkiksi omaan häntäänsä tai seinään osumisesta, vaan palauttaa .advance metodissaan Game-oliolle nykyisen sijaintinsa. Game-olio tarkastaa matoon liittyvät ehdot.
+Game-olio on vastuussa matopelin pelilogiikasta. Se säilyttää pelin tilan, ja tarkistaa madon liikkeeseen kuuluvat ehdot. Se pyytää pelin jokaisella iteraatiolla TreatFactory-luokkaa luomaan uuden karkin kartalle. Game-oliolle injektoidaan Snake- ja ScoreService-oliot.
 
 ### TreatFactory
 TreatFactory on vastuussa pelissä ilmestyvien karkkien luomisesta ja tiettyjen karkkien ilmestymistodennäköisyydestä. Game-olio kutsuu jokaisella pelin iteraatiolla TreatFactoryn .new_random_treat metodia, joka valitsee satunnaisen tason karkille (1-3) ja valitsee sitten satunnaisen tasoa vastaavan karkin.
+
+### ScoreService
+ScoreService on käyttöliittymän sekä Game-olion rajapinta ScoreRepository-luokkaan, eli pysyväistallennukseen.
 
 
 ### Luokkien suhteet
